@@ -1,0 +1,353 @@
+double default_improvement = 0.05;
+
+void run_scenario_01(double improvement) { 
+	/*
+	 * Run the first scenario: maximize timber harvest
+	 */ 
+	 
+	clearTargets();
+	control.cancelTreatments(); 
+	 
+	// set maximize harvest volume target
+	setActive("product.yield.managed.total", true, true, false); 
+	setMinimumPeriodic("product.yield.managed.total", 500000, 1, 30); 
+	setMinWeight("product.yield.managed.total", 1, 1, 30); 
+	control.getTarget("product.yield.managed.total").setLinear(true);
+
+	// set growing stock constraints- AFRF (90 percent of initial GS)
+	setActive("feature.yield.managed.total", true, true, false); 
+	setMinimumPeriodic("feature.yield.managed.total", 1277067, 30, 30);
+	setMinWeight ("feature.yield.managed.total", 1, 30, 30); 
+
+	// run the scheduler for a while before activating the even flow constraints
+	gui.click("start");
+	control.waitForIterations(50000);
+	gui.clickAndWait("pause");
+
+	//set even flow constraints
+	setActive ("product.flow.yield.even", true, true, true); 
+	setMinimumPeriodic("product.flow.yield.even", -1, 1, 30); 
+	setMinWeight ("product.flow.yield.even", 1000, 1, 30); 
+	setMaximumPeriodic("product.flow.yield.even", 1, 1, 30); 
+	setMaxWeight ("product.flow.yield.even", 1000, 1, 30); 
+
+	analyze("scenarios_AFRF_N/maximize timber harvest", 50000, improvement);
+}
+
+void run_scenario_01() {
+	run_scenario_01(default_improvement);
+}
+
+
+
+void run_scenario_02(double improvement) { 
+	/*
+	 * Run the second scenario: maximize carbon stocks, hwp emission rate is 0
+	 */ 
+	 
+	clearTargets();
+	control.cancelTreatments(); 
+	
+	// set maximize carbon stock target
+	setActive ("feature.carbon.managed.total.stock.0",true, true, false); 
+	setMinimumPeriodic ("feature.carbon.managed.total.stock.0", 15000000, 1, 30); 
+	setMinWeight ("feature.carbon.managed.total.stock.0", 1, 1, 30); 
+	control.getTarget("feature.carbon.managed.total.stock.0").setLinear(true);
+
+	// set growing stock constraints- AFRF (90 percent of initial GS)
+	setActive("feature.yield.managed.total", true, true, false); 
+	setMinimumPeriodic("feature.yield.managed.total", 1277067, 30, 30);
+	setMinWeight ("feature.yield.managed.total", 1, 30, 30); 
+
+	// run the scheduler for a while before activating the even flow constraints
+	gui.click("start");
+	control.waitForIterations(50000);
+	gui.clickAndWait("pause");
+
+	//set even flow constraints
+	setActive ("product.flow.yield.even", true, true, true); 
+	setMinimumPeriodic("product.flow.yield.even", -1, 1, 30); 
+	setMinWeight ("product.flow.yield.even", 1000, 1, 30); 
+	setMaximumPeriodic("product.flow.yield.even", 1, 1, 30); 
+	setMaxWeight ("product.flow.yield.even", 1000, 1, 30); 
+
+	analyze("scenarios_AFRF_N/maximize carbon stocks/0", 50000, improvement);
+}
+
+void run_scenario_02() {
+	run_scenario_02(default_improvement);
+}
+
+
+
+void run_scenario_03(double improvement) { 
+	/*
+	 * Run the third scenario: maximize carbon stocks, hwp emission rate is 50
+	 */ 
+	 
+	// set maximize carbon stock target
+	setActive ("feature.carbon.managed.total.stock.50",true, true, false); 
+	setMinimumPeriodic ("feature.carbon.managed.total.stock.50", 15000000, 1, 30); 
+	setMinWeight ("feature.carbon.managed.total.stock.50", 1, 1, 30); 
+	control.getTarget("feature.carbon.managed.total.stock.50").setLinear(true);
+
+	// set growing stock constraints- AFRF (90 percent of initial GS)
+	setActive("feature.yield.managed.total", true, true, false); 
+	setMinimumPeriodic("feature.yield.managed.total", 1277067, 30, 30);
+	setMinWeight ("feature.yield.managed.total", 1, 30, 30); 
+
+	// run the scheduler for a while before activating the even flow constraints
+	gui.click("start");
+	control.waitForIterations(50000);
+	gui.clickAndWait("pause");
+
+	//set even flow constraints
+	setActive ("product.flow.yield.even", true, true, true); 
+	setMinimumPeriodic("product.flow.yield.even", -1, 1, 30); 
+	setMinWeight ("product.flow.yield.even", 1000, 1, 30); 
+	setMaximumPeriodic("product.flow.yield.even", 1, 1, 30); 
+	setMaxWeight ("product.flow.yield.even", 1000, 1, 30); 
+
+	analyze("scenarios_AFRF_N/maximize carbon stocks/50", 50000, improvement);
+}
+
+void run_scenario_03() {
+	run_scenario_03(default_improvement);
+}
+
+
+
+void run_scenario_04(double improvement) { 
+	/*
+	 * Run the fourth scenario: maximize carbon stocks, hwp emission rate is 100
+	 */ 
+	 
+	// set maximize carbon stock target
+	setActive ("feature.carbon.managed.total.stock.100",true, true, false); 
+	setMinimumPeriodic ("feature.carbon.managed.total.stock.100", 150000000, 1, 30); 
+	setMinWeight ("feature.carbon.managed.total.stock.100", 1, 1, 30); 
+	control.getTarget("feature.carbon.managed.total.stock.100").setLinear(true);
+
+	// set growing stock constraints- AFRF (90 percent of initial GS)
+	setActive("feature.yield.managed.total", true, true, false); 
+	setMinimumPeriodic("feature.yield.managed.total", 1277067, 30, 30);
+	setMinWeight ("feature.yield.managed.total", 1, 30, 30); 
+
+	// run the scheduler for a while before activating the even flow constraints
+	gui.click("start");
+	control.waitForIterations(50000);
+	gui.clickAndWait("pause");
+
+	//set even flow constraints
+	setActive ("product.flow.yield.even", true, true, true); 
+	setMinimumPeriodic("product.flow.yield.even", -1, 1, 30); 
+	setMinWeight ("product.flow.yield.even", 1000, 1, 30); 
+	setMaximumPeriodic("product.flow.yield.even", 1, 1, 30); 
+	setMaxWeight ("product.flow.yield.even", 1000, 1, 30); 
+
+	analyze("scenarios_AFRF_N/maximize carbon stocks/100", 50000, improvement);
+}
+
+void run_scenario_04() {
+	run_scenario_04(default_improvement);
+}
+
+
+
+void run_scenario_05(double improvement) { 
+	/*
+	 * Run the fifth scenario: maximize carbon stocks, half life
+	 */ 
+	 
+	// set maximize carbon stock target
+	setActive ("feature.carbon.managed.total.stock.half",true, true, false); 
+	setMinimumPeriodic ("feature.carbon.managed.total.stock.half", 15000000, 1, 30); 
+	setMinWeight ("feature.carbon.managed.total.stock.half", 1, 1, 30); 
+	control.getTarget("feature.carbon.managed.total.stock.half").setLinear(true);
+
+	// set growing stock constraints- AFRF (90 percent of initial GS)
+	setActive("feature.yield.managed.total", true, true, false); 
+	setMinimumPeriodic("feature.yield.managed.total", 1277067, 30, 30);
+	setMinWeight ("feature.yield.managed.total", 1, 30, 30); 
+
+	// run the scheduler for a while before activating the even flow constraints
+	gui.click("start");
+	control.waitForIterations(50000);
+	gui.clickAndWait("pause");
+
+	//set even flow constraints
+	setActive ("product.flow.yield.even", true, true, true); 
+	setMinimumPeriodic("product.flow.yield.even", -1, 1, 30); 
+	setMinWeight ("product.flow.yield.even", 1000, 1, 30); 
+	setMaximumPeriodic("product.flow.yield.even", 1, 1, 30); 
+	setMaxWeight ("product.flow.yield.even", 1000, 1, 30); 
+
+	analyze("scenarios_AFRF_N/maximize carbon stocks/half", 50000, improvement);
+}
+
+void run_scenario_05() {
+	run_scenario_05(default_improvement);
+}
+
+
+
+void run_scenario_06(double improvement) { 
+	/*
+	 * Run the sixth scenario: maximize carbon sequestration, hwp emission rate is 0
+	 */ 
+	 
+	clearTargets();
+	control.cancelTreatments(); 
+	 
+	// set maximize carbon sequestration target
+	setActive ("feature.carbon.managed.total.flux.0",true, true, false); 
+	setMinimumPeriodic ("feature.carbon.managed.total.flux.0", 15000000, 1, 30); 
+	setMinWeight ("feature.carbon.managed.total.flux.0", 1, 1, 30); 
+	control.getTarget("feature.carbon.managed.total.flux.0").setLinear(true);
+
+
+	// set growing stock constraints- AFRF (90 percent of initial GS)
+	setActive("feature.yield.managed.total", true, true, false); 
+	setMinimumPeriodic("feature.yield.managed.total", 1277067, 30, 30);
+	setMinWeight ("feature.yield.managed.total", 1, 30, 30); 
+
+	// run the scheduler for a while before activating the even flow constraints
+	gui.click("start");
+	control.waitForIterations(50000);
+	gui.clickAndWait("pause");
+
+	//set even flow constraints
+	setActive ("product.flow.yield.even", true, true, true); 
+	setMinimumPeriodic("product.flow.yield.even", -1, 1, 30); 
+	setMinWeight ("product.flow.yield.even", 1000, 1, 30); 
+	setMaximumPeriodic("product.flow.yield.even", 1, 1, 30); 
+	setMaxWeight ("product.flow.yield.even", 1000, 1, 30); 
+
+	analyze("scenarios_AFRF_N/maximize carbon sequestration/0", 50000, improvement);
+}
+
+void run_scenario_06() {
+	run_scenario_06(default_improvement);
+}
+
+
+
+void run_scenario_07(double improvement) { 
+	/*
+	 * Run the seventh scenario: maximize carbon sequestration, hwp emission rate is 50
+	 */ 
+	 
+	clearTargets();
+	control.cancelTreatments(); 
+	 
+	// set maximize carbon sequestration target
+	setActive ("feature.carbon.managed.total.flux.50",true, true, false); 
+	setMinimumPeriodic ("feature.carbon.managed.total.flux.50", 15000000, 1, 30); 
+	setMinWeight ("feature.carbon.managed.total.flux.50", 1, 1, 30); 
+	control.getTarget("feature.carbon.managed.total.flux.50").setLinear(true);
+
+
+	// set growing stock constraints- AFRF (90 percent of initial GS)
+	setActive("feature.yield.managed.total", true, true, false); 
+	setMinimumPeriodic("feature.yield.managed.total", 1277067, 30, 30);
+	setMinWeight ("feature.yield.managed.total", 1, 30, 30); 
+
+	// run the scheduler for a while before activating the even flow constraints
+	gui.click("start");
+	control.waitForIterations(50000);
+	gui.clickAndWait("pause");
+
+	//set even flow constraints
+	setActive ("product.flow.yield.even", true, true, true); 
+	setMinimumPeriodic("product.flow.yield.even", -1, 1, 30); 
+	setMinWeight ("product.flow.yield.even", 1000, 1, 30); 
+	setMaximumPeriodic("product.flow.yield.even", 1, 1, 30); 
+	setMaxWeight ("product.flow.yield.even", 1000, 1, 30); 
+
+	analyze("scenarios_AFRF_N/maximize carbon sequestration/50", 50000, improvement);
+}
+
+void run_scenario_07() {
+	run_scenario_07(default_improvement);
+}
+
+
+
+void run_scenario_08(double improvement) { 
+	/*
+	 * Run the eighth scenario: maximize carbon sequestration, hwp emission rate is 100
+	 */ 
+	 
+	clearTargets();
+	control.cancelTreatments(); 
+	 
+	// set maximize carbon sequestration target
+	setActive ("feature.carbon.managed.total.flux.100",true, true, false); 
+	setMinimumPeriodic ("feature.carbon.managed.total.flux.100", 15000000, 1, 30); 
+	setMinWeight ("feature.carbon.managed.total.flux.100", 1, 1, 30); 
+	control.getTarget("feature.carbon.managed.total.flux.100").setLinear(true);
+
+
+	// set growing stock constraints- AFRF (90 percent of initial GS)
+	setActive("feature.yield.managed.total", true, true, false); 
+	setMinimumPeriodic("feature.yield.managed.total", 1277067, 30, 30);
+	setMinWeight ("feature.yield.managed.total", 1, 30, 30); 
+
+	// run the scheduler for a while before activating the even flow constraints
+	gui.click("start");
+	control.waitForIterations(50000);
+	gui.clickAndWait("pause");
+
+	//set even flow constraints
+	setActive ("product.flow.yield.even", true, true, true); 
+	setMinimumPeriodic("product.flow.yield.even", -1, 1, 30); 
+	setMinWeight ("product.flow.yield.even", 1000, 1, 30); 
+	setMaximumPeriodic("product.flow.yield.even", 1, 1, 30); 
+	setMaxWeight ("product.flow.yield.even", 1000, 1, 30); 
+
+	analyze("scenarios_AFRF_N/maximize carbon sequestration/100", 50000, improvement);
+}
+
+void run_scenario_08() {
+	run_scenario_08(default_improvement);
+}
+
+
+void run_scenario_09(double improvement) { 
+	/*
+	 * Run the ninth scenario: maximize carbon sequestration, half life
+	 */ 
+	 
+	clearTargets();
+	control.cancelTreatments(); 
+	 
+	// set maximize carbon sequestration target
+	setActive ("feature.carbon.managed.total.flux.half",true, true, false); 
+	setMinimumPeriodic ("feature.carbon.managed.total.flux.half", 15000000, 1, 30); 
+	setMinWeight ("feature.carbon.managed.total.flux.half", 1, 1, 30); 
+	control.getTarget("feature.carbon.managed.total.flux.half").setLinear(true);
+
+
+	// set growing stock constraints- AFRF (90 percent of initial GS)
+	setActive("feature.yield.managed.total", true, true, false); 
+	setMinimumPeriodic("feature.yield.managed.total", 1277067, 30, 30);
+	setMinWeight ("feature.yield.managed.total", 1, 30, 30); 
+
+	// run the scheduler for a while before activating the even flow constraints
+	gui.click("start");
+	control.waitForIterations(50000);
+	gui.clickAndWait("pause");
+
+	//set even flow constraints
+	setActive ("product.flow.yield.even", true, true, true); 
+	setMinimumPeriodic("product.flow.yield.even", -1, 1, 30); 
+	setMinWeight ("product.flow.yield.even", 1000, 1, 30); 
+	setMaximumPeriodic("product.flow.yield.even", 1, 1, 30); 
+	setMaxWeight ("product.flow.yield.even", 1000, 1, 30); 
+
+	analyze("scenarios_AFRF_N/maximize carbon sequestration/half", 50000, improvement);
+}
+
+void run_scenario_09() {
+	run_scenario_09(default_improvement);
+}

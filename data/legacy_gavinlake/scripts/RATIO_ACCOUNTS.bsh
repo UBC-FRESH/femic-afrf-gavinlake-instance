@@ -1,0 +1,11 @@
+// ratio accounts for controlling harvest and growing stock
+flowNdy = new FlowSpec().ndy(periods-9, periods, -1); //for last 10 periods of the planning horizon
+control.addFlowRatioAccount("feature.flow.yield.total","feature.yield.managed.total", flowNdy,100);
+control.addFlowRatioAccount("product.flow.yield.even","product.yield.managed.total", new FlowSpec().even(), 100);
+control.addFlowRatioAccount("product.flow.yield.ndy","product.yield.managed.total", new FlowSpec().ndy(1,periods,-1), 100);
+
+// if (useRoutes) {
+    // control.addRatioAccount("route.ratio.haul.CRB", "route.haul.CRB", "product.yield.noFIRE", 100);
+    // control.addRatioAccount("route.ratio.build.CRB", "route.total.build", "product.yield.noFIRE", 100);
+    // control.addRatioAccount("route.ratio.maint.CRB", "route.total.maint", "product.yield.noFIRE", 100);
+// }

@@ -1,0 +1,180 @@
+# Legacy AFRF Gavin Lake harvest and flow targets.
+#
+# Translated from data/legacy_gavinlake/scripts/scenarios_AFRF_H.bsh:
+#   product.yield.managed.total >= 500,000 m3 per 10-year period, periods 1-30
+#   feature.yield.managed.total >= 1,277,067 m3 at period 30 (90% of the
+#     measured initial growing stock, 1,418,962 m3)
+#   product.flow.yield.even between -1 and 1, weight 1000, periods 1-30
+#
+# The legacy pin defines patch.grpblk and patch.sepblk accounts, but the
+# scenario scripts do not set patch share targets. ws4 reports the patch
+# accounts through ws4/patch_accounts.yaml and does not constrain them here.
+#
+# The horizon is 30 ten-year periods (300 years), matching Horizon.setHorizon(30, 10).
+targets:
+  - account: product.yield.managed.total
+    period: 1
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 2
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 3
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 4
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 5
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 6
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 7
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 8
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 9
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 10
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 11
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 12
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 13
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 14
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 15
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 16
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 17
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 18
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 19
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 20
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 21
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 22
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 23
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 24
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 25
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 26
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 27
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 28
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 29
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 30
+    minimum: 500000
+    period_width: 10
+    min_weight: 1.0
+  - account: feature.yield.managed.total
+    period: 30
+    minimum: 1277067
+    period_width: 10
+    min_weight: 1.0
+  - account: product.yield.managed.total
+    period: 1
+    minimum: -1.0
+    maximum: 1.0
+    flow: even
+    period_width: 10
+    flow_start_period: 1
+    flow_end_period: 30
+    min_weight: 1000.0
+    max_weight: 1000.0
+    shape: non_linear

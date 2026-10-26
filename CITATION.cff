@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this model instance, please cite the repository and the legacy source described in data/legacy_gavinlake/PROVENANCE.md."
+title: "AFRF Gavin Lake Instance"
+abstract: "A ws4 forest-estate model instance for the Gavin Lake block of the UBC Alex Fraser Research Forest, benchmarked against a legacy Patchworks matrix."
+authors:
+  - name: "UBC FRESH Lab"
+repository-code: "https://github.com/UBC-FRESH/femic-afrf-gavinlake-instance"
+url: "https://github.com/UBC-FRESH/femic-afrf-gavinlake-instance"
+license: "MIT"
+version: "0.1.0"
+date-released: "2026-10-26"

@@ -1,0 +1,14 @@
+# AFRF Gavin Lake Instance
+
+> Agent-facing index for the Gavin Lake ws4 instance. Read the linked pages before you change the project.
+
+## Start here
+
+- [Home](index.html): the documentation home for the instance.
+- [Instance contract](guides/instance-contract.html): scope, inputs, outputs, and reproducibility.
+- [Legacy intake](guides/legacy-intake.html): archive provenance, the derived fragment table, and the structural parity check.
+- [ws4 workflow](guides/ws4-workflow.html): build, validate, simulate, report, and optimize.
+- [Data publication boundary](reference/data-publication-boundary.html): what is public and what is excluded.
+- [Legacy-to-ws4 crosswalk](reference/legacy-crosswalk.html): the table and account mapping.
+- [Scenario catalog](reference/scenario-catalog.html): the nine legacy scenarios and their translation status.
+- [API reference](api/index.html): the workflow validator and dashboard.

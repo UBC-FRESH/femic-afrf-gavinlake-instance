@@ -1,0 +1,32 @@
+{
+  "growing_stock_m3_selected_offsets": {
+    "-1": 1418962.31,
+    "0": 159545.37,
+    "10": 252240.76,
+    "100": 2129043.4,
+    "20": 370358.26,
+    "200": 3129945.3,
+    "290": 3380104.09,
+    "299": 3386511.35,
+    "50": 1051899.83
+  },
+  "harvest_by_decade_m3": {
+    "0": 1259416.94
+  },
+  "patch_grpblk_at_offset_0": {
+    "patch_count": 38,
+    "size_class_share_pct": {
+      "0_1": 0.165236,
+      "1_5": 0.673732,
+      "40_50": 0.0,
+      "50_9999999": 94.845007,
+      "5_40": 4.316025
+    },
+    "total_area_ha": 3330.508427
+  },
+  "schedule": "ws4/schedules/smoke_age80_pulse.csv",
+  "schedule_definition": "Every ingested fragment with age >= 80 is assigned one CC treatment at offset 0. This is a structural smoke test, not a policy baseline or a legacy scenario replacement.",
+  "scheduled_fragments": 1800,
+  "spatial_violations_file_present": false,
+  "years": 300
+}

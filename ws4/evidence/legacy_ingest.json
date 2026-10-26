@@ -1,0 +1,43 @@
+{
+  "age": {
+    "clipped_to_zero": 87,
+    "max_ingested": 308,
+    "min_ingested": 0,
+    "negative_raw_fragments": 87
+  },
+  "area_ha": {
+    "managed_contclass_c": 4662.964947,
+    "nonforest_contclass_n": 1000.699528,
+    "total": 5663.664475
+  },
+  "counts": {
+    "blocks": 2907,
+    "curve_points": 48288,
+    "fragments": 2907,
+    "tracks": 97
+  },
+  "dataset_manifest_sources": [
+    {
+      "path": "H",
+      "sha256": "f4f24f75d759a98862ea5ce41a23d2061b31b2c05f859e8e770dddea1f3561d8"
+    },
+    {
+      "path": "fragments.csv",
+      "sha256": "b4ea7e709a60f3a642b207ffc6f0377e762794ebf334611b3f6c413bfe451e3a"
+    }
+  ],
+  "notes": [
+    "The legacy scenario sets feature.yield.managed.total >= 1,277,067 m3 at period 30. The comment calls that 90 percent of initial growing stock; the ingested ws4 initial value matches the implied 1,418,963 m3 to within 1e-6 relative error.",
+    "The legacy package carries 87 fragments with AGE_2019 = -2 (a non-forest sentinel). ws4 requires non-negative age, so the ingest fragment table clips them to 0 and keeps AGE_RAW and AGE_CLIPPED for audit."
+  ],
+  "parity": {
+    "initial_growing_stock_m3": 1418962.31,
+    "legacy_floor_implied_initial_growing_stock_m3": 1418963.33,
+    "legacy_growing_stock_floor_period_30_m3": 1277067.0,
+    "relative_difference": -7.19e-07
+  },
+  "source_archive": {
+    "file": "AFRF.zip",
+    "sha256": "3652c493e21b1834e3e6d9c156f257fa1aa97f019df4672872d08ac1bf703a19"
+  }
+}

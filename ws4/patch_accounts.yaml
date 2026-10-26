@@ -1,0 +1,24 @@
+# Patch accounts translated from the legacy AFRF Gavin Lake Patchworks pin.
+#
+# Source: data/legacy_gavinlake/analysis/AFRF_H.pin
+#   control.inputTopology("topo_fragments.csv", 20d)
+#   control.addPatchTarget("product.area.managed.total", "patch.grpblk.*", ...)
+#   control.inputTopology("topo_fragments.csv", 100d)
+#   control.addPatchTarget("feature.area.managed.seral.le10", "patch.sepblk.*", ...)
+#
+# These accounts are reporting surfaces in the legacy model. The legacy
+# scenario scripts do not set minimum or maximum shares for them; they clear
+# the targets and then set harvest, growing-stock, flow and carbon targets.
+# Do not treat the class definitions below as an opening-size policy until a
+# reviewed target set says so.
+accounts:
+  - name: patch.grpblk
+    criteria: product.area.managed.total
+    threshold: 0.0
+    size_classes: [1.0, 5.0, 40.0, 50.0, .inf]
+    search_distance: 20.0
+  - name: patch.sepblk
+    criteria: feature.area.managed.seral.le10
+    threshold: 0.0
+    size_classes: [40.0, 50.0, .inf]
+    search_distance: 100.0
