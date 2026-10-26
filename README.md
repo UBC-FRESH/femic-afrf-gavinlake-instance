@@ -10,9 +10,9 @@ and records the structural parity evidence.
 Phase 0 (bootstrap, legacy intake, and structural parity) is complete. The
 legacy H matrix has been ingested and validated by ws4, and the initial growing
 stock reproduces the value implied by the legacy scenario constraints. Phase 1
-(scenario translation and baseline benchmark) is planned under issue #7. See
-`ROADMAP.md` for the phase and task plan, and `CHANGE_LOG.md` for the dated
-record.
+(scenario translation and baseline benchmark) is active under issue #7: the
+baseline is built and the phase closeout is pending. See `ROADMAP.md` for the
+phase and task plan, and `CHANGE_LOG.md` for the dated record.
 
 ## What this repository contains
 
@@ -78,6 +78,20 @@ translation table and `runbooks/WS4_RUNBOOK.md` for the operator procedure.
 
 The parity check is described in `ws4/evidence/legacy_ingest.json` and
 `docs/guides/legacy-intake.rst`.
+
+## Phase 1 baseline
+
+The sustained-yield baseline is `ws4/schedules/baseline_evenflow.csv`. It
+clearcuts at age 80, re-enters every 80 years, and balances first entries across
+ten-year periods. It produces a mean of 188,677.89 m³ per period, a minimum of
+177,070.07, and a maximum of 197,806.62 m³. Growing stock falls from
+1,418,962.31 m³ to 495,510.56 m³ over 300 years.
+
+The legacy 500,000 m³ harvest floor and 1,277,067 m³ growing-stock floor are
+not met. The baseline is flat in absolute volume but not within the legacy −1
+to 1 percent even-flow band. The interpretation is in
+`notes/reference/gavin-baseline-findings.md`; the evidence is in
+`ws4/evidence/baseline/`.
 
 ## Repository map
 
