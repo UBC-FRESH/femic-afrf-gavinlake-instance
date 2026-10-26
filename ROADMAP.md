@@ -12,8 +12,8 @@ after its parent issue exists and the maintainer approves it.
 
 | Phase | Parent issue | Branch | Status |
 | --- | --- | --- | --- |
-| P0 Bootstrap and structural parity | TBD | `feature/p0-bootstrap` | planned |
-| P1 Scenario translation and baseline benchmark | TBD | `feature/p1-scenario-baseline` | planned |
+| P0 Bootstrap and structural parity | #1 | `feature/p0-bootstrap` | active |
+| P1 Scenario translation and baseline benchmark | #7 | `feature/p1-scenario-baseline` | planned |
 | P2 ws4 runtime packaging | TBD | `feature/p2-runtime-packaging` | planned |
 | P3 Verification and QA | TBD | `feature/p3-verification` | planned |
 | P4 Scenario analysis and optimization | TBD | `feature/p4-scenarios` | planned |
@@ -42,18 +42,18 @@ after its parent issue exists and the maintainer approves it.
 
 ## Phase 0: Bootstrap and structural parity
 
-Parent issue: TBD
+Parent issue: #1
 Branch: `feature/p0-bootstrap`
-Status: planned
+Status: active
 
 Goal: adapt the workflow surfaces to this instance, ingest the legacy H matrix,
 compile a validated ws4 dataset, and record the initial structural parity.
 
-- [ ] P0.1 Adapt `AGENTS.md`, `README.md`, and the roadmap to Gavin Lake
-- [ ] P0.2 Record the legacy archive provenance and publication boundary
-- [ ] P0.3 Ingest the legacy H matrix and compile the ws4 dataset
-- [ ] P0.4 Record the initial-growing-stock parity evidence
-- [ ] P0.5 Confirm the green dashboard and the docs build
+- [x] P0.1 Adapt `AGENTS.md`, `README.md`, and the roadmap to Gavin Lake (#2)
+- [x] P0.2 Record the legacy archive provenance and publication boundary (#3)
+- [x] P0.3 Ingest the legacy H matrix and compile the ws4 dataset (#4)
+- [x] P0.4 Record the initial-growing-stock parity evidence (#5)
+- [x] P0.5 Confirm the green dashboard and the docs build (#6)
 
 Acceptance criteria:
 
@@ -65,7 +65,7 @@ Acceptance criteria:
 
 ## Phase 1: Scenario translation and baseline benchmark
 
-Parent issue: TBD
+Parent issue: #7
 Branch: `feature/p1-scenario-baseline`
 Status: planned
 
@@ -73,10 +73,10 @@ Goal: translate the legacy H scenario catalog into a ws4 target contract and
 build a reproducible baseline schedule that can be compared with the legacy
 matrix behaviour.
 
-- [ ] P1.1 Translate the legacy H scenario catalog into ws4 target files
-- [ ] P1.2 Build a reproducible baseline schedule
-- [ ] P1.3 Run the baseline and compare account trajectories
-- [ ] P1.4 Record accepted variances and defer the carbon scenarios explicitly
+- [ ] P1.1 Translate the legacy H scenario catalog into ws4 target files (#8)
+- [ ] P1.2 Build a reproducible baseline schedule (#9)
+- [ ] P1.3 Run the baseline and compare account trajectories (#10)
+- [ ] P1.4 Record accepted variances and defer the carbon scenarios explicitly (#11)
 
 Acceptance criteria:
 
@@ -180,9 +180,9 @@ Acceptance criteria:
 
 ## Detailed Next Steps Notes
 
-1. Create the GitHub repository and the Phase 0 parent issue. This needs
-   maintainer approval.
-2. Activate Phase 0 by setting its parent issue number and its status to
-   `active`, here and in the tracker map.
+1. Phase 0 is active under parent issue #1. The bootstrap commit is on `main`;
+   the task issues #2-#6 record the completed surfaces.
+2. Phase 1 is planned under parent issue #7. Activate it only after Phase 0 is
+   approved and the Phase 0 pull request or bootstrap closeout is accepted.
 3. Keep the legacy archive out of Git; commit the sanitized package and its
    hash.
