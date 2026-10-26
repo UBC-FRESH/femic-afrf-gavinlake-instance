@@ -13,7 +13,7 @@ after its parent issue exists and the maintainer approves it.
 | Phase | Parent issue | Branch | Status |
 | --- | --- | --- | --- |
 | P0 Bootstrap and structural parity | #1 | `feature/p0-bootstrap` | complete |
-| P1 Scenario translation and baseline benchmark | #7 | `feature/p1-scenario-baseline` | planned |
+| P1 Scenario translation and baseline benchmark | #7 | `feature/p1-scenario-baseline` | active |
 | P2 ws4 runtime packaging | TBD | `feature/p2-runtime-packaging` | planned |
 | P3 Verification and QA | TBD | `feature/p3-verification` | planned |
 | P4 Scenario analysis and optimization | TBD | `feature/p4-scenarios` | planned |
@@ -67,16 +67,33 @@ Acceptance criteria:
 
 Parent issue: #7
 Branch: `feature/p1-scenario-baseline`
-Status: planned
+Status: active
 
 Goal: translate the legacy H scenario catalog into a ws4 target contract and
 build a reproducible baseline schedule that can be compared with the legacy
 matrix behaviour.
 
-- [ ] P1.1 Translate the legacy H scenario catalog into ws4 target files (#8)
-- [ ] P1.2 Build a reproducible baseline schedule (#9)
-- [ ] P1.3 Run the baseline and compare account trajectories (#10)
-- [ ] P1.4 Record accepted variances and defer the carbon scenarios explicitly (#11)
+- [x] P1.1 Translate the legacy H scenario catalog into ws4 target files (#8)
+- [x] P1.2 Build a reproducible baseline schedule (#9)
+- [x] P1.3 Run the baseline and compare account trajectories (#10)
+- [x] P1.4 Record accepted variances and defer the carbon scenarios explicitly (#11)
+
+Findings:
+
+- The only treatment in the compiled H matrix is clearcut at age 80 or more.
+- A sustained 80-year rotation produces a mean of 188,677.89 m³ per ten-year
+  period over 300 years, with a minimum of 177,070.07 and a maximum of
+  197,806.62 m³.
+- The legacy 500,000 m³ per period floor is not feasible on this matrix. The
+  one-time age-80 pulse produces about 1.26 million m³ in the first decade and
+  then no sustained harvest.
+- The legacy 1,277,067 m³ growing-stock floor at period 30 is not met; the
+  baseline ends at 495,510.56 m³.
+- The baseline is flat in absolute volume but not within the legacy -1 to 1
+  percent even-flow band when each period is compared with the final period.
+- The eight carbon scenarios are deferred because the compiled matrix does not
+  carry the runtime duplicate stock/flux accounts and the target units are
+  unresolved.
 
 Acceptance criteria:
 

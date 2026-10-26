@@ -1,0 +1,66 @@
+{
+  "findings": [
+    "The 500,000 m3 per ten-year period floor is not feasible on the compiled H matrix under the only treatment available (CC at age >= 80). The baseline sustains about 188,700 m3 per period.",
+    "The 1,277,067 m3 growing-stock floor at period 30 is not met; the baseline ends at about 495,500 m3.",
+    "The baseline is flat in absolute volume but not within the legacy -1 to 1 percent even-flow band when each period is compared with the final period. The target report records the deviations.",
+    "A one-time clearcut pulse of all age-80-plus blocks produces about 1.26 million m3 in the first decade and then no sustained harvest. It is retained as a structural smoke test, not a baseline."
+  ],
+  "growing_stock_final_m3": 495510.56,
+  "growing_stock_initial_m3": 1418962.31,
+  "harvest_by_decade_m3": {
+    "0": 192349.81,
+    "10": 192209.24,
+    "100": 196401.18,
+    "110": 197806.62,
+    "120": 190883.7,
+    "130": 191884.86,
+    "140": 186925.42,
+    "150": 184809.69,
+    "160": 187869.09,
+    "170": 193726.54,
+    "180": 187013.3,
+    "190": 183090.88,
+    "20": 191818.16,
+    "200": 189182.58,
+    "210": 187561.11,
+    "220": 178879.2,
+    "230": 186656.11,
+    "240": 180101.16,
+    "250": 179455.0,
+    "260": 177083.92,
+    "270": 193188.95,
+    "280": 177070.07,
+    "290": 177184.37,
+    "30": 195334.02,
+    "40": 194156.26,
+    "50": 194197.89,
+    "60": 192002.13,
+    "70": 191098.92,
+    "80": 196480.86,
+    "90": 193915.75
+  },
+  "harvest_max_m3": 197806.62,
+  "harvest_mean_m3": 188677.89,
+  "harvest_min_m3": 177070.07,
+  "harvest_total_m3": 5660336.77,
+  "legacy_targets": {
+    "even_flow_band_pct": [
+      -1.0,
+      1.0
+    ],
+    "growing_stock_floor_period_30_m3": 1277067,
+    "harvest_floor_per_period_m3": 500000
+  },
+  "period_width": 10,
+  "schedule": "ws4/schedules/baseline_evenflow.csv",
+  "schedule_definition": "Clearcut at the minimum operable age (80 years), re-entered every 80 years, with first entries assigned to ten-year periods by a greedy volume-balancing heuristic. No spatial or patch targets are enforced.",
+  "schedule_rows": 10113,
+  "scheduled_blocks": 2907,
+  "target_report_rows": 61,
+  "target_status_counts": {
+    "above": 26,
+    "below": 31,
+    "met": 4
+  },
+  "years": 300
+}

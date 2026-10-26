@@ -49,6 +49,52 @@ are in the dataset manifest.
 The legacy scenarios do not set patch share targets. These are reporting
 accounts, not an opening-size policy.
 
+## Scenario catalog
+
+`ws4/scenarios/legacy_catalog.yaml` records all nine legacy scenarios and their
+translation status. Only `scenario_01` (maximize timber harvest) is translated
+into a ws4 target file. The eight carbon scenarios are deferred because the
+compiled matrix does not carry the runtime duplicate stock/flux accounts and
+the target units are unresolved. See `ws4/scenarios/README.md`.
+
+## Baseline schedule
+
+`ws4/schedules/baseline_evenflow.csv` is a reproducible sustained-yield
+baseline. It clearcuts at the minimum operable age (80 years), re-enters every
+80 years, and assigns first entries to ten-year periods by a greedy
+volume-balancing heuristic. It does not enforce spatial or patch targets.
+
+Build it from the compiled dataset:
+
+```bash
+python ws4/build_baseline_schedule.py \
+  --dataset ws4/runtime/legacy_matrix \
+  --out ws4/schedules/baseline_evenflow.csv \
+  --estimate ws4/evidence/baseline/estimate.json
+```
+
+Run it:
+
+```bash
+ws4 simulate \
+  --dataset ws4/runtime/legacy_matrix \
+  --schedule ws4/schedules/baseline_evenflow.csv \
+  --years 300 \
+  --out ws4/runtime/baseline_evenflow \
+  --topology ws4/topology.csv \
+  --patch-accounts ws4/patch_accounts.yaml
+ws4 report \
+  --run ws4/runtime/baseline_evenflow \
+  --targets ws4/targets_legacy_harvest.yaml \
+  --out ws4/runtime/baseline_evenflow_report
+```
+
+The result is a mean harvest of 188,677.89 m³ per ten-year period, a minimum of
+177,070.07, and a maximum of 197,806.62 m³. The legacy 500,000 m³ floor is not
+feasible on this matrix under the only available treatment. The growing stock
+falls from 1,418,962.31 m³ to 495,510.56 m³ over 300 years, so the legacy
+1,277,067 m³ floor at period 30 is also not met.
+
 ## Smoke run
 
 `ws4/schedules/smoke_age80_pulse.csv` assigns one `CC` treatment at offset 0 to
@@ -69,6 +115,12 @@ ws4 simulate \
 
 - `evidence/legacy_ingest.json` — counts, area, age handling, and the
   initial-growing-stock parity check.
+- `evidence/baseline/estimate.json` — the heuristic's expected volume by
+  period.
+- `evidence/baseline/summary.json` — the simulated baseline result, the legacy
+  target values, and the target-status counts.
+- `evidence/baseline/target_report.csv` — one row per translated target.
+- `evidence/baseline/ending_inventory.csv` — the ending inventory report.
 - `evidence/smoke_age80/summary.json` — harvest by decade, selected growing
   stock values, and the patch summary at offset 0.
 
