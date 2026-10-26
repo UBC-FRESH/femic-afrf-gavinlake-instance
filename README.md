@@ -87,10 +87,11 @@ ten-year periods. It produces a mean of 188,677.89 m³ per period, a minimum of
 177,070.07, and a maximum of 197,806.62 m³. Growing stock falls from
 1,418,962.31 m³ to 495,510.56 m³ over 300 years.
 
-The legacy 500,000 m³ harvest floor and 1,277,067 m³ growing-stock floor are
-not met. The baseline is flat in absolute volume but not within the legacy −1
-to 1 percent even-flow band. The interpretation is in
-`notes/reference/gavin-baseline-findings.md`; the evidence is in
+The copied legacy 500,000 m³ template harvest floor and the calibrated
+1,277,067 m³ growing-stock floor are not met. The baseline is flat in absolute volume but not within the legacy −1
+to 1 percent even-flow band. The 500,000 floor is a copied MKRF template value, not an AFRF-calibrated
+target; see `notes/reference/legacy-target-provenance.md`. The interpretation
+is in `notes/reference/gavin-baseline-findings.md`; the evidence is in
 `ws4/evidence/baseline/`.
 
 ## Repository map

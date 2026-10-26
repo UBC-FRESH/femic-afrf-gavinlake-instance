@@ -45,14 +45,24 @@ behaviour.
 
 - The baseline mean harvest is 188,677.89 m³ per ten-year period, with a
   minimum of 177,070.07 and a maximum of 197,806.62 m³.
-- The legacy 500,000 m³ per period floor is not feasible on this matrix under
-  the only available treatment, clearcut at age 80 or more.
+- The copied legacy 500,000 m³ per period template floor is not feasible on
+  this matrix under the only available treatment, clearcut at age 80 or more.
 - The legacy 1,277,067 m³ growing-stock floor at period 30 is not met; the
   baseline ends at 495,510.56 m³.
 - The baseline is flat in absolute volume but not within the legacy −1 to 1
   percent even-flow band when each period is compared with the final period.
 - The one-time age-80 pulse produces about 1.26 million m³ in the first decade
   and then no sustained harvest.
+
+## Post-closeout correction
+
+The 500,000 m³ harvest floor was initially described as a legacy target. It is
+a copied MKRF legacy template value, not an AFRF-calibrated target. The AFRF
+package's build scripts still point at `PW_MKRF`, and the same literal appears
+in the MKRF `Targets/01_harvest.bsh`. The 1,277,067 m³ growing-stock floor is
+calibrated to this matrix (90 percent of initial growing stock) and remains the
+primary structural benchmark. See
+`notes/reference/legacy-target-provenance.md`.
 
 ## What is not done
 
@@ -72,6 +82,7 @@ behaviour.
 ## Recommendation
 
 Approve Phase 1 and proceed to Phase 2 (ws4 runtime packaging) or Phase 3
-(verification and QA). Do not treat the baseline as an optimized result. If the
-legacy 500,000 m³ floor is a real policy target, the next step is to reconcile
-the landbase, units, and treatment set with the legacy source before optimizing.
+(verification and QA). Do not treat the baseline as an optimized result. If a
+500,000 m³ floor is confirmed as a real policy target, the next step is to
+reconcile the landbase, units, and treatment set with the legacy source before
+optimizing.

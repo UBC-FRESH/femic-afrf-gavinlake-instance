@@ -44,3 +44,10 @@ status and the GitHub issue comments.
 - Added the baseline evidence under `ws4/evidence/baseline/`, the findings note
   `notes/reference/gavin-baseline-findings.md`, and the Phase 1 closeout report.
 - Merged Phase 1 in pull request #13 (commit `cc414a6`). P1 is complete; P2 remains planned.
+- Corrected the provenance of the 500,000 m³ harvest floor. It is a copied
+  MKRF legacy template value, not an AFRF-calibrated target: the AFRF package's
+  build scripts still point at `PW_MKRF`, the same literal appears in the MKRF
+  `Targets/01_harvest.bsh`, and the MKRF legacy run did not meet it either. The
+  1,277,067 m³ growing-stock floor is calibrated to this matrix (90 percent of
+  initial growing stock). Added `notes/reference/legacy-target-provenance.md`
+  and reframed the P1 finding accordingly.

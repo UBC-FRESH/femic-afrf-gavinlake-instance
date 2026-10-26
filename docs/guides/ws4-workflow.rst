@@ -65,8 +65,9 @@ volume-balancing heuristic. It does not enforce spatial or patch targets.
      --out ws4/runtime/baseline_evenflow_report
 
 The baseline produces a mean of 188,677.89 m³ per ten-year period, a minimum of
-177,070.07, and a maximum of 197,806.62 m³. The legacy 500,000 m³ floor is not
-feasible on this matrix under the only available treatment. Growing stock falls
+177,070.07, and a maximum of 197,806.62 m³. The copied legacy 500,000 m³ template floor is not feasible on this matrix
+under the only available treatment. It is a parity reference, not an
+AFRF-calibrated target; see ``notes/reference/legacy-target-provenance.md``. Growing stock falls
 from 1,418,962.31 m³ to 495,510.56 m³, so the legacy 1,277,067 m³ floor at
 period 30 is also not met. The target report records 31 below, 26 above, and 4
 met entries.
@@ -85,7 +86,8 @@ Optimize
 
 The translated targets are in ``ws4/targets_legacy_harvest.yaml``. They encode:
 
-- a 500,000 m³ harvest floor in each of 30 ten-year periods;
+- a 500,000 m³ harvest floor in each of 30 ten-year periods (copied MKRF
+  template value; parity reference, not an AFRF-calibrated target);
 - a 1,277,067 m³ growing-stock floor at period 30; and
 - an even-flow band of -1 to 1 with weight 1000.
 

@@ -15,6 +15,16 @@ Every scenario starts from the same base:
 The difference between scenarios is the active objective and its floor. The
 machine-readable disposition is in ``ws4/scenarios/legacy_catalog.yaml``.
 
+Target provenance
+-----------------
+
+The 500,000 m³ harvest floor in ``scenario_01`` is a **copied MKRF legacy
+template value**, not an AFRF-calibrated target. The AFRF package's build
+scripts still point at ``PW_MKRF``, and the same literal appears in the MKRF
+``Targets/01_harvest.bsh``. The 1,277,067 m³ growing-stock floor is calibrated:
+it is 90 percent of the measured initial growing stock. See
+``notes/reference/legacy-target-provenance.md``.
+
 Catalog
 -------
 

@@ -35,7 +35,8 @@ are in the dataset manifest.
 
 `targets_legacy_harvest.yaml` translates the legacy timber-harvest scenario:
 
-- 500,000 m³ per 10-year period for 30 periods;
+- 500,000 m³ per 10-year period for 30 periods (copied MKRF template value;
+  parity reference, not an AFRF-calibrated target);
 - 1,277,067 m³ growing stock at period 30; and
 - an even-flow band of -1 to 1, weight 1000.
 
@@ -90,8 +91,9 @@ ws4 report \
 ```
 
 The result is a mean harvest of 188,677.89 m³ per ten-year period, a minimum of
-177,070.07, and a maximum of 197,806.62 m³. The legacy 500,000 m³ floor is not
-feasible on this matrix under the only available treatment. The growing stock
+177,070.07, and a maximum of 197,806.62 m³. The copied legacy 500,000 m³ template floor is not feasible on this matrix
+under the only available treatment. It is a parity reference, not an
+AFRF-calibrated target; see `../notes/reference/legacy-target-provenance.md`. The growing stock
 falls from 1,418,962.31 m³ to 495,510.56 m³ over 300 years, so the legacy
 1,277,067 m³ floor at period 30 is also not met.
 

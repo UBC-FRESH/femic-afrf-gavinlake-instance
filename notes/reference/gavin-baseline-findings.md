@@ -45,12 +45,25 @@ flat in absolute volume, between about 177,000 and 198,000 m³ per decade.
 The target report has 31 `below`, 26 `above`, and 4 `met` rows. See
 `ws4/evidence/baseline/target_report.csv`.
 
+## Provenance correction
+
+The 500,000 m³ harvest floor is **not** an AFRF-calibrated target. It is a
+copied MKRF legacy template value: the AFRF package's build scripts still point
+at `PW_MKRF`, the same literal appears in the MKRF `Targets/01_harvest.bsh`,
+and the MKRF legacy run did not meet it either. The 1,277,067 m³ growing-stock
+floor **is** calibrated: it is 90 percent of the measured initial growing
+stock. See `notes/reference/legacy-target-provenance.md`.
+
+The baseline finding is therefore narrower than the first framing: a sustained
+80-year clearcut rotation on this matrix produces about 189,000 m³ per decade,
+far below the copied 500,000 floor. That is a statement about the copied floor
+and the compiled matrix, not about an approved AFRF harvest target.
+
 ## Interpretation
 
 The compiled H matrix has one treatment: clearcut at age 80 or more. A
 sustained 80-year rotation on the 4,663 ha productive area produces about
-189,000 m³ per decade. The legacy 500,000 m³ floor would require roughly 2.6
-times that sustained yield. The one-time pulse of every age-80-plus block
+189,000 m³ per decade. The copied 500,000 m³ floor would require roughly 2.6 times that sustained yield. The one-time pulse of every age-80-plus block
 produces about 1.26 million m³ in the first decade, so the floor is reachable
 once, but not sustained.
 
@@ -66,7 +79,8 @@ absolute terms but outside the legacy −1 to 1 percent band.
 ## What would change the conclusion
 
 - A different volume unit or landbase in the legacy model. The compiled matrix
-  is the authority here; the original XML/workbook would settle it.
+  is the authority here; the original XML/workbook would settle it. The
+  provenance note records the copied-template problem.
 - A treatment other than clearcut at 80. The compiled matrix has no partial
   cutting, retention, or selection treatment.
 - A different growth curve or yield adjustment. The baseline uses the compiled
@@ -76,6 +90,7 @@ absolute terms but outside the legacy −1 to 1 percent band.
 
 ## Evidence
 
+- `notes/reference/legacy-target-provenance.md`
 - `ws4/schedules/baseline_evenflow.csv`
 - `ws4/evidence/baseline/estimate.json`
 - `ws4/evidence/baseline/summary.json`

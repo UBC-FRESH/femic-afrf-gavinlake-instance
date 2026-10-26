@@ -26,6 +26,14 @@ status.
 | `scenario_08` | Carbon sequestration, HWP 100 | deferred |
 | `scenario_09` | Carbon sequestration, half-life | deferred |
 
+## Target provenance
+
+The 500,000 m³ harvest floor in ``scenario_01`` is a copied MKRF legacy
+template value, not an AFRF-calibrated target. The AFRF package's build scripts
+still point at ``PW_MKRF``, and the same literal appears in the MKRF
+``Targets/01_harvest.bsh``. The 1,277,067 m³ growing-stock floor is calibrated
+to this matrix. See ``notes/reference/legacy-target-provenance.md``.
+
 ## Why the carbon scenarios are deferred
 
 The legacy pin creates the carbon stock and flux accounts at runtime:
