@@ -1,0 +1,144 @@
+# Legacy H scenario catalog.
+#
+# Source: data/legacy_gavinlake/scripts/scenarios_AFRF_H.bsh
+#
+# This file records the exact legacy target definitions and their translation
+# disposition. It is not a ws4 target file. A translated scenario points at the
+# target file that ws4 can read. A deferred scenario stays here with its reason.
+#
+# The legacy model uses 30 ten-year periods (300 years). Every scenario clears
+# the targets, cancels treatments, sets a growing-stock floor at period 30, and
+# then runs an even-flow constraint over periods 1-30.
+
+schema_version: "1"
+source: data/legacy_gavinlake/scripts/scenarios_AFRF_H.bsh
+period_width_years: 10
+periods: 30
+horizon_years: 300
+
+common_constraints:
+  growing_stock_floor:
+    account: feature.yield.managed.total
+    period: 30
+    minimum: 1277067
+    min_weight: 1.0
+    source_lines: "58-60, 95-97, 132-134, 169-171, 210-212, 251-253, 292-294, 332-334"
+  even_flow:
+    account: product.yield.managed.total
+    flow: even
+    minimum: -1.0
+    maximum: 1.0
+    min_weight: 1000.0
+    max_weight: 1000.0
+    shape: non_linear
+    flow_start_period: 1
+    flow_end_period: 30
+    source_lines: "68-72, 105-109, 142-146, 179-183, 220-224, 261-265, 302-306, 342-346"
+
+scenarios:
+  - id: scenario_01
+    label: Maximize timber harvest
+    status: translated
+    target_file: ws4/targets_legacy_harvest.yaml
+    primary_account: product.yield.managed.total
+    primary_minimum: 500000
+    primary_min_weight: 1.0
+    primary_shape: linear
+    source_lines: "12-15"
+  - id: scenario_02
+    label: Maximize carbon stocks, HWP emission 0
+    status: deferred
+    primary_account: feature.carbon.managed.total.stock.0
+    primary_minimum: 15000000
+    primary_min_weight: 1.0
+    primary_shape: linear
+    source_lines: "52-55"
+    reason: >-
+      The compiled matrix does not carry the duplicated total-stock account.
+      The legacy pin creates it at runtime with control.duplicateAccount from
+      feature.carbon.managed.total.stock.es, and that base account is an
+      aggregation over 28 carbon features. ws4 reports the source feature
+      accounts but does not carry the runtime duplicate or the aggregation.
+      The target units are also unresolved: the scenario floor is 15,000,000
+      while the sum of the compiled carbon pools at offset -1 is about
+      2,747,522. The archive has no scenario output to settle the unit.
+  - id: scenario_03
+    label: Maximize carbon stocks, HWP emission 50
+    status: deferred
+    primary_account: feature.carbon.managed.total.stock.50
+    primary_minimum: 15000000
+    primary_min_weight: 1.0
+    primary_shape: linear
+    source_lines: "89-92"
+    reason: >-
+      Same as scenario_02: the duplicated stock account and its 0.425 HWPS
+      contribution are created at runtime by the pin and are not in the
+      compiled matrix.
+  - id: scenario_04
+    label: Maximize carbon stocks, HWP emission 100
+    status: deferred
+    primary_account: feature.carbon.managed.total.stock.100
+    primary_minimum: 15000000
+    primary_min_weight: 1.0
+    primary_shape: linear
+    source_lines: "126-129"
+    reason: >-
+      Same as scenario_02: the duplicated stock account is created at runtime
+      by the pin and is not in the compiled matrix.
+  - id: scenario_05
+    label: Maximize carbon stocks, half-life
+    status: deferred
+    primary_account: feature.carbon.managed.total.stock.half
+    primary_minimum: 15000000
+    primary_min_weight: 1.0
+    primary_shape: linear
+    source_lines: "163-166"
+    reason: >-
+      Same as scenario_02: the duplicated stock account and its 0.85 HWPS
+      contribution are created at runtime by the pin and are not in the
+      compiled matrix.
+  - id: scenario_06
+    label: Maximize carbon sequestration, HWP emission 0
+    status: deferred
+    primary_account: feature.carbon.managed.total.flux.0
+    primary_minimum: 15000000
+    primary_min_weight: 1.0
+    primary_shape: linear
+    source_lines: "203-206"
+    reason: >-
+      The flux accounts are created by the pin with control.addFlowValueAccount
+      from the duplicated total-stock accounts. Neither the stock duplicate nor
+      the flux account is in the compiled matrix.
+  - id: scenario_07
+    label: Maximize carbon sequestration, HWP emission 50
+    status: deferred
+    primary_account: feature.carbon.managed.total.flux.50
+    primary_minimum: 15000000
+    primary_min_weight: 1.0
+    primary_shape: linear
+    source_lines: "244-247"
+    reason: >-
+      Same as scenario_06: the stock duplicate and flux account are created at
+      runtime by the pin and are not in the compiled matrix.
+  - id: scenario_08
+    label: Maximize carbon sequestration, HWP emission 100
+    status: deferred
+    primary_account: feature.carbon.managed.total.flux.100
+    primary_minimum: 15000000
+    primary_min_weight: 1.0
+    primary_shape: linear
+    source_lines: "285-288"
+    reason: >-
+      Same as scenario_06: the stock duplicate and flux account are created at
+      runtime by the pin and are not in the compiled matrix.
+  - id: scenario_09
+    label: Maximize carbon sequestration, half-life
+    status: deferred
+    primary_account: feature.carbon.managed.total.flux.half
+    primary_minimum: 15000000
+    primary_min_weight: 1.0
+    primary_shape: linear
+    source_lines: "325-328"
+    reason: >-
+      Same as scenario_06: the stock duplicate and flux account are created at
+      runtime by the pin and are not in the compiled matrix.
