@@ -12,7 +12,7 @@ after its parent issue exists and the maintainer approves it.
 
 | Phase | Parent issue | Branch | Status |
 | --- | --- | --- | --- |
-| P0 Bootstrap and structural parity | #1 | `feature/p0-bootstrap` | active |
+| P0 Bootstrap and structural parity | #1 | `feature/p0-bootstrap` | complete |
 | P1 Scenario translation and baseline benchmark | #7 | `feature/p1-scenario-baseline` | planned |
 | P2 ws4 runtime packaging | TBD | `feature/p2-runtime-packaging` | planned |
 | P3 Verification and QA | TBD | `feature/p3-verification` | planned |
@@ -44,7 +44,7 @@ after its parent issue exists and the maintainer approves it.
 
 Parent issue: #1
 Branch: `feature/p0-bootstrap`
-Status: active
+Status: complete
 
 Goal: adapt the workflow surfaces to this instance, ingest the legacy H matrix,
 compile a validated ws4 dataset, and record the initial structural parity.
