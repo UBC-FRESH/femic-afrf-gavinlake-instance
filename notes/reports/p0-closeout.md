@@ -1,7 +1,7 @@
 # Phase 0 close-out report
 
 Phase identifier: P0
-Status: pending maintainer approval
+Status: approved and merged in pull request #12
 Branch: `feature/p0-bootstrap`
 Parent issue: see `ROADMAP.md`
 
