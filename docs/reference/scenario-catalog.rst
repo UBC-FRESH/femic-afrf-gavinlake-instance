@@ -15,15 +15,26 @@ Every scenario starts from the same base:
 The difference between scenarios is the active objective and its floor. The
 machine-readable disposition is in ``ws4/scenarios/legacy_catalog.yaml``.
 
-Target provenance
------------------
+Target interpretation
+---------------------
 
-The 500,000 m³ harvest floor in ``scenario_01`` is a **copied MKRF legacy
-template value**, not an AFRF-calibrated target. The AFRF package's build
-scripts still point at ``PW_MKRF``, and the same literal appears in the MKRF
-``Targets/01_harvest.bsh``. The 1,277,067 m³ growing-stock floor is calibrated:
-it is 90 percent of the measured initial growing stock. See
+The 500,000 m³ harvest target in ``scenario_01`` is a literal scenario
+parameter. The archive does not record the modeler's intent. In Patchworks, an
+unattainable minimum with a linear penalty can be a deliberate pull-up
+technique, especially when paired with an even-flow target. The AFRF scenario
+sets a linear penalty and pairs the harvest target with an even-flow target,
+which is consistent with that use but does not prove it. See
 ``notes/reference/legacy-target-provenance.md``.
+
+Runnable target
+---------------
+
+The runnable first guess is ``ws4/targets_gavin_ltsy.yaml``. It is derived from
+the area-weighted mean yield curve: CMAI 3.599653 m³/ha/yr at age 100 on the
+4,662.96 ha productive THLB proxy, LTSY 16,785.06 m³/yr, 167,850.57 m³ per
+ten-year period, and a ×1.1 first guess of 184,635.63 m³, rounded to 185,000.
+The baseline meets that level in 22 of 30 periods. The literal 500,000 remains
+in ``ws4/targets_legacy_harvest.yaml`` as a parity reference.
 
 Catalog
 -------
@@ -92,9 +103,9 @@ Phase 1 disposition
   is available for a like-for-like comparison.
 
 The Phase 1 baseline result is in ``ws4/evidence/baseline/summary.json`` and
-``notes/reference/gavin-baseline-findings.md``. It shows that the translated
-timber-harvest floor is not feasible on this matrix under the only available
-treatment, clearcut at age 80 or more.
+``notes/reference/gavin-baseline-findings.md``. It records the harvest and
+growing-stock trajectory against both the literal parity target and the LTSY
+first guess. The LTSY estimate is in ``ws4/evidence/ltsy/``.
 
 What a ws4 scenario needs
 -------------------------

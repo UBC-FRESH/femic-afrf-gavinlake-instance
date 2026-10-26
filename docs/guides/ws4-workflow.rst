@@ -33,6 +33,32 @@ a ws4 target file. The eight carbon scenarios are deferred because the
 compiled matrix does not carry the runtime duplicate stock/flux accounts and
 the target units are unresolved. See ``ws4/scenarios/README.md``.
 
+LTSY first-guess target
+-----------------------
+
+``ws4/estimate_ltsy_target.py`` derives a first-guess periodic harvest target
+from the compiled matrix:
+
+1. build an area-weighted mean yield curve from the current track curves;
+2. find the culmination of mean annual increment (CMAI);
+3. multiply CMAI by the THLB area;
+4. multiply by the ten-year period width; and
+5. multiply by 1.1 for a slightly-too-high first guess.
+
+On the productive THLB proxy (``CONTCLAS = C``, 4,662.96 ha), the mean yield
+curve culminates at 3.599653 m³/ha/yr at age 100. LTSY is 16,785.06 m³/yr, or
+167,850.57 m³ per ten-year period. The ×1.1 first guess is 184,635.63 m³,
+rounded to 185,000.
+
+.. code-block:: bash
+
+   python ws4/estimate_ltsy_target.py      --dataset ws4/runtime/legacy_matrix      --fragments data/legacy_gavinlake/fragments.csv      --out ws4/evidence/ltsy/estimate.json      --curve-csv ws4/evidence/ltsy/mean_yield_curve.csv
+
+``ws4/targets_gavin_ltsy.yaml`` is the runnable target file. It uses 185,000
+m³ per period, the 1,277,067 m³ growing-stock target at period 30, and the -1
+to 1 percent even-flow band. The literal 500,000 remains in
+``ws4/targets_legacy_harvest.yaml`` as a parity reference.
+
 Baseline
 --------
 
@@ -65,12 +91,14 @@ volume-balancing heuristic. It does not enforce spatial or patch targets.
      --out ws4/runtime/baseline_evenflow_report
 
 The baseline produces a mean of 188,677.89 m³ per ten-year period, a minimum of
-177,070.07, and a maximum of 197,806.62 m³. The copied legacy 500,000 m³ template floor is not feasible on this matrix
-under the only available treatment. It is a parity reference, not an
-AFRF-calibrated target; see ``notes/reference/legacy-target-provenance.md``. Growing stock falls
-from 1,418,962.31 m³ to 495,510.56 m³, so the legacy 1,277,067 m³ floor at
-period 30 is also not met. The target report records 31 below, 26 above, and 4
-met entries.
+177,070.07, and a maximum of 197,806.62 m³. It does not meet the 500,000 m³
+literal target. The archive does not record the target's intent. An
+unattainable minimum with a linear penalty can be a deliberate pull-up
+technique, especially when paired with even-flow, so the shortfall is not a
+verdict on the target. See ``notes/reference/legacy-target-provenance.md``.
+Growing stock falls from 1,418,962.31 m³ to 495,510.56 m³, so the 1,277,067 m³
+growing-stock target is also not met. The target report records 31 below, 26
+above, and 4 met entries.
 
 Smoke run
 ---------
@@ -84,20 +112,23 @@ not to compare scenarios.
 Optimize
 --------
 
-The translated targets are in ``ws4/targets_legacy_harvest.yaml``. They encode:
+The runnable first-guess target is ``ws4/targets_gavin_ltsy.yaml``. It encodes:
 
-- a 500,000 m³ harvest floor in each of 30 ten-year periods (copied MKRF
-  template value; parity reference, not an AFRF-calibrated target);
-- a 1,277,067 m³ growing-stock floor at period 30; and
+- a 185,000 m³ harvest target in each of 30 ten-year periods, from the LTSY
+  estimate;
+- a 1,277,067 m³ growing-stock target at period 30; and
 - an even-flow band of -1 to 1 with weight 1000.
+
+``ws4/targets_legacy_harvest.yaml`` is the literal parity target with the
+500,000 m³ harvest value. Its intent is not recorded; see
+``notes/reference/legacy-target-provenance.md``.
 
 The legacy scenario scripts define patch accounts but do not set patch share
 targets. ws4 reports the patch accounts through ``ws4/patch_accounts.yaml`` and
-does not constrain them in the translated target file.
+does not constrain them in the target files.
 
-An optimization run is deferred to Phase 4. Phase 1 produced the baseline; the
-optimization needs a reviewed starting point and a decision about which legacy
-targets are feasible on this matrix.
+An optimization run is deferred to Phase 4. Phase 1 produced the baseline and
+the LTSY first guess; the optimization needs a reviewed starting point.
 
 Patch accounts
 --------------

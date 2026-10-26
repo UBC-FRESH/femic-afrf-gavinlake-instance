@@ -6,12 +6,17 @@
 #     measured initial growing stock, 1,418,962 m3)
 #   product.flow.yield.even between -1 and 1, weight 1000, periods 1-30
 #
-# PROVENANCE WARNING: the 500,000 harvest floor is a copied MKRF legacy
-# template value, not an AFRF-calibrated target. The AFRF package's build
-# scripts still point at PW_MKRF, and the same literal appears in the MKRF
-# Targets/01_harvest.bsh. Keep it here as a parity reference and stress test.
-# The 1,277,067 growing-stock floor is calibrated: it is 90% of the measured
-# initial growing stock. See notes/reference/legacy-target-provenance.md.
+# TARGET INTERPRETATION: the 500,000 is a literal legacy scenario target.
+# The archive does not record the modeler's intent. In Patchworks, an
+# unattainable minimum with a linear penalty can be a deliberate pull-up
+# technique, especially when paired with an even-flow target. Do not read the
+# baseline shortfall as evidence that the target is invalid or that a policy is
+# infeasible. The 1,277,067 growing-stock target is consistent with 90% of the
+# measured initial growing stock. See
+# notes/reference/legacy-target-provenance.md.
+#
+# The runnable first-guess target is ws4/targets_gavin_ltsy.yaml. This file is
+# the literal legacy parity target.
 #
 # The legacy pin defines patch.grpblk and patch.sepblk accounts, but the
 # scenario scripts do not set patch share targets. ws4 reports the patch

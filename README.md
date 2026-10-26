@@ -87,12 +87,32 @@ ten-year periods. It produces a mean of 188,677.89 m³ per period, a minimum of
 177,070.07, and a maximum of 197,806.62 m³. Growing stock falls from
 1,418,962.31 m³ to 495,510.56 m³ over 300 years.
 
-The copied legacy 500,000 m³ template harvest floor and the calibrated
-1,277,067 m³ growing-stock floor are not met. The baseline is flat in absolute volume but not within the legacy −1
-to 1 percent even-flow band. The 500,000 floor is a copied MKRF template value, not an AFRF-calibrated
-target; see `notes/reference/legacy-target-provenance.md`. The interpretation
-is in `notes/reference/gavin-baseline-findings.md`; the evidence is in
+The 500,000 m³ scenario harvest target and the 1,277,067 m³ growing-stock
+target are not met by the baseline. The baseline is flat in absolute volume but
+not within the −1 to 1 percent even-flow band.
+
+The 500,000 is a literal scenario parameter; the archive does not record its
+intent. An unattainable minimum with a linear penalty can be a deliberate
+pull-up technique, especially when paired with even-flow, so the baseline
+shortfall is not a verdict on the target. See
+`notes/reference/legacy-target-provenance.md`. The interpretation is in
+`notes/reference/gavin-baseline-findings.md`; the evidence is in
 `ws4/evidence/baseline/`.
+
+### LTSY first-guess target
+
+The runnable first guess is `ws4/targets_gavin_ltsy.yaml`, derived from the
+area-weighted mean yield curve:
+
+- THLB proxy (`CONTCLAS = C`): 4,662.96 ha;
+- CMAI: 3.599653 m³/ha/yr at age 100;
+- LTSY: 16,785.06 m³/yr, or 167,850.57 m³ per ten-year period;
+- ×1.1 first guess: 184,635.63 m³, rounded to 185,000.
+
+The baseline mean of 188,677.89 m³ is about 2.2 percent above the first guess,
+and the baseline meets 185,000 m³ in 22 of 30 periods. The eight misses are
+177,070–184,810 m³. The 1,277,067 m³ growing-stock target is the binding
+constraint. Evidence: `ws4/evidence/ltsy/`.
 
 ## Repository map
 

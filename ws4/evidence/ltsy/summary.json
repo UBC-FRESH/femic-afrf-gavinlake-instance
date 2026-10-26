@@ -1,0 +1,55 @@
+{
+  "all_area_sensitivity": {
+    "area_ha": 5663.664475,
+    "cmai_age_years": 100,
+    "cmai_m3_ha_yr": 3.532573,
+    "first_guess_period_target_m3": 220080.41,
+    "first_guess_period_target_rounded_m3": 220000,
+    "ltsy_annual_m3": 20007.31,
+    "ltsy_period_m3": 200073.1,
+    "mean_yield_at_cmai_m3_ha": 353.257325,
+    "period_width_years": 10,
+    "uplift": 1.1
+  },
+  "baseline_flow_status": {
+    "above": 26,
+    "met": 4
+  },
+  "baseline_growing_stock_status": {
+    "below": 1
+  },
+  "baseline_harvest_below_periods": [
+    16,
+    20,
+    23,
+    25,
+    26,
+    27,
+    29,
+    30
+  ],
+  "baseline_level_status": {
+    "below": 9,
+    "met": 22
+  },
+  "cmai_age_years": 100,
+  "cmai_m3_ha_yr": 3.599653,
+  "findings": [
+    "The area-weighted mean yield curve culminates at 3.599653 m3/ha/yr at age 100 on the CONTCLAS=C THLB proxy.",
+    "LTSY is 16,785.06 m3/yr, or 167,850.57 m3 per ten-year period. The x1.1 first guess is 184,635.63 m3, rounded to 185,000.",
+    "The sustained baseline meets the 185,000 m3 level target in 22 of 30 periods; the eight misses are 177,070-184,810 m3.",
+    "The 1,277,067 m3 growing-stock target at period 30 is the binding constraint: the baseline ends at 495,510.56 m3.",
+    "The even-flow -1 to 1 percent band is met in 4 of 30 periods because the baseline is flat in absolute volume but the final period is lower than the mean."
+  ],
+  "first_guess_period_target_m3": 184635.63,
+  "first_guess_period_target_rounded_m3": 185000,
+  "ltsy_annual_m3": 16785.06,
+  "ltsy_period_m3": 167850.57,
+  "method": "CMAI of the area-weighted mean yield curve x THLB area x period width x uplift",
+  "period_width_years": 10,
+  "runnable_target_file": "ws4/targets_gavin_ltsy.yaml",
+  "source_estimate": "ws4/evidence/ltsy/estimate.json",
+  "thlb_area_ha": 4662.964947,
+  "thlb_definition": "CONTCLAS=C",
+  "uplift": 1.1
+}

@@ -1,6 +1,6 @@
 {
   "findings": [
-    "The 500,000 m3 per ten-year period floor is not feasible on the compiled H matrix under the only treatment available (CC at age >= 80). The baseline sustains about 188,700 m3 per period.",
+    "The baseline does not meet the 500,000 m3 per ten-year period target. The archive does not record the modeler intent for that value; an unattainable minimum with a linear penalty, paired with even-flow, is a legitimate pull-up technique. The baseline sustains about 188,700 m3 per period.",
     "The 1,277,067 m3 growing-stock floor at period 30 is not met; the baseline ends at about 495,500 m3.",
     "The baseline is flat in absolute volume but not within the legacy -1 to 1 percent even-flow band when each period is compared with the final period. The target report records the deviations.",
     "A one-time clearcut pulse of all age-80-plus blocks produces about 1.26 million m3 in the first decade and then no sustained harvest. It is retained as a structural smoke test, not a baseline."

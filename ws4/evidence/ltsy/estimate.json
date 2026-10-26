@@ -1,0 +1,29 @@
+{
+  "all_area_sensitivity": {
+    "area_ha": 5663.664475,
+    "cmai_age_years": 100,
+    "cmai_m3_ha_yr": 3.532573,
+    "first_guess_period_target_m3": 220080.41,
+    "first_guess_period_target_rounded_m3": 220000,
+    "ltsy_annual_m3": 20007.31,
+    "ltsy_period_m3": 200073.1,
+    "mean_yield_at_cmai_m3_ha": 353.257325,
+    "period_width_years": 10,
+    "uplift": 1.1
+  },
+  "cmai_age_years": 100,
+  "cmai_m3_ha_yr": 3.599653,
+  "dataset": "ws4/runtime/legacy_matrix",
+  "first_guess_period_target_m3": 184635.63,
+  "first_guess_period_target_rounded_m3": 185000,
+  "fragments": "data/legacy_gavinlake/fragments.csv",
+  "label": "feature.yield.managed.total",
+  "ltsy_annual_m3": 16785.06,
+  "ltsy_period_m3": 167850.57,
+  "max_age_years": 300,
+  "mean_yield_at_cmai_m3_ha": 359.965329,
+  "period_width_years": 10,
+  "thlb_area_ha": 4662.964947,
+  "thlb_definition": "CONTCLAS=C",
+  "uplift": 1.1
+}

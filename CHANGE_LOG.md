@@ -37,17 +37,33 @@ status and the GitHub issue comments.
 - Simulated the baseline for 300 years. Mean harvest is 188,677.89 m³ per
   ten-year period, minimum 177,070.07, maximum 197,806.62. Growing stock falls
   from 1,418,962.31 m³ to 495,510.56 m³.
-- Recorded the benchmark variance: the legacy 500,000 m³ harvest floor and
-  1,277,067 m³ growing-stock floor are not feasible on the compiled H matrix
-  under the only available treatment. The target report has 31 below, 26 above,
-  and 4 met rows.
+- Recorded the benchmark variance: the 500,000 m³ harvest target and the
+  1,277,067 m³ growing-stock target are not met by the baseline on the compiled
+  H matrix (target intent not recorded; see the later correction). The target
+  report has 31 below, 26 above, and 4 met rows.
 - Added the baseline evidence under `ws4/evidence/baseline/`, the findings note
   `notes/reference/gavin-baseline-findings.md`, and the Phase 1 closeout report.
 - Merged Phase 1 in pull request #13 (commit `cc414a6`). P1 is complete; P2 remains planned.
-- Corrected the provenance of the 500,000 m³ harvest floor. It is a copied
-  MKRF legacy template value, not an AFRF-calibrated target: the AFRF package's
-  build scripts still point at `PW_MKRF`, the same literal appears in the MKRF
-  `Targets/01_harvest.bsh`, and the MKRF legacy run did not meet it either. The
-  1,277,067 m³ growing-stock floor is calibrated to this matrix (90 percent of
-  initial growing stock). Added `notes/reference/legacy-target-provenance.md`
-  and reframed the P1 finding accordingly.
+- First correction of the 500,000 m³ provenance (superseded by the next
+  entry). It recorded the MKRF ancestry of the literal but overreached by
+  treating that as proof the value was not an AFRF target. Added
+  `notes/reference/legacy-target-provenance.md`.
+- Corrected the target-provenance note again to avoid inferring modeler
+  intent. The 500,000 is a literal scenario parameter; the archive does not
+  record whether it is a deliberate pull-up target, a feasible floor, a template
+  value, or an exploratory setting. An unattainable minimum with a linear
+  penalty, paired with even-flow, is a legitimate pull-up technique. The
+  baseline shortfall is now reported as a trajectory result, not as a verdict
+  on the target or on AFRF policy. See
+  `notes/reference/legacy-target-provenance.md`.
+- Added `ws4/estimate_ltsy_target.py` and derived the first-guess LTSY
+  harvest target. On the productive THLB proxy (`CONTCLAS = C`, 4,662.96 ha),
+  the area-weighted mean yield CMAI is 3.599653 m³/ha/yr at age 100. LTSY is
+  16,785.06 m³/yr, or 167,850.57 m³ per ten-year period. The ×1.1 first guess is
+  184,635.63 m³, rounded to 185,000.
+- Added `ws4/targets_gavin_ltsy.yaml` as the runnable first-guess target. The
+  baseline meets 185,000 m³ in 22 of 30 periods; the eight misses are
+  177,070–184,810 m³. The 1,277,067 m³ growing-stock target is the binding
+  constraint. The literal 500,000 remains in
+  `ws4/targets_legacy_harvest.yaml` as a parity reference.
+- Added the LTSY evidence under `ws4/evidence/ltsy/` and the P1.5 task (#14).

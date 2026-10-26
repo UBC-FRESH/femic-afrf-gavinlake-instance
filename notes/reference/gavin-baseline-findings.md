@@ -2,7 +2,7 @@
 
 Date: 2026-10-26
 Phase: P1
-Status: evidence recorded, phase closeout pending
+Status: evidence recorded, phase closeout approved
 
 ## Baseline definition
 
@@ -34,9 +34,9 @@ The simulation matches the heuristic estimate almost exactly.
 Harvest by decade is in `ws4/evidence/baseline/summary.json`. The profile is
 flat in absolute volume, between about 177,000 and 198,000 m³ per decade.
 
-## Comparison with the legacy targets
+## Comparison with the scenario targets
 
-| Legacy target | Legacy value | Baseline result | Status |
+| Scenario target | Value | Baseline result | Status |
 | --- | --- | --- | --- |
 | Harvest floor, each period | 500,000 m³ | 177,070–197,807 m³ | below |
 | Growing stock at period 30 | 1,277,067 m³ | 495,511 m³ | below |
@@ -45,48 +45,75 @@ flat in absolute volume, between about 177,000 and 198,000 m³ per decade.
 The target report has 31 `below`, 26 `above`, and 4 `met` rows. See
 `ws4/evidence/baseline/target_report.csv`.
 
-## Provenance correction
+## LTSY comparison
 
-The 500,000 m³ harvest floor is **not** an AFRF-calibrated target. It is a
-copied MKRF legacy template value: the AFRF package's build scripts still point
-at `PW_MKRF`, the same literal appears in the MKRF `Targets/01_harvest.bsh`,
-and the MKRF legacy run did not meet it either. The 1,277,067 m³ growing-stock
-floor **is** calibrated: it is 90 percent of the measured initial growing
-stock. See `notes/reference/legacy-target-provenance.md`.
+The LTSY first guess is derived in `ws4/evidence/ltsy/estimate.json`:
 
-The baseline finding is therefore narrower than the first framing: a sustained
-80-year clearcut rotation on this matrix produces about 189,000 m³ per decade,
-far below the copied 500,000 floor. That is a statement about the copied floor
-and the compiled matrix, not about an approved AFRF harvest target.
+| Item | Value |
+| --- | --- |
+| THLB proxy (`CONTCLAS = C`) | 4,662.96 ha |
+| Area-weighted mean yield CMAI | 3.599653 m³/ha/yr |
+| CMAI age | 100 years |
+| LTSY annual | 16,785.06 m³/yr |
+| LTSY per ten-year period | 167,850.57 m³ |
+| ×1.1 first guess | 184,635.63 m³ |
+| Rounded target | 185,000 m³ |
 
-## Interpretation
+The baseline mean of 188,677.89 m³ is about 2.2 percent above the LTSY ×1.1
+first guess. The baseline meets the 185,000 m³ target in 22 of 30 periods; the
+eight misses are 177,070–184,810 m³. That is a reasonable first-guess target:
+close enough to be useful, slightly above LTSY, and not a fabricated policy
+floor.
 
-The compiled H matrix has one treatment: clearcut at age 80 or more. A
-sustained 80-year rotation on the 4,663 ha productive area produces about
-189,000 m³ per decade. The copied 500,000 m³ floor would require roughly 2.6 times that sustained yield. The one-time pulse of every age-80-plus block
-produces about 1.26 million m³ in the first decade, so the floor is reachable
-once, but not sustained.
+The 500,000 m³ literal is about 2.7 times the LTSY ×1.1 first guess. It remains
+useful as a parity reference and as a possible pull-up target, but it is not a
+sensible first-guess harvest level for this matrix.
 
-The growing-stock floor and the harvest floor pull in opposite directions. The
-baseline harvests enough to reduce growing stock to about 496,000 m³ at year
-300; meeting the 1,277,067 m³ floor would require a much lighter harvest.
+The all-area sensitivity is 5,663.66 ha, CMAI 3.532573 m³/ha/yr, LTSY
+20,007.31 m³/yr, and a ×1.1 first guess of 220,080.41 m³ per period. The THLB
+proxy is the primary result.
 
-The even-flow target is expressed as a percentage of the final period. A
-profile that is flat in absolute volume is not flat in that ratio when the
-final period is lower than the mean. The baseline is therefore even in
-absolute terms but outside the legacy −1 to 1 percent band.
+## Target interpretation
 
-## What would change the conclusion
+The 500,000 m³ harvest floor is a literal in the legacy scenario script. The
+archive does not record the modeler's intent. In Patchworks, an unattainable
+minimum with a linear penalty is a legitimate pull-up technique, especially
+when paired with an even-flow target on the same harvest account. The AFRF
+scenario sets `setLinear(true)` on the harvest target and then activates an
+even-flow target on `product.flow.yield.even`, so a pull-up interpretation is
+consistent with the script.
 
-- A different volume unit or landbase in the legacy model. The compiled matrix
-  is the authority here; the original XML/workbook would settle it. The
-  provenance note records the copied-template problem.
+It is not proven. The value could also be a calibrated floor, a template value,
+or an exploratory setting. That is a question for the modeler.
+
+The 1,277,067 m³ growing-stock floor is consistent with 90 percent of the
+measured initial growing stock (1,418,962.31 m³), as the script comment says.
+Whether it is a hard policy floor or a scenario choice is also the modeler's
+call.
+
+## Interpretation of the baseline
+
+The baseline sustains about 189,000 m³ per decade under an 80-year clearcut
+rotation. It does not reach 500,000 m³ per decade. That is a factual result
+about this schedule and this matrix.
+
+If the 500,000 is a pull-up target, the shortfall is expected and is not a
+finding about policy feasibility. If it is intended as a feasible floor, then
+the matrix, treatment set, landbase, or units need reconciliation. The archive
+does not settle which case applies.
+
+The baseline is flat in absolute volume. The even-flow target is expressed as a
+percentage of the final period, so a flat absolute profile is not flat in that
+ratio. The target report records the deviations.
+
+## What would change the interpretation
+
+- A recorded statement of the 500,000 target's intent.
+- A different volume unit or landbase in the legacy model.
 - A treatment other than clearcut at 80. The compiled matrix has no partial
   cutting, retention, or selection treatment.
-- A different growth curve or yield adjustment. The baseline uses the compiled
-  `product.yield.managed.total` curves as they are.
-- A longer rotation or a lower harvest target. Both would raise ending growing
-  stock and lower periodic harvest.
+- A different growth curve or yield adjustment.
+- A longer rotation or a lower harvest target.
 
 ## Evidence
 
@@ -106,3 +133,5 @@ absolute terms but outside the legacy −1 to 1 percent band.
   scenario outputs.
 - The carbon scenarios are not evaluated.
 - The baseline does not enforce spatial, patch, or road constraints.
+- The baseline shortfall is not a verdict on the 500,000 target's intent or on
+  an AFRF policy.
