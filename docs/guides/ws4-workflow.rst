@@ -24,35 +24,61 @@ The dataset contains the 12 ws4 tables: fragments, blocks, tracks, strata,
 treatments, curves, features, products, protoaccounts, accounts, groups, and
 messages. The manifest records the source hashes.
 
-Simulate
+Scenario catalog
+----------------
+
+``ws4/scenarios/legacy_catalog.yaml`` records all nine legacy scenarios and
+their translation status. Only the timber-harvest scenario is translated into
+a ws4 target file. The eight carbon scenarios are deferred because the
+compiled matrix does not carry the runtime duplicate stock/flux accounts and
+the target units are unresolved. See ``ws4/scenarios/README.md``.
+
+Baseline
 --------
+
+``ws4/schedules/baseline_evenflow.csv`` is the Phase 1 sustained-yield
+baseline. Build it with ``ws4/build_baseline_schedule.py``:
+
+.. code-block:: bash
+
+   python ws4/build_baseline_schedule.py \
+     --dataset ws4/runtime/legacy_matrix \
+     --out ws4/schedules/baseline_evenflow.csv \
+     --estimate ws4/evidence/baseline/estimate.json
+
+The rule is clearcut at the minimum operable age (80 years), re-entered every
+80 years, with first entries assigned to ten-year periods by a greedy
+volume-balancing heuristic. It does not enforce spatial or patch targets.
 
 .. code-block:: bash
 
    ws4 simulate \
      --dataset ws4/runtime/legacy_matrix \
-     --schedule ws4/schedules/smoke_age80_pulse.csv \
+     --schedule ws4/schedules/baseline_evenflow.csv \
      --years 300 \
-     --out ws4/runtime/smoke_age80 \
+     --out ws4/runtime/baseline_evenflow \
      --topology ws4/topology.csv \
      --patch-accounts ws4/patch_accounts.yaml
-
-The smoke schedule is a structural check. It assigns one ``CC`` treatment at
-offset 0 to every fragment aged 80 or more. It is not a policy baseline and it
-does not meet the legacy harvest or flow targets.
-
-Report
-------
-
-.. code-block:: bash
-
    ws4 report \
-     --run ws4/runtime/smoke_age80 \
+     --run ws4/runtime/baseline_evenflow \
      --targets ws4/targets_legacy_harvest.yaml \
-     --out ws4/runtime/smoke_age80_report
+     --out ws4/runtime/baseline_evenflow_report
 
-The report is useful for checking that the target reader and the account names
-line up. The smoke run will show large target violations by design.
+The baseline produces a mean of 188,677.89 m³ per ten-year period, a minimum of
+177,070.07, and a maximum of 197,806.62 m³. The legacy 500,000 m³ floor is not
+feasible on this matrix under the only available treatment. Growing stock falls
+from 1,418,962.31 m³ to 495,510.56 m³, so the legacy 1,277,067 m³ floor at
+period 30 is also not met. The target report records 31 below, 26 above, and 4
+met entries.
+
+Smoke run
+---------
+
+``ws4/schedules/smoke_age80_pulse.csv`` is a structural check, not a policy
+baseline. It assigns one ``CC`` treatment at offset 0 to every fragment aged 80
+or more. It produces about 1.26 million m³ in the first decade and then no
+sustained harvest. Use it to prove the dataset and the account machinery run,
+not to compare scenarios.
 
 Optimize
 --------
@@ -67,9 +93,9 @@ The legacy scenario scripts define patch accounts but do not set patch share
 targets. ws4 reports the patch accounts through ``ws4/patch_accounts.yaml`` and
 does not constrain them in the translated target file.
 
-An optimization run is deferred to Phase 1. It needs a reviewed baseline
-schedule first, otherwise the comparison confounds schedule construction with
-search behaviour.
+An optimization run is deferred to Phase 4. Phase 1 produced the baseline; the
+optimization needs a reviewed starting point and a decision about which legacy
+targets are feasible on this matrix.
 
 Patch accounts
 --------------
