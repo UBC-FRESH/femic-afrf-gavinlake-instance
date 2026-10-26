@@ -7,7 +7,7 @@ and records the structural parity evidence.
 
 ## Status
 
-Phase 0 (bootstrap, legacy intake, and structural parity) is in progress. The
+Phase 0 (bootstrap, legacy intake, and structural parity) is complete pending maintainer closeout. The
 legacy H matrix has been ingested and validated by ws4, and the initial growing
 stock reproduces the value implied by the legacy scenario constraints. The
 phase is not closed until its pull request merges. See `ROADMAP.md` for the

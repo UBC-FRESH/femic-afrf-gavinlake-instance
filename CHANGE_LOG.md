@@ -24,3 +24,4 @@ status and the GitHub issue comments.
 - Ran the green dashboard in the Phase 0 branch. The plan is to merge this
   bootstrap via the Phase 0 pull request and then register the repository as a
   submodule of `UBC-FRESH/femic` at `external/femic-afrf-gavinlake-instance`.
+- Linked Phase 0 to parent issue #1 and child issues #2-#6. Phase 1 (scenario translation and baseline benchmark) is planned under parent issue #7 and is not active.
