@@ -1,7 +1,7 @@
 # Phase 1 close-out report
 
 Phase identifier: P1
-Status: pending maintainer approval
+Status: approved and merged in pull request #13
 Branch: `feature/p1-scenario-baseline`
 Parent issue: #7
 

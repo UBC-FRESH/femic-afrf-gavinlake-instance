@@ -43,3 +43,4 @@ status and the GitHub issue comments.
   and 4 met rows.
 - Added the baseline evidence under `ws4/evidence/baseline/`, the findings note
   `notes/reference/gavin-baseline-findings.md`, and the Phase 1 closeout report.
+- Merged Phase 1 in pull request #13 (commit `cc414a6`). P1 is complete; P2 remains planned.

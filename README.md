@@ -10,9 +10,9 @@ and records the structural parity evidence.
 Phase 0 (bootstrap, legacy intake, and structural parity) is complete. The
 legacy H matrix has been ingested and validated by ws4, and the initial growing
 stock reproduces the value implied by the legacy scenario constraints. Phase 1
-(scenario translation and baseline benchmark) is active under issue #7: the
-baseline is built and the phase closeout is pending. See `ROADMAP.md` for the
-phase and task plan, and `CHANGE_LOG.md` for the dated record.
+(scenario translation and baseline benchmark) is complete. Phase 2 (ws4 runtime
+packaging) is not active yet. See `ROADMAP.md` for the phase and task plan, and
+`CHANGE_LOG.md` for the dated record.
 
 ## What this repository contains
 

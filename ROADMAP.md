@@ -13,7 +13,7 @@ after its parent issue exists and the maintainer approves it.
 | Phase | Parent issue | Branch | Status |
 | --- | --- | --- | --- |
 | P0 Bootstrap and structural parity | #1 | `feature/p0-bootstrap` | complete |
-| P1 Scenario translation and baseline benchmark | #7 | `feature/p1-scenario-baseline` | active |
+| P1 Scenario translation and baseline benchmark | #7 | `feature/p1-scenario-baseline` | complete |
 | P2 ws4 runtime packaging | TBD | `feature/p2-runtime-packaging` | planned |
 | P3 Verification and QA | TBD | `feature/p3-verification` | planned |
 | P4 Scenario analysis and optimization | TBD | `feature/p4-scenarios` | planned |
@@ -67,7 +67,7 @@ Acceptance criteria:
 
 Parent issue: #7
 Branch: `feature/p1-scenario-baseline`
-Status: active
+Status: complete
 
 Goal: translate the legacy H scenario catalog into a ws4 target contract and
 build a reproducible baseline schedule that can be compared with the legacy
