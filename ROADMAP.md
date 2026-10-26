@@ -77,6 +77,7 @@ matrix behaviour.
 - [x] P1.2 Build a reproducible baseline schedule (#9)
 - [x] P1.3 Run the baseline and compare account trajectories (#10)
 - [x] P1.4 Record accepted variances and defer the carbon scenarios explicitly (#11)
+- [x] P1.5 Estimate the LTSY first-guess target (#14)
 
 Findings:
 
@@ -84,16 +85,31 @@ Findings:
 - A sustained 80-year rotation produces a mean of 188,677.89 m³ per ten-year
   period over 300 years, with a minimum of 177,070.07 and a maximum of
   197,806.62 m³.
-- The legacy 500,000 m³ per period floor is not feasible on this matrix. The
-  one-time age-80 pulse produces about 1.26 million m³ in the first decade and
-  then no sustained harvest.
-- The legacy 1,277,067 m³ growing-stock floor at period 30 is not met; the
-  baseline ends at 495,510.56 m³.
-- The baseline is flat in absolute volume but not within the legacy -1 to 1
-  percent even-flow band when each period is compared with the final period.
+- The baseline does not meet the 500,000 m³ period target. The archive does
+  not record the modeler's intent for that value; an unattainable minimum with
+  a linear penalty, paired with even-flow, is a legitimate pull-up technique.
+  The one-time age-80 pulse produces about 1.26 million m³ in the first decade
+  and then no sustained harvest.
+- The 1,277,067 m³ growing-stock target at period 30 is not met; the baseline
+  ends at 495,510.56 m³.
+- The baseline is flat in absolute volume but not within the -1 to 1 percent
+  even-flow band when each period is compared with the final period.
 - The eight carbon scenarios are deferred because the compiled matrix does not
   carry the runtime duplicate stock/flux accounts and the target units are
   unresolved.
+
+LTSY first-guess addendum:
+
+- The area-weighted mean yield curve on the productive THLB proxy
+  (`CONTCLAS = C`, 4,662.96 ha) culminates at 3.599653 m³/ha/yr at age 100.
+- LTSY is 16,785.06 m³/yr, or 167,850.57 m³ per ten-year period. The ×1.1
+  first guess is 184,635.63 m³, rounded to 185,000.
+- The baseline meets the 185,000 m³ target in 22 of 30 periods; the eight
+  misses are 177,070–184,810 m³.
+- The 1,277,067 m³ growing-stock target at period 30 is the binding constraint;
+  the baseline ends at 495,510.56 m³.
+- The literal 500,000 remains in `ws4/targets_legacy_harvest.yaml` as a parity
+  reference. The runnable target is `ws4/targets_gavin_ltsy.yaml`.
 
 Acceptance criteria:
 

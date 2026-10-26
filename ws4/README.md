@@ -33,12 +33,40 @@ are in the dataset manifest.
 
 ## Targets and accounts
 
-`targets_legacy_harvest.yaml` translates the legacy timber-harvest scenario:
+`targets_legacy_harvest.yaml` is the literal legacy parity target:
 
-- 500,000 m³ per 10-year period for 30 periods (copied MKRF template value;
-  parity reference, not an AFRF-calibrated target);
+- 500,000 m³ per 10-year period for 30 periods (literal scenario target;
+  intent not recorded);
 - 1,277,067 m³ growing stock at period 30; and
 - an even-flow band of -1 to 1, weight 1000.
+
+The runnable first-guess target is `targets_gavin_ltsy.yaml`, derived in
+"LTSY first-guess target" below.
+
+## LTSY first-guess target
+
+`ws4/estimate_ltsy_target.py` builds an area-weighted mean yield curve from the
+current track curves, finds the culmination of mean annual increment (CMAI),
+multiplies by the THLB area and the period width, and applies a 1.1 uplift.
+
+The productive THLB proxy (`CONTCLAS = C`) is 4,662.96 ha. The mean yield curve
+culminates at 3.599653 m³/ha/yr at age 100. LTSY is 16,785.06 m³/yr, or
+167,850.57 m³ per ten-year period. The ×1.1 first guess is 184,635.63 m³,
+rounded to 185,000.
+
+```bash
+python ws4/estimate_ltsy_target.py   --dataset ws4/runtime/legacy_matrix   --fragments data/legacy_gavinlake/fragments.csv   --out ws4/evidence/ltsy/estimate.json   --curve-csv ws4/evidence/ltsy/mean_yield_curve.csv
+```
+
+`ws4/targets_gavin_ltsy.yaml` uses 185,000 m³ per period, the 1,277,067 m³
+growing-stock target at period 30, and the -1 to 1 percent even-flow band. In
+the baseline report, the 185,000 level target is met in 22 of 30 periods; the
+eight misses are 177,070-184,810 m³. The growing-stock target is the binding
+constraint.
+
+The all-area sensitivity (5,663.66 ha) gives a CMAI of 3.532573 m³/ha/yr,
+LTSY of 20,007.31 m³/yr, and a ×1.1 first guess of 220,080.41 m³ per period.
+The THLB proxy is the primary result.
 
 `patch_accounts.yaml` translates the legacy patch accounts:
 
@@ -91,11 +119,13 @@ ws4 report \
 ```
 
 The result is a mean harvest of 188,677.89 m³ per ten-year period, a minimum of
-177,070.07, and a maximum of 197,806.62 m³. The copied legacy 500,000 m³ template floor is not feasible on this matrix
-under the only available treatment. It is a parity reference, not an
-AFRF-calibrated target; see `../notes/reference/legacy-target-provenance.md`. The growing stock
-falls from 1,418,962.31 m³ to 495,510.56 m³ over 300 years, so the legacy
-1,277,067 m³ floor at period 30 is also not met.
+177,070.07, and a maximum of 197,806.62 m³. The baseline does not meet the
+500,000 m³ literal target. The archive does not record the target's intent. An
+unattainable minimum with a linear penalty can be a deliberate pull-up
+technique, especially when paired with even-flow, so the shortfall is not a
+verdict on the target. See `../notes/reference/legacy-target-provenance.md`.
+Growing stock falls from 1,418,962.31 m³ to 495,510.56 m³ over 300 years, so the
+1,277,067 m³ growing-stock target is also not met.
 
 ## Smoke run
 

@@ -40,18 +40,19 @@ scenarios:
     label: Maximize timber harvest
     status: translated
     target_file: ws4/targets_legacy_harvest.yaml
+    runnable_target_file: ws4/targets_gavin_ltsy.yaml
     primary_account: product.yield.managed.total
     primary_minimum: 500000
     primary_min_weight: 1.0
     primary_shape: linear
     source_lines: "12-15"
-    calibration_status: copied-template-parity-reference
+    target_intent: unrecorded
     provenance: >-
-      The 500,000 harvest floor is a copied MKRF legacy template value, not an
-      AFRF-calibrated target. The AFRF package's build scripts still point at
-      PW_MKRF, and the same literal appears in the MKRF
-      Targets/01_harvest.bsh. The 1,277,067 growing-stock floor in the common
-      constraints is calibrated to this matrix (90 percent of 1,418,962 m3).
+      The 500,000 is a literal scenario target. Its intent is not recorded in
+      the archive. The scenario sets a linear penalty and pairs the harvest
+      target with an even-flow target, which is consistent with a deliberate
+      pull-up target but does not prove that intent. The 1,277,067
+      growing-stock target is consistent with 90 percent of 1,418,962 m3.
       See notes/reference/legacy-target-provenance.md.
   - id: scenario_02
     label: Maximize carbon stocks, HWP emission 0
