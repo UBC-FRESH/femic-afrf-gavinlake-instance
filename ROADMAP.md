@@ -78,6 +78,7 @@ matrix behaviour.
 - [x] P1.3 Run the baseline and compare account trajectories (#10)
 - [x] P1.4 Record accepted variances and defer the carbon scenarios explicitly (#11)
 - [x] P1.5 Estimate the LTSY first-guess target (#14)
+- [x] P1.6 Add public site-index and AAC benchmarks (#22)
 
 Findings:
 
@@ -110,6 +111,20 @@ LTSY first-guess addendum:
   the baseline ends at 495,510.56 m³.
 - The literal 500,000 remains in `ws4/targets_legacy_harvest.yaml` as a parity
   reference. The runnable target is `ws4/targets_gavin_ltsy.yaml`.
+
+Public benchmark addendum:
+
+- Klinka et al. 2004 Tables 8.2.1–8.2.4 are transcribed at
+  `data/site_index/klinka_2004_site_index.csv`. The Gavin block is in the
+  SBSdw1 and ICHmk3 units; the IDF rows are included for Knife Creek.
+- MWP #3 Tables 34 and 36 give the Gavin Lake Demonstration Area (GL) AAC:
+  2.4 ha/year clearcut, 3.0 ha/year partial cut, 2.4 ha/year salvage, 7.8
+  ha/year total on a 478 ha net harvest land base with a 100-year cycle.
+  The 2001–2005 actual was 7.1/14.2/10.5 ha/year, 31.8 ha/year total.
+- The GL working circle is not the legacy Gavin model's 4,662.96 ha THLB proxy
+  and its 100-year cycle is not the legacy 80-year clearcut rotation. The values
+  are a public management-plan benchmark, not the legacy scenario intent.
+- MWP #3 Figure 11 is Knife Creek-specific and is not a Gavin benchmark.
 
 Acceptance criteria:
 

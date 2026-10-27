@@ -1,0 +1,29 @@
+{
+  "dataset": "klinka_2004_site_index",
+  "title": "Site index (m @ 50 yr bh) estimates for major viable crop tree species by site series",
+  "source_document": "Klinka, K., P. Varga, C. Trethewey, C. Koot, M. Rau, J. Macku, and T. Kusbach. 2004. Site Units of the University of British Columbia Alex Fraser Research Forest. 108 pp.",
+  "source_pdf": "reference/AFRF-site-unit-report-2004.pdf",
+  "source_pdf_sha256": "94459a7bc6002932bc9a2150deb6d81879fbd48d776b86e4666e75addc7f5705",
+  "tables": [
+    "8.2.1",
+    "8.2.2",
+    "8.2.3",
+    "8.2.4"
+  ],
+  "source_pages_pdf": [
+    62,
+    63
+  ],
+  "source_pages_printed": [
+    53,
+    54
+  ],
+  "transcription": "Manual transcription from the published tables; checked against the rendered page images at 300 dpi.",
+  "notes": [
+    "Site index is metres at 50 years breast height.",
+    "The report uses a nominal 5-class growth scale: 1 highest, 5 lowest.",
+    "Limits are recorded in the status and note columns; they are not silently converted to exact values.",
+    "The report estimates only Douglas-fir, lodgepole pine and hybrid spruce. Other species are not estimated.",
+    "The spatial site-series map is not in the PDF and is still outstanding."
+  ]
+}

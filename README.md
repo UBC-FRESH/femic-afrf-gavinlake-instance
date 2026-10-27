@@ -10,14 +10,20 @@ and records the structural parity evidence.
 Phase 0 (bootstrap, legacy intake, and structural parity) is complete. The
 legacy H matrix has been ingested and validated by ws4, and the initial growing
 stock reproduces the value implied by the legacy scenario constraints. Phase 1
-(scenario translation and baseline benchmark) is complete. Phase 2 (ws4 runtime
-packaging) is not active yet. See `ROADMAP.md` for the phase and task plan, and
+(scenario translation and baseline benchmark) is complete; its P1.6 public
+benchmark addendum is in review. Phase 2 (ws4 runtime packaging) is active on a
+separate branch. See `ROADMAP.md` for the phase and task plan, and
 `CHANGE_LOG.md` for the dated record.
 
 ## What this repository contains
 
 - `data/legacy_gavinlake/` — the sanitized legacy AFRF H matrix, the spatial
   inventory, the proximal topology, and the legacy scenario scripts.
+- `data/site_index/` — Klinka 2004 site-index tables for the SBSdw1/ICHmk3
+  units that apply to Gavin Lake.
+- `data/benchmarks/` — the Gavin Lake Demonstration Area AAC and 2001–2005
+  harvest comparison from MWP #3 Tables 34 and 36.
+- `reference/` — the public AFRF reports used as benchmark sources.
 - `ws4/` — the ws4 translation surface: the compiled dataset recipe, patch
   accounts, translated legacy targets, a smoke schedule, and structural parity
   evidence.
@@ -122,6 +128,9 @@ constraint. Evidence: `ws4/evidence/ltsy/`.
 | `ROADMAP.md` | Plan of record and issue tracker map |
 | `CHANGE_LOG.md` | Dated narrative of changes |
 | `data/legacy_gavinlake/` | Legacy H matrix, spatial inputs, topology, scripts |
+| `data/site_index/` | Klinka 2004 site-index tables |
+| `data/benchmarks/` | MWP #3 Gavin Lake AAC benchmark |
+| `reference/` | Public AFRF reference PDFs and citations |
 | `ws4/` | ws4 translation inputs, schedules, and evidence |
 | `docs/` | Guides and reference pages |
 | `notes/` | ADRs, reference notes, and phase reports |
