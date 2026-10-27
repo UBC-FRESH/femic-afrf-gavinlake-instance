@@ -1,0 +1,30 @@
+{
+  "dataset": "mwp3_gavin_aac",
+  "title": "Gavin Lake Demonstration Area AAC and 2001-2005 harvest comparison",
+  "source_document": "Alex Fraser Research Forest Management and Working Plan #3 (January 1, 2007)",
+  "source_pdf": "reference/AFRF-management-working-plan-3-2007.pdf",
+  "source_pdf_sha256": "9bfd8b8f0449f45fb97fcf529236640ace09b73ba74f77001f677eee7307ff6a",
+  "source_pages_pdf": [
+    108,
+    109,
+    114
+  ],
+  "source_pages_printed": [
+    100,
+    101,
+    106
+  ],
+  "source_tables": [
+    "34",
+    "35",
+    "36"
+  ],
+  "notes": [
+    "GL is the Gavin Lake Demonstration Area working circle, not the whole Gavin Lake block.",
+    "Table 34 net area is 532 ha; net harvest land base is 478 ha after 8% WTP and 2% research reductions.",
+    "The GL cutting cycle in Table 34 is 100 years; the legacy Gavin matrix uses an 80-year clearcut rotation on a 4,662.96 ha THLB proxy.",
+    "The actual 2001-2005 values are averages; the AAC values are the plan targets.",
+    "Table 36 total Gavin (132.7 / 74.4 ha/yr) includes BV, GL and TP, not GL alone. Do not use that total as a GL benchmark.",
+    "This is a public management-plan benchmark, not the legacy Patchworks scenario intent."
+  ]
+}

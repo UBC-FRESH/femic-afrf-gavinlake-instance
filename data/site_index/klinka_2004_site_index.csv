@@ -1,0 +1,106 @@
+zonal_unit,site_series_code,site_series_name,species,site_index_m_50,site_index_class,status,note,source_table,source_page_pdf,source_page_printed
+IDFxm,01,Calamagrostis,Douglas-fir,17,3,viable,,8.2.1,62,53
+IDFxm,01,Calamagrostis,Lodgepole pine,,,non-viable,,8.2.1,62,53
+IDFxm,01,Calamagrostis,Interior spruce,,,non-viable,,8.2.1,62,53
+IDFxm,02,Juniperus,Douglas-fir,,5,viable,<9 m,8.2.1,62,53
+IDFxm,02,Juniperus,Lodgepole pine,,,non-viable,,8.2.1,62,53
+IDFxm,02,Juniperus,Interior spruce,,,non-viable,,8.2.1,62,53
+IDFxm,03,Arctostaphylos,Douglas-fir,12,4,viable,,8.2.1,62,53
+IDFxm,03,Arctostaphylos,Lodgepole pine,,,non-viable,,8.2.1,62,53
+IDFxm,03,Arctostaphylos,Interior spruce,,,non-viable,,8.2.1,62,53
+IDFxm,04,Allium,Douglas-fir,14,3,viable,,8.2.1,62,53
+IDFxm,04,Allium,Lodgepole pine,,,non-viable,,8.2.1,62,53
+IDFxm,04,Allium,Interior spruce,,,non-viable,,8.2.1,62,53
+IDFxm,05,Hylocomium,Douglas-fir,16,3,viable,,8.2.1,62,53
+IDFxm,05,Hylocomium,Lodgepole pine,,,non-viable,,8.2.1,62,53
+IDFxm,05,Hylocomium,Interior spruce,,,non-viable,,8.2.1,62,53
+IDFxm,06,Oryzopsis,Douglas-fir,18,2,viable,,8.2.1,62,53
+IDFxm,06,Oryzopsis,Lodgepole pine,,,non-viable,,8.2.1,62,53
+IDFxm,06,Oryzopsis,Interior spruce,,,non-viable,,8.2.1,62,53
+IDFxm,07,Aralia,Douglas-fir,20,2,viable,,8.2.1,62,53
+IDFxm,07,Aralia,Lodgepole pine,,,non-viable,,8.2.1,62,53
+IDFxm,07,Aralia,Interior spruce,,,non-viable,,8.2.1,62,53
+IDFxm,08,Cornus,Douglas-fir,,,non-viable,,8.2.1,62,53
+IDFxm,08,Cornus,Lodgepole pine,,,non-viable,,8.2.1,62,53
+IDFxm,08,Cornus,Interior spruce,22,2,viable,,8.2.1,62,53
+IDFxm,09,Equisetum,Douglas-fir,,,non-viable,,8.2.1,62,53
+IDFxm,09,Equisetum,Lodgepole pine,,,non-viable,,8.2.1,62,53
+IDFxm,09,Equisetum,Interior spruce,17,3,viable,,8.2.1,62,53
+IDFdk3,01,Calamagrostis,Douglas-fir,19,2,viable,,8.2.2,63,54
+IDFdk3,01,Calamagrostis,Lodgepole pine,20,2,viable,,8.2.2,63,54
+IDFdk3,01,Calamagrostis,Interior spruce,,,non-viable,,8.2.2,63,54
+IDFdk3,02,Arctostaphylos,Douglas-fir,13,4,viable,,8.2.2,63,54
+IDFdk3,02,Arctostaphylos,Lodgepole pine,14,4,viable,,8.2.2,63,54
+IDFdk3,02,Arctostaphylos,Interior spruce,,,non-viable,,8.2.2,63,54
+IDFdk3,03,Juniperus,Douglas-fir,,5,viable,<9 m,8.2.2,63,54
+IDFdk3,03,Juniperus,Lodgepole pine,,,non-viable,,8.2.2,63,54
+IDFdk3,03,Juniperus,Interior spruce,,,non-viable,,8.2.2,63,54
+IDFdk3,04,Allium,Douglas-fir,15,3,viable,,8.2.2,63,54
+IDFdk3,04,Allium,Lodgepole pine,,,non-viable,,8.2.2,63,54
+IDFdk3,04,Allium,Interior spruce,,,non-viable,,8.2.2,63,54
+IDFdk3,05,Hylocomium,Douglas-fir,17,3,viable,,8.2.2,63,54
+IDFdk3,05,Hylocomium,Lodgepole pine,18,2,viable,,8.2.2,63,54
+IDFdk3,05,Hylocomium,Interior spruce,,,non-viable,,8.2.2,63,54
+IDFdk3,07,Lonicera,Douglas-fir,19,2,limited,19/limited,8.2.2,63,54
+IDFdk3,07,Lonicera,Lodgepole pine,19,2,viable,,8.2.2,63,54
+IDFdk3,07,Lonicera,Interior spruce,18,2,viable,,8.2.2,63,54
+IDFdk3,08,Aralia,Douglas-fir,22,1,viable,,8.2.2,63,54
+IDFdk3,08,Aralia,Lodgepole pine,22,1,viable,,8.2.2,63,54
+IDFdk3,08,Aralia,Interior spruce,22,2,viable,,8.2.2,63,54
+IDFdk3,09,Equisetum,Douglas-fir,,,non-viable,,8.2.2,63,54
+IDFdk3,09,Equisetum,Lodgepole pine,,,non-viable,,8.2.2,63,54
+IDFdk3,09,Equisetum,Interior spruce,18,3,viable,,8.2.2,63,54
+IDFdk3,10,Cornus,Douglas-fir,,,non-viable,,8.2.2,63,54
+IDFdk3,10,Cornus,Lodgepole pine,,,non-viable,,8.2.2,63,54
+IDFdk3,10,Cornus,Interior spruce,23,1,viable,,8.2.2,63,54
+SBSdw1,01,Calamagrostis,Douglas-fir,22,2,viable,,8.2.3,63,54
+SBSdw1,01,Calamagrostis,Lodgepole pine,23,1,viable,,8.2.3,63,54
+SBSdw1,01,Calamagrostis,Interior spruce,21,2,viable,,8.2.3,63,54
+SBSdw1,02,Cladonia,Douglas-fir,,5,viable,<9 m,8.2.3,63,54
+SBSdw1,02,Cladonia,Lodgepole pine,12,4,viable,,8.2.3,63,54
+SBSdw1,02,Cladonia,Interior spruce,,,non-viable,,8.2.3,63,54
+SBSdw1,03,Chimaphila,Douglas-fir,15,3,viable,,8.2.3,63,54
+SBSdw1,03,Chimaphila,Lodgepole pine,16,3,viable,,8.2.3,63,54
+SBSdw1,03,Chimaphila,Interior spruce,,,non-viable,,8.2.3,63,54
+SBSdw1,04,Vaccinium,Douglas-fir,17,3,viable,,8.2.3,63,54
+SBSdw1,04,Vaccinium,Lodgepole pine,19,2,viable,,8.2.3,63,54
+SBSdw1,04,Vaccinium,Interior spruce,,,non-viable,,8.2.3,63,54
+SBSdw1,05,Hylocomium,Douglas-fir,19,2,viable,,8.2.3,63,54
+SBSdw1,05,Hylocomium,Lodgepole pine,20,2,viable,,8.2.3,63,54
+SBSdw1,05,Hylocomium,Interior spruce,18,2,limited,18/limited,8.2.3,63,54
+SBSdw1,06,Rubus,Douglas-fir,23,1,viable,,8.2.3,63,54
+SBSdw1,06,Rubus,Lodgepole pine,23,1,viable,,8.2.3,63,54
+SBSdw1,06,Rubus,Interior spruce,23,1,viable,,8.2.3,63,54
+SBSdw1,07,Lonicera,Douglas-fir,22,2,limited,22/limited,8.2.3,63,54
+SBSdw1,07,Lonicera,Lodgepole pine,24,1,viable,,8.2.3,63,54
+SBSdw1,07,Lonicera,Interior spruce,23,1,viable,,8.2.3,63,54
+SBSdw1,08,Gymnocarpium,Douglas-fir,24,1,limited,24/limited,8.2.3,63,54
+SBSdw1,08,Gymnocarpium,Lodgepole pine,23,1,limited,23/limited,8.2.3,63,54
+SBSdw1,08,Gymnocarpium,Interior spruce,25,1,viable,,8.2.3,63,54
+SBSdw1,09,Equisetum,Douglas-fir,,,non-viable,,8.2.3,63,54
+SBSdw1,09,Equisetum,Lodgepole pine,,,non-viable,,8.2.3,63,54
+SBSdw1,09,Equisetum,Interior spruce,19,2,viable,,8.2.3,63,54
+ICHmk3,01,Ptilium,Douglas-fir,23,1,viable,,8.2.4,63,54
+ICHmk3,01,Ptilium,Lodgepole pine,23,1,viable,,8.2.4,63,54
+ICHmk3,01,Ptilium,Interior spruce,22,2,viable,,8.2.4,63,54
+ICHmk3,02,Cladonia,Douglas-fir,10,4,viable,,8.2.4,63,54
+ICHmk3,02,Cladonia,Lodgepole pine,12,4,viable,,8.2.4,63,54
+ICHmk3,02,Cladonia,Interior spruce,,,non-viable,,8.2.4,63,54
+ICHmk3,03,Chimaphila,Douglas-fir,17,3,viable,,8.2.4,63,54
+ICHmk3,03,Chimaphila,Lodgepole pine,19,2,viable,,8.2.4,63,54
+ICHmk3,03,Chimaphila,Interior spruce,,,non-viable,,8.2.4,63,54
+ICHmk3,04,Gymnocarpium,Douglas-fir,24,1,viable,,8.2.4,63,54
+ICHmk3,04,Gymnocarpium,Lodgepole pine,24,1,viable,,8.2.4,63,54
+ICHmk3,04,Gymnocarpium,Interior spruce,24,1,viable,,8.2.4,63,54
+ICHmk3,05,Lonicera,Douglas-fir,23,1,limited,23/limited,8.2.4,63,54
+ICHmk3,05,Lonicera,Lodgepole pine,23,1,viable,,8.2.4,63,54
+ICHmk3,05,Lonicera,Interior spruce,23,1,viable,,8.2.4,63,54
+ICHmk3,06,Streptopus,Douglas-fir,24,1,limited,24/limited,8.2.4,63,54
+ICHmk3,06,Streptopus,Lodgepole pine,,,non-viable,,8.2.4,63,54
+ICHmk3,06,Streptopus,Interior spruce,25,1,viable,,8.2.4,63,54
+ICHmk3,07,Equisetum,Douglas-fir,,,non-viable,,8.2.4,63,54
+ICHmk3,07,Equisetum,Lodgepole pine,,,non-viable,,8.2.4,63,54
+ICHmk3,07,Equisetum,Interior spruce,19,2,viable,,8.2.4,63,54
+ICHmk3,08,Rubus,Douglas-fir,25,1,viable,,8.2.4,63,54
+ICHmk3,08,Rubus,Lodgepole pine,25,1,viable,,8.2.4,63,54
+ICHmk3,08,Rubus,Interior spruce,25,1,viable,,8.2.4,63,54

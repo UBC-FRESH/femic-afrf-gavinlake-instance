@@ -67,3 +67,26 @@ status and the GitHub issue comments.
   constraint. The literal 500,000 remains in
   `ws4/targets_legacy_harvest.yaml` as a parity reference.
 - Added the LTSY evidence under `ws4/evidence/ltsy/` and the P1.5 task (#14).
+
+## 2026-10-27
+
+- Activated P1.6 (#22) to add public reference benchmarks without changing the
+  legacy H matrix or the runnable LTSY target.
+- Added the Klinka et al. 2004 site-index tables (8.2.1–8.2.4) as
+  `data/site_index/klinka_2004_site_index.csv`. The Gavin Lake block is in the
+  SBSdw1 and ICHmk3 units; the IDFxm/IDFdk3 rows are included for the sibling
+  Knife Creek instance. The values are potential site index, not a measured
+  Gavin growth curve.
+- Added the Gavin Lake Demonstration Area AAC and 2001–2005 harvest comparison
+  from AFRF Management and Working Plan #3 Tables 34 and 36 as
+  `data/benchmarks/mwp3_gavin_aac.csv`: 2.4 ha/year clearcut, 3.0 ha/year
+  partial cut, 2.4 ha/year salvage, 7.8 ha/year total on a 478 ha net harvest
+  land base with a 100-year cycle; actual 2001–2005 was 31.8 ha/year total.
+- Recorded that the GL working circle is not the legacy Gavin model's
+  4,662.96 ha THLB proxy or its 80-year clearcut rotation. The AAC is a public
+  management-plan benchmark, not the legacy scenario intent.
+- Added the public AFRF report PDFs and `reference/README.md` so the benchmark
+  provenance is self-contained. They are UBC AFRF publications, not OGL.
+- Confirmed that MWP #3 Figure 11 is Knife Creek-specific and that Klinka's
+  quantitative content is in its tables, not its photo figures. No figrecover
+  pass was needed for Gavin.
