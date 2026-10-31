@@ -209,6 +209,7 @@ def main() -> None:
     if not rows:
         raise SystemExit("no trees detected")
     merged = pd.concat(rows, ignore_index=True)
+    merged = merged[(merged["Height"] >= 2.0) & (merged["Height"] <= 60.0)].copy()
     merged["tree_id"] = range(1, len(merged) + 1)
     merged["height_m"] = merged["Height"]
     merged["dbh_cm_est"] = np.exp(
@@ -225,7 +226,9 @@ def main() -> None:
     area_ha = float(blocks.geometry.area.sum() / 10_000.0)
     summary = {
         "source": "2009 FUSION LIDARBIN",
-        "tiles": len(rows),
+        "tiles": len(tasks),
+        "tiles_processed": len(tasks),
+        "tiles_with_trees": len(rows),
         "fragments": len(blocks),
         "area_ha": area_ha,
         "trees": len(trees),
