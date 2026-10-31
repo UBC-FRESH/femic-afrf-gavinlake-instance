@@ -129,8 +129,8 @@ status and the GitHub issue comments.
   tree files are large and remain uncommitted.
 
 - The OneDrive payload has no 2019 or 2024 Gavin LiDAR; the 2009 FUSION
-  LIDARBIN is not readable by the current pipeline. Gavin tree-level coverage
-  is therefore partial.
+  LIDARBIN is valid and was processed with FUSION. Gavin tree-level coverage is
+  full for 2009, with the 2013 inventory retained as a partial check.
 
 - Diagnosed the 2009 LiDAR as valid FUSION `LIDARBIN`, not corrupted LAS. The
   files start with `LIDARBIN`; DataLad `fsck` passes. The failure was our
@@ -140,3 +140,13 @@ status and the GitHub issue comments.
   mean height 15.0 m, mean DBH estimate 19.8 cm. See
   `notes/reference/ubc-2009-lidar-format-fix.md` and
   `data/lidar/gavin_2009/README.md`. No reupload is needed.
+
+- Built a real Tree Lab case for Gavin Lake GL_4123
+  (`data/tree_lab/gl_4123/`) from the 2009 inventory: 400 trees, 6.967 ha,
+  200.3 m3/ha, 3.49 m3/stem. Ran FHOPS `tree system` with one feller-buncher,
+  two grapple skidders, one processor, and one loader: 1,384.4 m3 processed,
+  52.4 h makespan, 46 truck loads, no warnings. Exported a 400-tree/800-log
+  `tree scene` and assembled a local playback bundle at
+  `runs/gl_4123/view/`. The case manifest follows
+  `fhops.tree_lab.case.v1`; it still needs to be copied into the Tree Lab
+  `sandbox/cases/` host or validated by the Tree Lab runner.
