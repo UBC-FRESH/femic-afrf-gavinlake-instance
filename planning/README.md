@@ -4,6 +4,8 @@ Active planning surfaces for the Gavin Lake instance:
 
 - `gavin_lake_legacy_intake.md` — archive findings, translation decisions, and
   open questions.
+- `p7-roads-logs-mills.md` — the delivered-wood phase: road network, mills,
+  log sorts, harvest systems, and the AFRF data request.
 
 Implementation surfaces that follow these plans:
 

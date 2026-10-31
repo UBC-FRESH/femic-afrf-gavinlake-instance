@@ -1,0 +1,90 @@
+{
+  "route_run": "ws4/runtime/gavin_delivered_wood_screening",
+  "routed_volume_m3": 5660336.7681676,
+  "value_cad": 683883927.2789695,
+  "unpriced_volume_m3": 0.0,
+  "haul_cost_cad": 57180436.76942903,
+  "maintenance_cost_cad": 585310.965936067,
+  "build_cost_cad": 0.0,
+  "route_years": 296,
+  "blocks_routed": 2907,
+  "mills": [
+    "destination.MILL_107_LBR"
+  ],
+  "sort_mix": [
+    {
+      "species_group": "SPF",
+      "sort": "Sawlog",
+      "market_volume_m3": 1227626.0,
+      "sort_share": 0.890156209099617
+    },
+    {
+      "species_group": "SPF",
+      "sort": "Peelers",
+      "market_volume_m3": 34798.0,
+      "sort_share": 0.025232160091305068
+    },
+    {
+      "species_group": "SPF",
+      "sort": "Pulpwood",
+      "market_volume_m3": 116689.0,
+      "sort_share": 0.08461163080907802
+    },
+    {
+      "species_group": "Df-Larch",
+      "sort": "Sawlog",
+      "market_volume_m3": 371069.0,
+      "sort_share": 0.8089773245052748
+    },
+    {
+      "species_group": "Df-Larch",
+      "sort": "Peelers",
+      "market_volume_m3": 65860.0,
+      "sort_share": 0.14358312494958458
+    },
+    {
+      "species_group": "Df-Larch",
+      "sort": "Pulpwood",
+      "market_volume_m3": 21760.0,
+      "sort_share": 0.04743955054514061
+    },
+    {
+      "species_group": "Hem-Bal",
+      "sort": "Sawlog",
+      "market_volume_m3": 113957.0,
+      "sort_share": 0.941637745827136
+    },
+    {
+      "species_group": "Hem-Bal",
+      "sort": "Pulpwood",
+      "market_volume_m3": 7063.0,
+      "sort_share": 0.05836225417286399
+    },
+    {
+      "species_group": "Cedar",
+      "sort": "Sawlog",
+      "market_volume_m3": 81294.0,
+      "sort_share": 1.0
+    },
+    {
+      "species_group": "Deciduous",
+      "sort": "Other",
+      "market_volume_m3": 42262.0,
+      "sort_share": 1.0
+    },
+    {
+      "species_group": "Other",
+      "sort": "Other",
+      "market_volume_m3": 42262.0,
+      "sort_share": 1.0
+    }
+  ],
+  "caveats": [
+    "Species composition is area-weighted from the 2025 VRI for Gavin Lake.",
+    "Sort shares are the regional BC interior market-purchase mix, not an AFRF grade distribution.",
+    "Prices are June-August 2026 regional averages, not AFRF sales.",
+    "Deciduous and residual species use the Other/Other price as a proxy.",
+    "Haul, maintenance, and build costs come from the screening route run.",
+    "This is a screening delivered-wood layer, not an operational or legal model."
+  ]
+}

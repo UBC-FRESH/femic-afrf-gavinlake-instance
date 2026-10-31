@@ -90,3 +90,24 @@ status and the GitHub issue comments.
 - Confirmed that MWP #3 Figure 11 is Knife Creek-specific and that Klinka's
   quantitative content is in its tables, not its photo figures. No figrecover
   pass was needed for Gavin.
+
+## 2026-10-31
+
+- Activated P7, roads, log sorts, and mills, under parent issue #24 on
+  `feature/p7-roads-logs-mills`. The phase plan is
+  `planning/p7-roads-logs-mills.md`.
+
+- Built the Gavin Lake screening delivered-wood layer. Fetched the public
+  2025 VRI and public tenure-road layer around the block; built a connected
+  route graph (193 road segments, 178 components joined by 177 synthetic
+  connectors, 5 candidate sawlog mills); ran the 300-year baseline through
+  `ws4.roads`; and split routed volume by VRI species and the BC interior
+  June-August 2026 sort mix. Result: 5,660,337 m3 from 2,907 fragments,
+  57.18 M CAD haul, 0.59 M CAD maintenance, and about 683.9 M CAD gross value.
+  All volume goes to `destination.MILL_107_LBR` because no mill demand or
+  capacity constraint is available. See `data/delivered_wood/gavin/README.md`.
+
+- The public road layer is only 19.3 km against 112.2 km in MWP #3 Table 37.
+  The route rates are TSA23 proxies, mill haul is a straight-line abstraction,
+  and the sort mix and prices are regional BC references. This is a screening
+  layer, not an operational or legal model.

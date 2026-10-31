@@ -1,0 +1,6 @@
+destination,company,locality,product_code,capacity_value,capacity_unit,status,gavin_lake_km,synthetic_route_km
+destination.MILL_107_LBR,Tolko Industries Ltd.,Williams Lake,LBR,165.6,million_board_feet_lumber,Op,45.39,56.73124753540407
+destination.MILL_114_LBR,West Fraser Mills Ltd.,Williams Lake,LBR,172.8,million_board_feet_lumber,Op,45.54,56.92842689546182
+destination.MILL_103_LBR,Tolko Industries Ltd.,Williams Lake,LBR,363.84,million_board_feet_lumber,Op,47.12,58.90407689460457
+destination.MILL_113_LBR,West Fraser Mills Ltd.,Quesnel,LBR,462.72,million_board_feet_lumber,Op,78.76,98.44333859201677
+destination.MILL_95_LBR,West Fraser Mills Ltd.,100 Mile House,LBR,172.32,million_board_feet_lumber,Op,94.36,117.94782477393133
