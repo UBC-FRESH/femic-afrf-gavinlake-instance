@@ -111,3 +111,23 @@ status and the GitHub issue comments.
   The route rates are TSA23 proxies, mill haul is a straight-line abstraction,
   and the sort mix and prices are regional BC references. This is a screening
   layer, not an operational or legal model.
+
+## 2026-10-31
+
+- Added the Gavin 2025 VRI starting layer
+  (`runbooks/build_gavin_vri_start.py`,
+  `data/inventory/gavin_vri_2025_start.{csv,gpkg}`). The area-weighted VRI age
+  is 125.3 years vs 99.4 years for the legacy ages advanced to 2025; 1,606 of
+  2,907 fragments differ by more than 20 years. This is the rebuild input; the
+  compiled legacy matrix still uses `AGE_2019`.
+
+- Added the partial Gavin 2013 canopy tree inventory
+  (`runbooks/detect_gavin_2013_trees.py`,
+  `data/lidar/gavin_2013/`). The 11 2013 LAS tiles cover 339 ha of the 5,664 ha
+  block and produce 166,188 canopy trees. Added the 111-fragment piece-size
+  table and a validated FHOPS tree-inventory pilot for fragment 323. The full
+  tree files are large and remain uncommitted.
+
+- The OneDrive payload has no 2019 or 2024 Gavin LiDAR; the 2009 FUSION
+  LIDARBIN is not readable by the current pipeline. Gavin tree-level coverage
+  is therefore partial.

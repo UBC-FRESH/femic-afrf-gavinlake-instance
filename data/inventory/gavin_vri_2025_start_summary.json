@@ -1,0 +1,27 @@
+{
+  "fragments": 2907,
+  "fragments_with_vri": 2907,
+  "area_ha": 5663.666002143934,
+  "vri_age_2025_area_weighted_mean": 125.29664600411358,
+  "legacy_age_2025_area_weighted_mean": 99.38286123883094,
+  "age_delta_area_weighted_mean": 25.91378476528263,
+  "fragments_delta_gt_20y": 1606,
+  "species_area_weighted": {
+    "FD": 0.4218190430523053,
+    "SX": 0.23007674129974318,
+    "CW": 0.07480366441607715,
+    "PL": 0.03466659311922521,
+    "AC": 0.0114340130427789,
+    "AT": 0.05864986581654591,
+    "FDI": 0.08712913804990075,
+    "BL": 0.04483049978397289,
+    "PLI": 0.015061522800219366,
+    "EP": 0.01864923165152854,
+    "ACT": 0.0028796869677027524
+  },
+  "caveats": [
+    "VRI ages are projected ages advanced to 2025 from REFERENCE_YEAR.",
+    "The legacy model still uses AGE_2019 and the legacy tracks; this table is the rebuild input, not an applied dataset update.",
+    "VRI age and legacy age differ materially for many fragments."
+  ]
+}
