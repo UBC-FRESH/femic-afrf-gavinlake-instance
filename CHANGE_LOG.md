@@ -131,3 +131,12 @@ status and the GitHub issue comments.
 - The OneDrive payload has no 2019 or 2024 Gavin LiDAR; the 2009 FUSION
   LIDARBIN is not readable by the current pipeline. Gavin tree-level coverage
   is therefore partial.
+
+- Diagnosed the 2009 LiDAR as valid FUSION `LIDARBIN`, not corrupted LAS. The
+  files start with `LIDARBIN`; DataLad `fsck` passes. The failure was our
+  `laspy` reader assuming `LASF`. Installed FUSION/LDV 4.61 and processed the
+  full 2009 Gavin coverage with `Catalog`, `GridSurfaceCreate`, `CanopyModel`,
+  and `CanopyMaxima`. Result: 100 `pt` tiles, 1,116,962 canopy trees, 197 TPH,
+  mean height 15.0 m, mean DBH estimate 19.8 cm. See
+  `notes/reference/ubc-2009-lidar-format-fix.md` and
+  `data/lidar/gavin_2009/README.md`. No reupload is needed.

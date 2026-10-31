@@ -1,0 +1,28 @@
+{
+  "source": "2009 FUSION LIDARBIN",
+  "tiles": 78,
+  "fragments": 2907,
+  "area_ha": 5663.664460267092,
+  "trees": 1116962,
+  "tph": 197.2154261319579,
+  "height_m": {
+    "mean": 15.040094765981294,
+    "p50": 11.87,
+    "p95": 32.72,
+    "max": 59.76
+  },
+  "dbh_cm_est": {
+    "mean": 19.8144294572862,
+    "p50": 14.978893822902124,
+    "max": 88.70799434091639
+  },
+  "method": "FUSION Catalog, GridSurfaceCreate, CanopyModel, CanopyMaxima",
+  "calibration": "KC 2013 LAS calibration; threshold 3 m; default variable window",
+  "caveats": [
+    "Valid FUSION LIDARBIN, not corrupted LAS; converted/processed with FUSION.",
+    "Filtered to 2-60 m height to remove bare-earth/tile-edge artifacts.",
+    "2009 canopy inventory, not a CFI.",
+    "Species unknown; DBH is height allometry.",
+    "Canopy maxima can split crowns."
+  ]
+}

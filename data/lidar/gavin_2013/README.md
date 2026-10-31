@@ -18,3 +18,9 @@ Result:
 This is a partial canopy inventory, not a CFI. The southern Gavin coverage is
 the only standard-LAS Gavin coverage in the OneDrive payload; there are no 2019
 or 2024 Gavin tiles.
+
+## Superseded for full-block coverage
+
+The 2009 FUSION LIDARBIN covers the full Gavin block and has been processed at
+`data/lidar/gavin_2009/`. This 2013 partial inventory remains as an independent
+sensor/vintage check for the southern overlap.
