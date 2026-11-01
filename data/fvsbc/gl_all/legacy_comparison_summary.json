@@ -1,0 +1,8 @@
+{
+  "rows": 79,
+  "finite_initial": 69,
+  "finite_future": 79,
+  "median_initial_difference_pct": 18.12294786400042,
+  "median_future_difference_pct": 69.11661842115035,
+  "caveat": "The legacy curve is an 80-year clearcut rotation; the FVS runs are partial-harvest states. This is a screening comparison, not a parity test."
+}

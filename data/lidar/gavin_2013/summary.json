@@ -1,0 +1,30 @@
+{
+  "tiles_processed": 11,
+  "fragments": 2907,
+  "area_ha": 339.10572742211366,
+  "trees": 166188,
+  "tph": 490.0772430573893,
+  "height_m": {
+    "mean": 21.12619334729343,
+    "p50": 20.870000000000005,
+    "p95": 36.870000000000005,
+    "max": 56.57000000000005
+  },
+  "dbh_cm_est": {
+    "mean": 28.53857774580786,
+    "p50": 27.87230370110805,
+    "max": 83.51121557231073
+  },
+  "calibration": {
+    "window": 3,
+    "minimum_height_m": 3.0,
+    "nms_radius_m": 1.5,
+    "source": "KC 2013 LAS calibration against Marshal tree maps, mean F1 0.656"
+  },
+  "caveats": [
+    "Only the 2013 LAS tiles that intersect southern Gavin Lake are covered.",
+    "The inventory is partial: about 448 ha of the 5,664 ha block.",
+    "Species and understory are unknown; DBH is height allometry.",
+    "Canopy maxima can split crowns; this is not a CFI."
+  ]
+}

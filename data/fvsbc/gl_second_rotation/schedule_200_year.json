@@ -1,0 +1,11 @@
+{
+  "blocks": 308,
+  "periods": 20,
+  "mean_m3_per_decade": 112709.19862287267,
+  "target_m3_per_decade": 150000.0,
+  "min_m3_per_decade": 0.0,
+  "max_m3_per_decade": 157499.89491731595,
+  "first_rotation_total_m3": 1391430.1476752367,
+  "second_rotation_total_m3": 862753.8247822173,
+  "caveat": "Greedy 200-year assignment, not an optimizer. The second rotation is the planted FVS curve at age 80; no natural ingress or fire."
+}

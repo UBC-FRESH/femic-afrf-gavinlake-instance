@@ -1,0 +1,28 @@
+{
+  "schema_version": "fhops.tree.inventory.v1",
+  "inventory_id": "GL_0323-lidar-canopy",
+  "generated_utc": "2026-10-31T23:10:45Z",
+  "source_id": "lidar-canopy-inventory",
+  "producer": "FEMIC/WS4 LiDAR pipeline",
+  "method": "1 m CHM local maxima; DBH height allometry; species unknown; canopy-only inventory",
+  "crs": "EPSG:3005",
+  "units": {
+    "x_y": "m",
+    "elevation": "m",
+    "dbh": "cm",
+    "height": "m",
+    "crown_radius": "m"
+  },
+  "review_status": "not_reviewed",
+  "reviewed_by": null,
+  "block_ids": [
+    "GL_0323"
+  ],
+  "caveats": [
+    "Canopy tree inventory, not a CFI.",
+    "Species is UNK and DBH is height allometry.",
+    "Crown maxima can split crowns."
+  ],
+  "tree_count": 413,
+  "inventory_sha256": "c268084d1d09bc1de2c3196a68a80ff0165bd374e36e0f3f160b4a3067ec68ef"
+}

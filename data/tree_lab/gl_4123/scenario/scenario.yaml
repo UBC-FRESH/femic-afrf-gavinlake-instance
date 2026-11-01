@@ -1,0 +1,31 @@
+name: "AFRF Gavin Lake - GL_4123 2009 LiDAR tree inventory"
+num_days: 7
+start_date: '2026-01-01'
+data:
+  blocks: data/blocks.csv
+  machines: data/machines.csv
+  landings: data/landings.csv
+  calendar: data/calendar.csv
+  prod_rates: data/prod_rates.csv
+  harvest_systems: data/harvest_systems.yaml
+geo:
+  crs: EPSG:3005
+  notes: Gavin Lake GL_4123 fragment; full 2009 FUSION LIDARBIN canopy inventory.
+tree_inventory:
+  inventory_id: GL_4123-lidar-canopy
+  inventory_sha256: c866dd12b8b6d9a89aa52488e5a679c19099e9cdcf6242bd01b73312fecf4689
+  metadata_sha256: 6aee18b9d207d5b1fb8708bce6773bd81f8b8455c4569f8901fca70a3fedc72b
+  inventory_path: ../tree_inventory/inventory.csv
+  metadata_path: ../tree_inventory/inventory.meta.json
+  crs: EPSG:3005
+  review_status: not_reviewed
+  source_id: lidar-canopy-inventory
+  producer: FEMIC/WS4 LiDAR pipeline
+  method: 1 m CHM local maxima; DBH height allometry; species unknown; canopy-only inventory
+  tree_count: 400
+  block_ids:
+  - GL_4123
+  caveats:
+  - Canopy tree inventory, not a CFI.
+  - Species is UNK and DBH is height allometry.
+  - Crown maxima can split crowns.

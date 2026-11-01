@@ -1,0 +1,8 @@
+species_code,common_name,interior_market_group,basis
+FDI,Douglas-fir,Df-Larch,leading species; direct
+PLI,Lodgepole pine,SPF,pine component of spruce-pine-fir
+SX,Spruce,SPF,spruce component of spruce-pine-fir
+BL,Subalpine fir,Hem-Bal,balsam fir component; confirm market treatment
+CW,Western redcedar,Cedar,direct cedar group
+AT,Trembling aspen,Deciduous,deciduous group
+OTHER,Other species,Other,explicit residual

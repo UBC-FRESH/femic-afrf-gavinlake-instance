@@ -14,11 +14,12 @@ after its parent issue exists and the maintainer approves it.
 | --- | --- | --- | --- |
 | P0 Bootstrap and structural parity | #1 | `feature/p0-bootstrap` | complete |
 | P1 Scenario translation and baseline benchmark | #7 | `feature/p1-scenario-baseline` | complete |
-| P2 ws4 runtime packaging | TBD | `feature/p2-runtime-packaging` | planned |
+| P2 ws4 runtime packaging | #16 | `feature/p2-runtime-packaging` | active |
 | P3 Verification and QA | TBD | `feature/p3-verification` | planned |
 | P4 Scenario analysis and optimization | TBD | `feature/p4-scenarios` | planned |
 | P5 Release v0.1 | TBD | `feature/p5-release` | planned |
 | P6 Maintain and merge readiness | TBD | `feature/p6-maintain` | planned |
+| P7 Roads, log sorts, and mills | #24 | `feature/p7-roads-logs-mills` | active |
 
 ## Lifecycle Map
 
@@ -134,17 +135,17 @@ Acceptance criteria:
 
 ## Phase 2: ws4 runtime packaging
 
-Parent issue: TBD
+Parent issue: #16
 Branch: `feature/p2-runtime-packaging`
-Status: planned
+Status: active
 
 Goal: make the Gavin Lake model runnable as a packaged ws4 instance rather than
 a collection of ad hoc commands.
 
-- [ ] P2.1 Add a stable ws4 dataset build entrypoint
-- [ ] P2.2 Add baseline and optimize entrypoints
-- [ ] P2.3 Add a report or web surface for the instance evidence
-- [ ] P2.4 Document the runtime package boundary
+- [ ] P2.1 Add a stable ws4 dataset build entrypoint (#17)
+- [ ] P2.2 Add baseline and optimize entrypoints (#18)
+- [ ] P2.3 Add a report or web surface for the instance evidence (#19)
+- [ ] P2.4 Document the runtime package boundary (#20)
 
 Acceptance criteria:
 
@@ -225,6 +226,38 @@ Acceptance criteria:
 - The merge contract is specific enough to implement without re-reading this
   roadmap.
 - The sibling Knife Creek instance can consume the contract.
+
+## Phase 7: Roads, log sorts, and mills
+
+Parent issue: #24
+Branch: `feature/p7-roads-logs-mills`
+Status: active
+
+Goal: add a delivered-wood layer to the Gavin Lake model: modelled access,
+route cost, mills, log sorts, and harvest-system constraints. The plan is
+`planning/p7-roads-logs-mills.md`. This phase does not set AAC, tune even-flow,
+or claim legal access or legal compliance.
+
+- [x] P7.1 Audit and extract the 2007 plan, legacy archive, and OneDrive payload
+- [ ] P7.2 Build the road network and block access topology
+- [ ] P7.3 Build the mill register, destinations, and eligibility
+- [ ] P7.4 Build the interior log-sort and price basis
+- [ ] P7.5 Build harvest-system classes and operational constraints
+- [ ] P7.6 Integrate the delivered-wood layer into the Gavin Lake baseline
+- [ ] P7.7 Validate, record uncertainty, and publish the methods
+
+Acceptance criteria:
+
+- Every road, mill, price, and harvest-system input has a source or an explicit
+  gap.
+- The Gavin Lake dataset has a road network and route configuration.
+- The route accounts produce haul, build, maintenance, and used-road evidence
+  with no silently unrouted products.
+- The log-grade family reconciles to harvested volume and the price basis is
+  interior and dated.
+- The Table 37 road-length and area reconciliation is recorded.
+- No result is presented as a statutory AAC, a legal access determination, or a
+  legal-compliance finding.
 
 ## Detailed Next Steps Notes
 

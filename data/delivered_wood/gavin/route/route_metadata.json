@@ -1,0 +1,85 @@
+{
+  "purpose": "screening delivered-wood route network for Gavin Lake",
+  "blocks": 2907,
+  "public_road_segments": 193,
+  "component_count_before_connectors": 178,
+  "synthetic_component_connectors": 177,
+  "mills": [
+    {
+      "destination": "destination.MILL_107_LBR",
+      "company": "Tolko Industries Ltd.",
+      "locality": "Williams Lake",
+      "product_code": "LBR",
+      "capacity_value": 165.6,
+      "capacity_unit": "million_board_feet_lumber",
+      "status": "Op",
+      "gavin_lake_km": 45.39,
+      "synthetic_route_km": 56.73124753540407
+    },
+    {
+      "destination": "destination.MILL_114_LBR",
+      "company": "West Fraser Mills Ltd.",
+      "locality": "Williams Lake",
+      "product_code": "LBR",
+      "capacity_value": 172.8,
+      "capacity_unit": "million_board_feet_lumber",
+      "status": "Op",
+      "gavin_lake_km": 45.54,
+      "synthetic_route_km": 56.92842689546182
+    },
+    {
+      "destination": "destination.MILL_103_LBR",
+      "company": "Tolko Industries Ltd.",
+      "locality": "Williams Lake",
+      "product_code": "LBR",
+      "capacity_value": 363.84,
+      "capacity_unit": "million_board_feet_lumber",
+      "status": "Op",
+      "gavin_lake_km": 47.12,
+      "synthetic_route_km": 58.90407689460457
+    },
+    {
+      "destination": "destination.MILL_113_LBR",
+      "company": "West Fraser Mills Ltd.",
+      "locality": "Quesnel",
+      "product_code": "LBR",
+      "capacity_value": 462.72,
+      "capacity_unit": "million_board_feet_lumber",
+      "status": "Op",
+      "gavin_lake_km": 78.76,
+      "synthetic_route_km": 98.44333859201677
+    },
+    {
+      "destination": "destination.MILL_95_LBR",
+      "company": "West Fraser Mills Ltd.",
+      "locality": "100 Mile House",
+      "product_code": "LBR",
+      "capacity_value": 172.32,
+      "capacity_unit": "million_board_feet_lumber",
+      "status": "Op",
+      "gavin_lake_km": 94.36,
+      "synthetic_route_km": 117.94782477393133
+    }
+  ],
+  "rates": {
+    "haul_cad_per_m3_m": 0.00016,
+    "build_cad_per_m": 0.0,
+    "maintain_cad_per_m_year": 2.0,
+    "mill_road_factor": 1.25,
+    "basis": "TSA23 C5 route fixture medians; screening proxy, not AFRF contract rates"
+  },
+  "access_distance_m": {
+    "min": 5.037114481327097,
+    "median": 343.83830899631465,
+    "p90": 857.350689567208,
+    "max": 2214.572291917776
+  },
+  "caveats": [
+    "Public tenure-road layer is incomplete: 19.3 km against 112.2 km in MWP #3 Table 37.",
+    "Disconnected public-road components are joined by straight synthetic connectors.",
+    "Block access is a straight line to the nearest public-road vertex.",
+    "Mill haul is a straight-line distance times 1.25, not a routed highway path.",
+    "Rates are TSA23 proxies, not AFRF contract rates.",
+    "This is a screening layer, not a legal access or operational model."
+  ]
+}

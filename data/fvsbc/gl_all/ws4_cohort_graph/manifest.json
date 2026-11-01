@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1",
+  "tables": {
+    "fragments": "fragments.parquet",
+    "blocks": "blocks.parquet",
+    "tracks": "tracks.parquet",
+    "strata": "strata.parquet",
+    "treatments": "treatments.parquet",
+    "curves": "curves.parquet",
+    "features": "features.parquet",
+    "products": "products.parquet",
+    "protoaccounts": "protoaccounts.parquet",
+    "accounts": "accounts.parquet",
+    "groups": "groups.parquet",
+    "messages": "messages.parquet"
+  },
+  "sources": [
+    {
+      "path": "curves.csv",
+      "sha256": "6c172ebc87b14a3a9fec66c7bae0aabb29228e4602977f463fc28205532ad2ec"
+    },
+    {
+      "path": "cut_list.parquet",
+      "sha256": "67184dfe3f5922ffd5b1a31d867add3438c1ff4727a384a431ff985dd1477c62"
+    }
+  ],
+  "options": {
+    "period_length": 1,
+    "ingest": "fvsbc-entry-age-cohort-graph",
+    "bin_width": 10,
+    "entry_offsets": [
+      0,
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70,
+      80,
+      90,
+      100,
+      110,
+      120,
+      130,
+      140,
+      150,
+      160,
+      170,
+      180
+    ],
+    "entry": "one"
+  },
+  "metadata": {
+    "scope": "Gavin Lake productive fragments",
+    "caveats": [
+      "One treatment entry per fragment, at a chosen 20-year offset.",
+      "FVS curves shifted from the AU entry age to the bin age and offset.",
+      "Clearcut enters a planted bare-ground regeneration curve; no natural ingress or fire."
+    ]
+  }
+}

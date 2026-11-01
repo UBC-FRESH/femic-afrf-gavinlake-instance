@@ -1,0 +1,36 @@
+{
+  "generated_utc": "2026-11-01T01:46:40.402593+00:00",
+  "source_tree_inventory": "data/lidar/gavin_2009/trees_filtered.gpkg",
+  "source_vri": "data/inventory/gavin_vri_2025_start.gpkg",
+  "aus": [
+    2,
+    302,
+    352,
+    312,
+    802,
+    502
+  ],
+  "treatments": [
+    "untreated",
+    "ct60",
+    "fuel50",
+    "selection80",
+    "shelterwood40",
+    "vr20"
+  ],
+  "runs": 36,
+  "curves": 396,
+  "tree_rows": 211505,
+  "cut_rows": 12022,
+  "warnings": 36,
+  "psp_density_correction": true,
+  "caveats": [
+    "2009 canopy inventory, not a CFI; species are assigned from VRI shares.",
+    "DBH is height allometry; crown ratio is a fixed class 5.",
+    "FVS-BC site index is a screening value, not a surveyed site index.",
+    "FVS-BC basal-area thinning targets are metric m2/ha in this build.",
+    "Tree counts are scaled to the Williams Lake PSP BEC/age BA analog; the LiDAR list supplies piece size.",
+    "No regeneration, ingress, or planting is modelled in these runs.",
+    "The six AUs are a pilot, not the full 80-AU estate."
+  ]
+}
