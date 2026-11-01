@@ -258,3 +258,11 @@ status and the GitHub issue comments.
   The 184,796 m3 first-rotation schedule is therefore a 100-year liquidation,
   not a sustained AAC. The second-rotation periods decline from 153,797 m3 to
   80,804 m3 over periods 80-170.
+
+- Built the 200-year first-plus-second-rotation schedule
+  (`runbooks/build_gl_second_rotation_schedule.py`,
+  `data/fvsbc/gl_second_rotation/`). The greedy schedule has a mean of 171,855
+  m3/decade but is not even: about 248,600 m3/decade in the first eight periods
+  and periods 80-90, then declining to zero by 180-190. The 185,000 m3 target is
+  not sustained on this land base with a planted second rotation and entry
+  offsets through 90 years.

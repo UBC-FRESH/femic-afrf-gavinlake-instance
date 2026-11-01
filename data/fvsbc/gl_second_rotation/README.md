@@ -62,3 +62,24 @@ To sustain 185,000 m3/decade, the model needs one or more of:
 - `second_rotation.csv`
 - `second_rotation_by_period.csv`
 - `summary.json`
+
+## 200-year schedule test
+
+`schedule_200_year.csv` assigns every block a first clearcut and a second
+clearcut 80 years later. The greedy balance is **not flat**:
+
+- mean: **171,855 m3/decade**
+- first eight periods: about **248,600 m3/decade**
+- periods 80-90: about **248,600 m3/decade** (first and second cuts overlap)
+- periods 100-150: **185,212 to 122,510 m3/decade**
+- periods 160-190: **34,286 to 0 m3/decade**
+
+The 185,000 m3 target is therefore not sustained even with all blocks and a
+planted second rotation. The 200-year schedule also runs out of entries after
+170 years because the cohort graph only carries first-entry offsets through 90
+years.
+
+The model supports a **mean** of about 171,855 m3/decade over 20 periods, but
+not an even flow at that level. A defensible even-flow AAC on this land base is
+lower, or the entry window must be extended and the land base/intensity
+increased.
