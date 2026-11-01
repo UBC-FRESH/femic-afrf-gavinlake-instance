@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "tables": {
+    "fragments": "fragments.parquet",
+    "blocks": "blocks.parquet",
+    "tracks": "tracks.parquet",
+    "strata": "strata.parquet",
+    "treatments": "treatments.parquet",
+    "curves": "curves.parquet",
+    "features": "features.parquet",
+    "products": "products.parquet",
+    "protoaccounts": "protoaccounts.parquet",
+    "accounts": "accounts.parquet",
+    "groups": "groups.parquet",
+    "messages": "messages.parquet"
+  },
+  "sources": [
+    {
+      "path": "curves.csv",
+      "sha256": "6c172ebc87b14a3a9fec66c7bae0aabb29228e4602977f463fc28205532ad2ec"
+    },
+    {
+      "path": "runs.csv",
+      "sha256": "dee7a15adc1a5cb1686fb3fa9a263f39ab60c6680c7cdb6cc9dfd80d40afbdbe"
+    },
+    {
+      "path": "gavin_vri_2025_start.gpkg",
+      "sha256": "e31b2432f319db91afb9aff2b474a6143e9c2f91c3d0ad68a8a51b44d6c5047e"
+    }
+  ],
+  "options": {
+    "period_length": 1,
+    "ingest": "fvsbc-age-binned-spatial-graph",
+    "bin_width": 10,
+    "entry": "two"
+  },
+  "metadata": {
+    "scope": "Gavin Lake productive fragments",
+    "caveats": [
+      "Fragments are assigned to 10-year age bins inside each AU.",
+      "FVS curves are shifted from the AU entry age to the bin age.",
+      "Two entries only; no regeneration, fire, or climate extension."
+    ]
+  }
+}

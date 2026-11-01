@@ -211,3 +211,12 @@ status and the GitHub issue comments.
   has 15,889 curves and 2,133 product rows. The 100-year CT60-twice run ends at
   1,352,213 m3 and produces 466,183 m3 in the first entry plus 463,830 m3 in the
   second entry (930,013 m3 total).
+
+- Built the age-binned spatial ws4 graph
+  (`runbooks/build_gl_ws4_spatial_graph.py`,
+  `data/fvsbc/gl_all/ws4_spatial_graph/`). It carries 1,505 productive
+  fragments (1,402 AU-9999 fragments excluded), 3,016 tracks, 2,639 treatment
+  edges, 75,677 curves, and 7,917 products. Each fragment is assigned to an AU
+  and 10-year age-bin untreated track; treatment edges use the bin age. A
+  100-year baseline ends at 3,112,737 m3; CT60 twice ends at 1,352,213 m3 and
+  harvests 930,013 m3. The graph is validated.

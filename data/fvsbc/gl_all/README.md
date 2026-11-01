@@ -99,6 +99,15 @@ This is a single-entry v0: AU-scale fragments, one treatment offset per AU, and
 the FVS post-treatment cycle shifted back to the entry age. It is a valid
 state graph and a runnable baseline, not a multi-entry selection matrix.
 
+## Spatial graph
+
+`ws4_spatial_graph/` is the age-binned spatial version:
+
+- 1,505 productive fragments (1,402 AU-9999 fragments excluded);
+- 3,016 tracks, 2,639 treatment edges, 75,677 curves;
+- `ws4 validate` accepted;
+- baseline 3,112,737 m3; CT60 twice 1,352,213 m3; harvest 930,013 m3.
+
 ## Limits
 
 - The PSP analog is a regional BA/density correction, not a measured Gavin tree
