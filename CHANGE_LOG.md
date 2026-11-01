@@ -220,3 +220,13 @@ status and the GitHub issue comments.
   and 10-year age-bin untreated track; treatment edges use the bin age. A
   100-year baseline ends at 3,112,737 m3; CT60 twice ends at 1,352,213 m3 and
   harvests 930,013 m3. The graph is validated.
+
+- Built the entry-age cohort graph
+  (`runbooks/build_gl_ws4_cohort_graph.py`,
+  `data/fvsbc/gl_all/ws4_cohort_graph/`): 1,505 productive fragments, 19,227
+  tracks, 18,850 treatment edges, 493,624 curves, 56,550 products, and ten entry
+  offsets (0-90 years) for five treatments. Added
+  `runbooks/build_gl_evenflow_schedule.py`; the greedy one-CT60-per-block
+  schedule produces 46,618 m3 in each ten-year period, essentially flat, and a
+  final standing volume of 1,815,758 m3. This is a thinning flow, not a
+  final-harvest AAC; the legacy LTSY target is 185,000 m3 per period.

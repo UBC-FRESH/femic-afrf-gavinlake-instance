@@ -1,0 +1,37 @@
+{
+  "schema": "fvsbc-entry-age-cohort-graph.v1",
+  "dataset": "data/fvsbc/gl_all/ws4_cohort_graph",
+  "fragments": 1505,
+  "tracks": 19227,
+  "curves": 493624,
+  "treatments": 18850,
+  "products": 56550,
+  "area_ha": 4663.009967304239,
+  "entry_offsets": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90
+  ],
+  "validated": true,
+  "evenflow_period_volume_m3": {
+    "0": 46618.09264837817,
+    "10": 46618.18271224475,
+    "20": 46617.7284373051,
+    "30": 46618.18898576877,
+    "40": 46618.99869151612,
+    "50": 46618.20043349911,
+    "60": 46618.82078513159,
+    "70": 46618.01823151424,
+    "80": 46618.54498192353,
+    "90": 46617.83362266998
+  },
+  "final_feature_volume_2099_m3": 1815757.706783576,
+  "caveat": "One CT60 thinning entry per block; this is a thinning even-flow, not a final-harvest AAC. No regeneration."
+}

@@ -108,6 +108,17 @@ state graph and a runnable baseline, not a multi-entry selection matrix.
 - `ws4 validate` accepted;
 - baseline 3,112,737 m3; CT60 twice 1,352,213 m3; harvest 930,013 m3.
 
+## Cohort graph
+
+`ws4_cohort_graph/` adds ten-year entry cohorts:
+
+- 19,227 tracks, 18,850 treatment edges, 493,624 curves;
+- a greedy one-thinning even-flow schedule;
+- ten-period harvest of 46,618 m3, essentially flat;
+- final standing volume 1,815,758 m3.
+
+This is a thinning flow, not a final-harvest AAC.
+
 ## Limits
 
 - The PSP analog is a regional BA/density correction, not a measured Gavin tree

@@ -1,0 +1,17 @@
+{
+  "rows": 1478,
+  "period_years": 10,
+  "estimated_period_volume_m3": {
+    "0": 46618.1,
+    "10": 46618.2,
+    "20": 46617.7,
+    "30": 46618.2,
+    "40": 46619.0,
+    "50": 46618.2,
+    "60": 46618.8,
+    "70": 46618.0,
+    "80": 46618.5,
+    "90": 46617.8
+  },
+  "caveat": "Greedy assignment of one CT60 entry per block; estimated from cut curves, not an optimizer solution."
+}
