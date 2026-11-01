@@ -120,6 +120,13 @@ state graph and a runnable baseline, not a multi-entry selection matrix.
 
 The 184,796 m3 schedule is a 100-year liquidation, not a perpetual AAC.
 
+## Second rotation
+
+`data/fvsbc/gl_second_rotation/` tests the 184,796 m3 schedule against a planted
+second rotation at age 80. The second rotation supports about **113,388
+m3/decade**, not 185,000. The 185,000 figure is therefore a first-rotation
+liquidation, not a sustained AAC.
+
 ## Limits
 
 - The PSP analog is a regional BA/density correction, not a measured Gavin tree

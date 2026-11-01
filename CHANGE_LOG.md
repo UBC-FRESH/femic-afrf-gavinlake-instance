@@ -250,3 +250,11 @@ status and the GitHub issue comments.
   volume rises from zero to 1,156,523 m3 because harvested blocks regrow. This
   is planted second-rotation growth, not natural regeneration or a second
   harvest.
+
+- Added the second-rotation test
+  (`runbooks/build_gl_second_rotation_test.py`,
+  `data/fvsbc/gl_second_rotation/`). Applying the planted FVS curve at age 80
+  to the 618 first-rotation blocks supports **113,388 m3/decade**, not 185,000.
+  The 184,796 m3 first-rotation schedule is therefore a 100-year liquidation,
+  not a sustained AAC. The second-rotation periods decline from 153,797 m3 to
+  80,804 m3 over periods 80-170.

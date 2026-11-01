@@ -1,0 +1,10 @@
+{
+  "blocks": 618,
+  "area_ha": 4000.0311831603617,
+  "second_rotation_total_m3": 1133876.7999241585,
+  "second_rotation_mean_per_decade_m3": 113387.67999241585,
+  "first_rotation_target_m3_per_decade": 185000.0,
+  "first_rotation_actual_m3_per_decade": 184796.0790326916,
+  "second_rotation_holds_target": false,
+  "caveat": "Second rotation is the planted FVS curve at age 80, applied only to blocks harvested in the first rotation. It is not a scheduled second harvest or a natural-regeneration projection."
+}
