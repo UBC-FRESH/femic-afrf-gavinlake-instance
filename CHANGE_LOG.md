@@ -167,3 +167,15 @@ status and the GitHub issue comments.
   basal-area targets in m2/ha, and a cycle-number target schedules at the first
   year of that cycle. The pilot is not calibrated, has no regeneration model,
   and is not a full-estate state library.
+
+- Expanded the FVS-BC creative-silviculture library to all 79 productive
+  Gavin Lake AUs (`data/fvsbc/gl_all/`). The run has 474 cases (79 x 6
+  treatments), 5,214 curve rows, and 2.51 million per-tree trajectory rows.
+  The LiDAR piece-size list is scaled to a Williams Lake PSP BEC/age BA analog
+  for every AU (mean target 45.5 m2/ha, mean initial 45.6 m2/ha). Added
+  `runbooks/build_gl_fvsbc_legacy_comparison.py`. The median difference from
+  the legacy yield curve is +18.1% at current age and +69.1% at current age
+  +100; the latter compares an untreated 100-year FVS projection with an
+  80-year clearcut rotation, so it is a screening comparison, not parity. The
+  next step is ingesting these curves and transitions into the ws4 matrix
+  contract; this folder is the source evidence, not the matrix.

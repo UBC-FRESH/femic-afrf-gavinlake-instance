@@ -2,9 +2,9 @@
 """Build the six-AU Gavin Lake FVS-BC creative-silviculture pilot.
 
 The pilot links the 2025 VRI species/age layer to the full 2009 Gavin Lake
-canopy inventory, builds a species-resolved tree list for six analysis units
-(AUs), and runs FVS-BC for an untreated baseline and five partial-harvest
-prescriptions.
+canopy inventory and can build a species-resolved tree list for the six-AU
+pilot or for every productive AU. It runs FVS-BC for an untreated baseline
+and five partial-harvest prescriptions.
 
 The FVS-BC keyword targets are metric: the BC variant reads ``THINBBA`` and
 ``THINABA`` basal-area targets in m2/ha, not the imperial units in the US FVS
@@ -14,11 +14,13 @@ the targets here are fractions of the sampled initial basal area.
 Usage::
 
     python runbooks/build_gl_fvsbc_pilot.py
+    python runbooks/build_gl_fvsbc_pilot.py --all-aus
 """
 
 from __future__ import annotations
 
 import argparse
+import concurrent.futures
 import json
 import math
 import shutil
@@ -142,6 +144,30 @@ def _au_table(
         row.update({f"share_{key}": value for key, value in species.items()})
         rows.append(row)
     return pd.DataFrame(rows).sort_values("au").reset_index(drop=True)
+
+
+def _tree_au(
+    trees: gpd.GeoDataFrame,
+    vri: gpd.GeoDataFrame,
+    blocks: pd.DataFrame,
+    tracks: pd.DataFrame,
+) -> gpd.GeoDataFrame:
+    """Join the 2009 tree points to VRI blocks once and label each tree with its AU."""
+    parsed = tracks.copy()
+    parsed["au"] = parsed["name"].str.extract(r"au\((\d+)\)")[0].astype(float)
+    block_au = (
+        blocks.merge(parsed[["track_id", "au"]], on="track_id", how="left")
+        .dropna(subset=["au"])
+        .set_index("block_id")["au"]
+    )
+    joined = gpd.sjoin(
+        trees,
+        vri[["RES_KEY", "geometry"]],
+        how="inner",
+        predicate="within",
+    )
+    joined["au"] = joined["RES_KEY"].map(block_au)
+    return joined.dropna(subset=["au"])
 
 
 def _sample_rows(frame: pd.DataFrame, count: int) -> pd.DataFrame:
@@ -298,8 +324,21 @@ def _psp_target(
     """Return mean BA, mean age, and plot count for a BEC/age analog."""
     if plots.empty:
         return (float("nan"), float("nan"), 0)
+    candidates = list(dict.fromkeys([bec, bec.split("/")[0]]))
+    for candidate in candidates:
+        for width in (window, window * 2, window * 3):
+            selected = plots[
+                (plots["BEC"] == candidate) & plots["age_bh"].between(age - width, age + width)
+            ]
+            if len(selected) >= 3:
+                return (
+                    float(selected["ba_m2_ha"].mean()),
+                    float(selected["age_bh"].mean()),
+                    len(selected),
+                )
+    # Mixed or unsupported BEC: fall back to the same TSA and age window.
     for width in (window, window * 2, window * 3):
-        selected = plots[(plots["BEC"] == bec) & plots["age_bh"].between(age - width, age + width)]
+        selected = plots[plots["age_bh"].between(age - width, age + width)]
         if len(selected) >= 3:
             return (
                 float(selected["ba_m2_ha"].mean()),
@@ -441,36 +480,25 @@ def _run_one(
 def _tree_rows_for_au(
     *,
     au: int,
-    blocks: pd.DataFrame,
-    tracks: pd.DataFrame,
-    trees: gpd.GeoDataFrame,
-    vri: gpd.GeoDataFrame,
+    tree_au: gpd.GeoDataFrame,
+    au_row: pd.Series,
     seed: int,
 ) -> tuple[pd.DataFrame, dict[str, float], str, float]:
     """Return the sampled tree frame and species/age parameters for one AU."""
-    parsed = tracks.copy()
-    parsed["au"] = parsed["name"].str.extract(r"au\((\d+)\)")[0].astype(float)
-    merged = blocks.merge(parsed[["track_id", "au"]], on="track_id", how="left")
-    selected = merged[merged["au"] == au]
-    if selected.empty:
-        raise ValueError(f"AU {au} has no blocks")
-    block_ids = selected["block_id"].to_numpy()
-    polygons = vri[vri["RES_KEY"].isin(block_ids)][["RES_KEY", "geometry"]]
-    joined = gpd.sjoin(trees, polygons, how="inner", predicate="within")
+    joined = tree_au[tree_au["au"] == au]
     if joined.empty:
         raise ValueError(f"AU {au} has no 2009 trees")
-    area_ha = float(selected["area_ha"].sum())
+    area_ha = float(au_row["area_ha"])
     target_tph = _target_tph(joined, area_ha)
     sample_size, expansion = _density_plan(target_tph)
     sample = _sample_rows(joined, sample_size)
-    species_shares = _au_table(vri, blocks, tracks).set_index("au").loc[au]
     shares = {
-        column.removeprefix("share_"): float(species_shares[column])
-        for column in species_shares.index
+        column.removeprefix("share_"): float(au_row[column])
+        for column in au_row.index
         if str(column).startswith("share_")
     }
     species = _assign_species(shares, len(sample), seed=seed + au)
-    age = float(species_shares["age_2025"])
+    age = float(au_row["age_2025"])
     site_species = _site_species(shares)
     site_index = SITE_INDEX.get(site_species, 90.0)
     records = _tree_records(sample, species, expansion=expansion, age=age)
@@ -508,13 +536,14 @@ def main() -> None:
         type=Path,
         default=Path("../../inv01-data/psp"),
     )
+    parser.add_argument("--all-aus", action="store_true")
     parser.add_argument("--aus", default=",".join(str(au) for au in PILOT_AUS))
     parser.add_argument(
         "--treatments",
         default=",".join(TREATMENTS),
     )
+    parser.add_argument("--workers", type=int, default=4)
     args = parser.parse_args()
-    aus = tuple(int(value) for value in args.aus.split(",") if value.strip())
     treatments = tuple(value.strip() for value in args.treatments.split(",") if value.strip())
 
     vri = gpd.read_file("data/inventory/gavin_vri_2025_start.gpkg")
@@ -522,6 +551,16 @@ def main() -> None:
     blocks = pd.read_parquet("ws4/runtime/legacy_matrix/blocks.parquet")
     tracks = pd.read_parquet("ws4/runtime/legacy_matrix/tracks.parquet")
     au_table = _au_table(vri, blocks, tracks)
+    au_index = au_table.set_index("au")
+    if args.all_aus:
+        aus = tuple(
+            int(value)
+            for value in au_index.index
+            if int(value) != 9999 and float(au_index.loc[value, "area_ha"]) > 0.0
+        )
+    else:
+        aus = tuple(int(value) for value in args.aus.split(",") if value.strip())
+    tree_au = _tree_au(trees, vri, blocks, tracks)
     psp_plots = _psp_plots(args.psp_dir) if args.psp_dir.exists() else pd.DataFrame()
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
@@ -533,17 +572,22 @@ def main() -> None:
     all_trees: list[pd.DataFrame] = []
     all_cuts: list[pd.DataFrame] = []
     all_runs: list[dict[str, object]] = []
+    skipped: list[dict[str, object]] = []
     for au in aus:
-        sample, parameters, site_species, age = _tree_rows_for_au(
-            au=au,
-            blocks=blocks,
-            tracks=tracks,
-            trees=trees,
-            vri=vri,
-            seed=20261101,
-        )
+        try:
+            au_row = au_index.loc[au]
+            sample, parameters, site_species, age = _tree_rows_for_au(
+                au=au,
+                tree_au=tree_au,
+                au_row=au_row,
+                seed=20261101,
+            )
+        except (KeyError, ValueError) as exc:
+            print(f"skip AU {au}: {exc}", flush=True)
+            skipped.append({"au": au, "reason": str(exc)})
+            continue
         sample.to_csv(tree_lists_dir / f"au_{au:04d}_sample.csv", index=False)
-        shares = au_table.set_index("au").loc[au]
+        shares = au_row
         records_species = _assign_species(
             {
                 column.removeprefix("share_"): float(shares[column])
@@ -571,54 +615,67 @@ def main() -> None:
             age=age,
         )
         initial_ba = _initial_ba(records)
-        for treatment in treatments:
-            residual_fraction = TREATMENTS[treatment]
-            print(f"AU {au} {treatment}", flush=True)
-            summary, tree_list, cuts, metadata = _run_one(
-                au=au,
-                treatment=treatment,
-                residual_fraction=residual_fraction,
-                records=records,
-                initial_ba=initial_ba,
-                site_species=site_species,
-                site_index=float(parameters["site_index"]),
-                run_dir=args.runs_dir / f"au_{au:04d}" / treatment,
-            )
-            for frame, label in ((summary, "summary"), (tree_list, "trees"), (cuts, "cuts")):
-                frame["au"] = au
-                frame["treatment"] = treatment
-                frame["run_id"] = metadata["run_id"]
-                frame["sample_size"] = int(parameters["sample_size"])
-                frame["expansion"] = int(parameters["expansion"])
-                frame["target_tph"] = float(parameters["target_tph"])
-                frame["area_ha"] = float(parameters["area_ha"])
-                frame["site_species"] = site_species
-                frame["site_index"] = float(parameters["site_index"])
-                frame["initial_ba_m2_ha"] = initial_ba
-                if label == "summary":
-                    all_curves.append(frame)
-                elif label == "trees":
-                    all_trees.append(frame)
-                else:
-                    all_cuts.append(frame)
-            metadata.update(
-                {
-                    "area_ha": float(parameters["area_ha"]),
-                    "target_tph": float(parameters["target_tph"]),
-                    "sample_size": int(parameters["sample_size"]),
-                    "expansion": int(parameters["expansion"]),
-                    "initial_ba_m2_ha": initial_ba,
-                    "psp_target_ba_m2_ha": psp_ba,
-                    "psp_plots": psp_n,
-                    "psp_age_bh": psp_age,
-                    "density_scale": density_scale,
-                    "scaled_expansion": scaled_expansion,
-                    "site_species": site_species,
-                    "site_index": float(parameters["site_index"]),
-                    "tree_age": age,
-                }
-            )
-            all_runs.append(metadata)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as executor:
+            futures = {
+                executor.submit(
+                    _run_one,
+                    au=au,
+                    treatment=treatment,
+                    residual_fraction=TREATMENTS[treatment],
+                    records=records,
+                    initial_ba=initial_ba,
+                    site_species=site_species,
+                    site_index=float(parameters["site_index"]),
+                    run_dir=args.runs_dir / f"au_{au:04d}" / treatment,
+                ): treatment
+                for treatment in treatments
+            }
+            for completed, future in enumerate(concurrent.futures.as_completed(futures), start=1):
+                treatment = futures[future]
+                summary, tree_list, cuts, metadata = future.result()
+                print(
+                    f"AU {au} {treatment} ({completed}/{len(futures)})",
+                    flush=True,
+                )
+                for frame, label in (
+                    (summary, "summary"),
+                    (tree_list, "trees"),
+                    (cuts, "cuts"),
+                ):
+                    frame["au"] = au
+                    frame["treatment"] = treatment
+                    frame["run_id"] = metadata["run_id"]
+                    frame["sample_size"] = int(parameters["sample_size"])
+                    frame["expansion"] = int(parameters["expansion"])
+                    frame["target_tph"] = float(parameters["target_tph"])
+                    frame["area_ha"] = float(parameters["area_ha"])
+                    frame["site_species"] = site_species
+                    frame["site_index"] = float(parameters["site_index"])
+                    frame["initial_ba_m2_ha"] = initial_ba
+                    if label == "summary":
+                        all_curves.append(frame)
+                    elif label == "trees":
+                        all_trees.append(frame)
+                    else:
+                        all_cuts.append(frame)
+                metadata.update(
+                    {
+                        "area_ha": float(parameters["area_ha"]),
+                        "target_tph": float(parameters["target_tph"]),
+                        "sample_size": int(parameters["sample_size"]),
+                        "expansion": int(parameters["expansion"]),
+                        "initial_ba_m2_ha": initial_ba,
+                        "psp_target_ba_m2_ha": psp_ba,
+                        "psp_plots": psp_n,
+                        "psp_age_bh": psp_age,
+                        "density_scale": density_scale,
+                        "scaled_expansion": scaled_expansion,
+                        "site_species": site_species,
+                        "site_index": float(parameters["site_index"]),
+                        "tree_age": age,
+                    }
+                )
+                all_runs.append(metadata)
 
     curves = pd.concat(all_curves, ignore_index=True)
     trees_out = pd.concat(all_trees, ignore_index=True)
@@ -641,6 +698,8 @@ def main() -> None:
         "tree_rows": len(trees_out),
         "cut_rows": len(cuts_out),
         "warnings": int(sum(len(value) for value in runs["warnings"] if isinstance(value, list))),
+        "skipped": skipped,
+        "scope": "all" if args.all_aus else "pilot",
         "psp_density_correction": bool(not psp_plots.empty),
         "caveats": [
             "2009 canopy inventory, not a CFI; species are assigned from VRI shares.",
@@ -650,7 +709,11 @@ def main() -> None:
             "Tree counts are scaled to the Williams Lake PSP BEC/age BA analog; "
             "the LiDAR list supplies piece size.",
             "No regeneration, ingress, or planting is modelled in these runs.",
-            "The six AUs are a pilot, not the full 80-AU estate.",
+            (
+                "All productive AUs are included; AU 9999 is excluded."
+                if args.all_aus
+                else "The six AUs are a pilot, not the full 80-AU estate."
+            ),
         ],
     }
     (args.out_dir / "summary.json").write_text(json.dumps(payload, indent=2) + "\n")
