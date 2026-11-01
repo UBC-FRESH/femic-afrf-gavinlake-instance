@@ -1,0 +1,37 @@
+{
+  "distribution_rows": 4363,
+  "transition_rows": 10330,
+  "aus": [
+    2,
+    302,
+    312,
+    352,
+    502,
+    802
+  ],
+  "treatments": [
+    "ct60",
+    "fuel50",
+    "selection80",
+    "shelterwood40",
+    "untreated",
+    "vr20"
+  ],
+  "years": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90
+  ],
+  "fates": {
+    "harvest": 566,
+    "live": 6392,
+    "mortality": 3372
+  }
+}

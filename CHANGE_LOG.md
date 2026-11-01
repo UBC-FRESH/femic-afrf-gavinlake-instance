@@ -155,3 +155,15 @@ status and the GitHub issue comments.
   4.78 h; `tree replay` completed with zero discrepancies. The single processor
   is the system bottleneck at 80.8% utilisation; a second processor cuts the
   makespan from 52.4 to 30.8 h, and a third truck cuts it to 27.0 h.
+
+- Built the six-AU Gavin Lake FVS-BC creative-silviculture pilot
+  (`runbooks/build_gl_fvsbc_pilot.py`, `data/fvsbc/gl_pilot/`). The AUs span
+  ICHmk3/SBSdw1, ages 60-162, and FD/SE/CW/BL/AT. The 2009 LiDAR list supplies
+  piece size; total BA is scaled to the Williams Lake PSP BEC/age analog
+  (32.9-52.1 m2/ha). Ran 36 cases: untreated plus commercial thinning, fuel
+  mitigation, irregular selection, shelterwood, and variable retention. Added
+  `runbooks/build_gl_fvsbc_transitions.py` for the 5 cm DBH distributions and
+  ten-year live/harvest/mortality transitions. FVS-BC reads the BC variant's
+  basal-area targets in m2/ha, and a cycle-number target schedules at the first
+  year of that cycle. The pilot is not calibrated, has no regeneration model,
+  and is not a full-estate state library.
