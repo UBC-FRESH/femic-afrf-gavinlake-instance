@@ -3,11 +3,15 @@
   "dataset": "data/fvsbc/gl_all/ws4_state_graph",
   "tracks": 474,
   "fragments": 79,
-  "curves": 9638,
+  "curves": 11939,
   "treatments": 395,
+  "products": 1659,
   "area_ha": 4663.009784999999,
   "validated": true,
   "baseline_volume_2099_m3": 3100745.0,
   "ct60_volume_2099_m3": 2151172.0,
+  "ct60_harvest_m3": 466182.6,
+  "ct60_sawlog_m3": 443393.4,
+  "ct60_pulp_m3": 22789.2,
   "caveat": "Single-entry v0; AU-scale fragments; treatment curve is the post-treatment FVS cycle shifted to entry age. Not a multi-entry selection model."
 }

@@ -8,7 +8,8 @@ library.
 - 79 AU fragments, one per productive AU, area 4,663.0 ha.
 - 474 tracks: untreated plus five treatments per AU.
 - 395 treatment edges: untreated track to each treatment track at the AU age.
-- 9,638 curve rows.
+- 11,939 curve rows.
+- 1,659 product rows, including total, sawlog, and pulp harvest.
 - `ws4 validate` accepts the dataset.
 - Baseline and CT60 schedules are in `schedules/`.
 
@@ -30,6 +31,12 @@ The committed dataset is the same table set copied from the runtime build.
 | baseline, no entry | 3,100,745 m3 |
 | CT60 on all AUs at year 1 | 2,151,172 m3 |
 
+CT60 also produces:
+
+- harvest total: **466,183 m3**
+- sawlog: **443,393 m3**
+- pulp: **22,789 m3**
+
 The area remains 4,663.0 ha in both runs. The difference is the treatment track,
 not an area change.
 
@@ -40,6 +47,7 @@ not an area change.
 - The ws4 table contract is validated.
 - The state transitions move a fragment from the untreated track to the
   treatment track.
+- Harvest volume is `MCuM x TPH` from the FVS cut list; sawlog is DBH >= 20 cm.
 
 ## What is a v0 approximation
 
@@ -49,8 +57,8 @@ not an area change.
   does not carry the 2,907 original spatial fragments.
 - **Treatment curve shift.** The FVS post-treatment state is first observed in
   cycle 2 (year 10). The graph shifts that state back to the entry age.
-- **No harvest products.** The graph carries yield and area features; it does
-  not yet compile cut volume, sort, or delivered-wood products.
+- **Simple product split.** Sawlog/pulp uses a 20 cm DBH threshold; grade, mill,
+  and delivered-wood routing are not compiled.
 - **No regeneration.** The FVS runs have no regeneration, ingress, planting,
   fire, or climate extension.
 

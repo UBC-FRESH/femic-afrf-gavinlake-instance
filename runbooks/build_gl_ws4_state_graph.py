@@ -74,6 +74,48 @@ def _curves_for_track(
     return rows, curve_id + 1
 
 
+def _cut_curves(
+    *,
+    cuts: pd.DataFrame,
+    au: int,
+    treatment: str,
+    age: float,
+    curve_id: int,
+) -> tuple[list[dict[str, float | int]], dict[str, int]]:
+    """Build total, sawlog, and pulp harvest curves for one AU/treatment."""
+    selected = cuts[(cuts["au"] == au) & (cuts["treatment"] == treatment)]
+    if selected.empty:
+        return [], {}
+    selected = selected.copy()
+    selected["volume_ha"] = selected["MCuM"].astype(float) * selected["TPH"].astype(float)
+    selected["sawlog"] = selected["volume_ha"].where(selected["DBH"] >= 20.0, 0.0)
+    selected["pulp"] = selected["volume_ha"].where(selected["DBH"] < 20.0, 0.0)
+    grouped = (
+        selected.groupby("Year", observed=True)
+        .agg(total=("volume_ha", "sum"), sawlog=("sawlog", "sum"), pulp=("pulp", "sum"))
+        .reset_index()
+        .sort_values("Year")
+    )
+    rows: list[dict[str, float | int]] = []
+    ids: dict[str, int] = {}
+    for label, column in (
+        ("product.harvest.total", "total"),
+        ("product.harvest.sawlog", "sawlog"),
+        ("product.harvest.pulp", "pulp"),
+    ):
+        ids[label] = curve_id
+        for record in grouped.itertuples(index=False):
+            rows.append(
+                {
+                    "curve_id": curve_id,
+                    "x": float(age + float(record.Year)),
+                    "y": float(getattr(record, column)),
+                }
+            )
+        curve_id += 1
+    return rows, ids
+
+
 def _constant_curve(
     *,
     curve_id: int,
@@ -91,6 +133,7 @@ def build_dataset(
     *,
     curves_path: Path,
     runs_path: Path,
+    cuts_path: Path,
     out_dir: Path,
     aus: tuple[int, ...] | None = None,
 ) -> Path:
@@ -102,6 +145,8 @@ def build_dataset(
         The FVS `curves.csv`.
     runs_path : Path
         The FVS `runs.csv`.
+    cuts_path : Path
+        The FVS `cut_list.parquet`.
     out_dir : Path
         Output dataset directory.
     aus : tuple of int, optional
@@ -114,6 +159,7 @@ def build_dataset(
     """
     curves = pd.read_csv(curves_path)
     runs = pd.read_csv(runs_path).drop_duplicates("au")
+    cuts = pd.read_parquet(cuts_path)
     if aus is not None:
         curves = curves[curves["au"].isin(aus)]
         runs = runs[runs["au"].isin(aus)]
@@ -212,6 +258,26 @@ def build_dataset(
                     "curve_id": yield_curve,
                 }
             )
+            if treatment != "untreated":
+                cut_rows, cut_ids = _cut_curves(
+                    cuts=cuts,
+                    au=au,
+                    treatment=treatment,
+                    age=age,
+                    curve_id=curve_id,
+                )
+                curve_rows.extend(cut_rows)
+                for label, cut_curve in cut_ids.items():
+                    product_rows.append(
+                        {
+                            "track_id": untreated_track,
+                            "treatment": TREATMENT_LABELS[treatment],
+                            "label": label,
+                            "curve_id": cut_curve,
+                        }
+                    )
+                if cut_ids:
+                    curve_id += len(cut_ids)
 
     frames = {
         "fragments": pd.DataFrame(fragment_rows),
@@ -273,6 +339,11 @@ def main() -> None:
         default=Path("data/fvsbc/gl_all/runs.csv"),
     )
     parser.add_argument(
+        "--cuts",
+        type=Path,
+        default=Path("data/fvsbc/gl_all/cut_list.parquet"),
+    )
+    parser.add_argument(
         "--out",
         type=Path,
         default=Path("ws4/runtime/fvsbc_state_graph"),
@@ -283,6 +354,7 @@ def main() -> None:
     result = build_dataset(
         curves_path=args.curves,
         runs_path=args.runs,
+        cuts_path=args.cuts,
         out_dir=args.out,
         aus=aus,
     )

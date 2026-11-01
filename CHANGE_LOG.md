@@ -189,3 +189,9 @@ status and the GitHub issue comments.
   one entry offset per AU, and the post-treatment FVS cycle shifted to the entry
   age. Repeated entries and harvested products still need age-specific tracks
   and a cut-volume compile.
+
+- Added harvest total, sawlog, and pulp product curves to the ws4 state graph
+  from `cut_list.parquet`, using `MCuM x TPH` per hectare and a 20 cm sawlog
+  threshold. The validated graph now has 11,939 curves, 1,659 product rows, and
+  395 treatment edges. A CT60 treatment on all 79 AUs yields 466,183 m3 of
+  harvest (443,393 sawlog, 22,789 pulp) in the 100-year ws4 run.
