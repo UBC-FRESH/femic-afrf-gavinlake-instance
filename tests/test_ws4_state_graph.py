@@ -8,7 +8,7 @@ from typing import Protocol, cast
 
 import pytest
 
-pytest.importorskip("ws4")
+pytest.importorskip("ws4.model.schema")
 pytest.importorskip("pandas")
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "runbooks" / "build_gl_ws4_state_graph.py"
