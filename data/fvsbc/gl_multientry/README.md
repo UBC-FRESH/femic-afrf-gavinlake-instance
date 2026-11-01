@@ -7,10 +7,10 @@ tree list.
 
 - 158 second-entry runs
 - 1,738 summary rows
-- median difference between the first-entry post-treatment volume and the
-  second-entry initial volume: **-0.9%**
-- median second-entry growth over 100 years: **+71.5 m3/ha**
-- The second entry is a new FVS case, not a continuous single projection.
+- median difference between first-entry post-treatment volume and second-entry
+  initial volume: **+3.8%**
+- median second-entry growth over 100 years: **+72.5 m3/ha**
+- second-entry cut list: 389 KB parquet
 
 ## Method
 
@@ -28,6 +28,7 @@ from the first-entry summary.
 
 - `second_entry_curves.csv`
 - `second_entry_runs.csv`
+- `second_entry_cuts.parquet`
 - `comparison.csv`
 - `summary.json`
 
@@ -36,4 +37,3 @@ from the first-entry summary.
 - Two FVS cases chained, not one continuous projection.
 - Same AU site code retained.
 - No regeneration, ingress, planting, fire, or climate extension.
-- Second-entry cut volume is not yet compiled into ws4 products.

@@ -135,6 +135,7 @@ def build_dataset(
     runs_path: Path,
     cuts_path: Path,
     second_entry_path: Path | None,
+    second_cuts_path: Path | None,
     out_dir: Path,
     aus: tuple[int, ...] | None = None,
 ) -> Path:
@@ -150,6 +151,8 @@ def build_dataset(
         The FVS `cut_list.parquet`.
     second_entry_path : Path or None
         Optional second-entry `second_entry_curves.csv`.
+    second_cuts_path : Path or None
+        Optional second-entry `second_entry_cuts.parquet`.
     out_dir : Path
         Output dataset directory.
     aus : tuple of int, optional
@@ -166,6 +169,11 @@ def build_dataset(
     second = (
         pd.read_csv(second_entry_path)
         if second_entry_path is not None and second_entry_path.exists()
+        else pd.DataFrame()
+    )
+    second_cuts = (
+        pd.read_parquet(second_cuts_path)
+        if second_cuts_path is not None and second_cuts_path.exists()
         else pd.DataFrame()
     )
     if aus is not None:
@@ -342,6 +350,26 @@ def build_dataset(
                     },
                 ]
             )
+            if not second_cuts.empty:
+                cut_rows, cut_ids = _cut_curves(
+                    cuts=second_cuts,
+                    au=int(au),
+                    treatment=str(treatment),
+                    age=age,
+                    curve_id=curve_id,
+                )
+                curve_rows.extend(cut_rows)
+                for label, cut_curve in cut_ids.items():
+                    product_rows.append(
+                        {
+                            "track_id": source_track,
+                            "treatment": TREATMENT_LABELS[str(treatment)],
+                            "label": label,
+                            "curve_id": cut_curve,
+                        }
+                    )
+                if cut_ids:
+                    curve_id += len(cut_ids)
             track_id += 1
 
     frames = {
@@ -414,6 +442,11 @@ def main() -> None:
         default=Path("data/fvsbc/gl_multientry/second_entry_curves.csv"),
     )
     parser.add_argument(
+        "--second-cuts",
+        type=Path,
+        default=Path("data/fvsbc/gl_multientry/second_entry_cuts.parquet"),
+    )
+    parser.add_argument(
         "--out",
         type=Path,
         default=Path("ws4/runtime/fvsbc_state_graph"),
@@ -426,6 +459,7 @@ def main() -> None:
         runs_path=args.runs,
         cuts_path=args.cuts,
         second_entry_path=args.second_entry,
+        second_cuts_path=args.second_cuts,
         out_dir=args.out,
         aus=aus,
     )

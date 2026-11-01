@@ -3,15 +3,15 @@
   "dataset": "data/fvsbc/gl_all/ws4_state_graph",
   "tracks": 632,
   "fragments": 79,
-  "curves": 15415,
+  "curves": 15889,
   "treatments": 553,
-  "products": 1659,
+  "products": 2133,
   "area_ha": 4663.009784999999,
   "validated": true,
   "baseline_volume_2099_m3": 3100745.0,
-  "ct60_once_volume_2099_m3": 2151172.0,
-  "ct60_twice_volume_2099_m3": 1257706.0,
-  "ct60_once_harvest_m3": 466182.6,
-  "ct60_twice_first_harvest_m3": 466182.6,
-  "caveat": "Two-entry v1; AU-scale fragments; second-entry harvest products are not yet compiled."
+  "ct60_twice_volume_2099_m3": 1352213.0,
+  "ct60_first_harvest_m3": 466182.6,
+  "ct60_second_harvest_m3": 463830.1,
+  "ct60_total_harvest_m3": 930012.7,
+  "caveat": "Two-entry v1; AU-scale fragments; second-entry products now compiled; no spatial fragments or regeneration."
 }

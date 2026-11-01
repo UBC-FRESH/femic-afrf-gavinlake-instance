@@ -81,7 +81,7 @@ repository, or pass `--psp-dir`.
 
 - 79 AU fragments, 4,663.0 ha;
 - 474 tracks and 395 treatment edges;
-- 15,415 curves, including harvest total/sawlog/pulp products and two-entry continuation tracks;
+- 15,889 curves, including first- and second-entry harvest products and two-entry continuation tracks;
 - `ws4 validate` accepted;
 - baseline and CT60 schedules included.
 
@@ -91,8 +91,9 @@ repository, or pass `--psp-dir`.
 | --- | ---: |
 | baseline | 3,100,745 m3 |
 | CT60 once | 2,151,172 m3 |
-| CT60 twice | 1,257,706 m3 |
+| CT60 twice | 1,352,213 m3 |
 | CT60 first-entry harvest | 466,183 m3 (443,393 sawlog + 22,789 pulp) |
+| CT60 second-entry harvest | 463,830 m3 (460,558 sawlog + 3,272 pulp) |
 
 This is a single-entry v0: AU-scale fragments, one treatment offset per AU, and
 the FVS post-treatment cycle shifted back to the entry age. It is a valid

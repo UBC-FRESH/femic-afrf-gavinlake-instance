@@ -9,10 +9,11 @@ library and the second-entry FVS chain.
 - 632 tracks: untreated, five first-entry treatments, and the first two-entry
   continuation tracks.
 - 553 treatment edges.
-- 15,415 curves.
-- 1,659 product rows.
+- 15,889 curves.
+- 2,133 product rows, including first- and second-entry total, sawlog, and pulp
+  harvest.
 - `ws4 validate` accepts the dataset.
-- Baseline, one-entry, and two-entry schedules are in `schedules/`.
+- Baseline and two-entry schedules are in `schedules/`.
 
 ## Simulation evidence
 
@@ -22,10 +23,15 @@ library and the second-entry FVS chain.
 | --- | ---: |
 | baseline, no entry | 3,100,745 m3 |
 | CT60 once | 2,151,172 m3 |
-| CT60 twice | 1,257,706 m3 |
+| CT60 twice | 1,352,213 m3 |
 
-The first CT60 entry produces 466,183 m3 of harvest (443,393 sawlog, 22,789
-pulp). The second-entry harvest products are not yet compiled.
+CT60 harvest:
+
+| Entry | Total | Sawlog | Pulp |
+| --- | ---: | ---: | ---: |
+| first | 466,183 m3 | 443,393 | 22,789 |
+| second | 463,830 m3 | 460,558 | 3,272 |
+| total | 930,013 m3 | 903,951 | 26,062 |
 
 ## What is exact
 
@@ -33,6 +39,8 @@ pulp). The second-entry harvest products are not yet compiled.
   `data/fvsbc/gl_all/`.
 - The second-entry tracks are chained from the FVS year-10 post-treatment tree
   list in `data/fvsbc/gl_multientry/`.
+- Harvest volume is `MCuM x TPH` from the first- and second-entry cut lists;
+  sawlog is DBH >= 20 cm.
 - The ws4 table contract is validated.
 
 ## What is still approximate
@@ -41,8 +49,6 @@ pulp). The second-entry harvest products are not yet compiled.
   does not carry the 2,907 original spatial fragments.
 - **Two entries only.** The graph carries one follow-up entry ten years after
   the first treatment.
-- **Second-entry products are not compiled.** The second-entry cut list is not
-  yet in the product curves.
 - **Treatment curve shift.** The first-entry post-treatment state is first
   observed in cycle 2; the graph shifts it back to the entry age.
 - **Simple product split.** Sawlog/pulp uses a 20 cm DBH threshold; grade, mill,

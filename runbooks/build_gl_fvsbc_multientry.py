@@ -159,6 +159,14 @@ def _run_one(
     summary["entry"] = 2
     summary["treatment"] = treatment
     summary["initial_ba_m2_ha"] = initial_ba
+    cuts = read_table(result.database, "FVS_CutList_Metric")
+    if cuts is None:
+        cuts = pd.DataFrame()
+    else:
+        cuts = cuts.copy()
+        cuts["au"] = au
+        cuts["treatment"] = treatment
+        cuts["entry"] = 2
     metadata: dict[str, object] = {
         "au": au,
         "treatment": treatment,
@@ -167,7 +175,7 @@ def _run_one(
         "case_id": result.provenance.case_id,
         "warnings": result.warnings.to_dict("records"),
     }
-    return summary, metadata
+    return summary, cuts, metadata
 
 
 def main() -> None:
@@ -213,6 +221,7 @@ def main() -> None:
     runs = pd.read_csv(args.runs).drop_duplicates(["au", "treatment"])
     cuts = pd.read_parquet(args.cuts)
     summaries: list[pd.DataFrame] = []
+    cut_frames: list[pd.DataFrame] = []
     metadata_rows: list[dict[str, object]] = []
     for au in aus:
         for treatment in treatments:
@@ -235,7 +244,7 @@ def main() -> None:
             site_species = str(run_row["site_species"])
             site_index = float(run_row["site_index"])
             print(f"AU {au} second {treatment}", flush=True)
-            summary, metadata = _run_one(
+            summary, cuts, metadata = _run_one(
                 au=au,
                 treatment=treatment,
                 tree_list=source,
@@ -245,11 +254,15 @@ def main() -> None:
                 run_dir=args.runs_dir / f"au_{au:04d}" / treatment,
             )
             summaries.append(summary)
+            if not cuts.empty:
+                cut_frames.append(cuts)
             metadata_rows.append(metadata)
     curves = pd.concat(summaries, ignore_index=True) if summaries else pd.DataFrame()
     metadata = pd.DataFrame(metadata_rows)
     curves.to_csv(args.out_dir / "second_entry_curves.csv", index=False)
     metadata.to_csv(args.out_dir / "second_entry_runs.csv", index=False)
+    cuts_out = pd.concat(cut_frames, ignore_index=True) if cut_frames else pd.DataFrame()
+    cuts_out.to_parquet(args.out_dir / "second_entry_cuts.parquet", index=False)
     summary = {
         "generated_utc": datetime.now(UTC).isoformat(),
         "aus": list(aus),

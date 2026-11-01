@@ -204,5 +204,10 @@ status and the GitHub issue comments.
 - Extended the ws4 state graph to two entries
   (`data/fvsbc/gl_all/ws4_state_graph/`): 632 tracks, 553 edges, 15,415 curves,
   and a valid two-entry schedule. The 100-year final feature volume is 3,100,745
-  m3 baseline, 2,151,172 m3 with CT60 once, and 1,257,706 m3 with CT60 twice.
-  Second-entry harvest products are not yet compiled.
+  m3 baseline, 2,151,172 m3 with CT60 once, and 1,352,213 m3 with CT60 twice.
+  Second-entry harvest products were compiled in the following entry.
+
+- Compiled the second-entry cut list into the two-entry ws4 graph. The graph now
+  has 15,889 curves and 2,133 product rows. The 100-year CT60-twice run ends at
+  1,352,213 m3 and produces 466,183 m3 in the first entry plus 463,830 m3 in the
+  second entry (930,013 m3 total).
