@@ -1,0 +1,18 @@
+{
+  "rows": 1505,
+  "period_years": 10,
+  "estimated_period_volume_m3": {
+    "0": 214776.2,
+    "10": 214798.6,
+    "20": 214805.2,
+    "30": 214787.8,
+    "40": 214796.5,
+    "50": 214777.3,
+    "60": 214779.7,
+    "70": 214805.9,
+    "80": 214779.3,
+    "90": 214787.2
+  },
+  "target_m3": null,
+  "caveat": "Greedy assignment of one CLEARCUT_E entry per block; estimated from cut curves, not an optimizer solution."
+}

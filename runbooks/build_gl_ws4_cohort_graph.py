@@ -113,6 +113,7 @@ def build_dataset(
     fragments_path: Path,
     blocks_path: Path,
     tracks_path: Path,
+    tree_trajectories_path: Path,
     out_dir: Path,
     offsets: tuple[int, ...],
     bin_width: int = 10,
@@ -124,6 +125,14 @@ def build_dataset(
     fragments = pd.read_parquet(fragments_path)
     blocks = pd.read_parquet(blocks_path)
     tracks = pd.read_parquet(tracks_path)
+    tree_trajectories = (
+        pd.read_parquet(
+            tree_trajectories_path,
+            columns=["au", "treatment", "Year", "DBH", "TPH", "MCuM"],
+        )
+        if tree_trajectories_path.exists()
+        else pd.DataFrame()
+    )
     parsed = tracks.copy()
     parsed["au"] = parsed["name"].str.extract(r"au\((\d+)\)")[0].astype(float)
     block_au = (
@@ -264,6 +273,94 @@ def build_dataset(
                     curve_id += len(cut_ids)
                 track_id += 1
 
+        if not tree_trajectories.empty:
+            untreated_trees = tree_trajectories[
+                (tree_trajectories["au"] == au) & (tree_trajectories["treatment"] == "untreated")
+            ]
+            for offset in offsets:
+                entry_age = bin_age + offset
+                selected = untreated_trees[untreated_trees["Year"] == offset].copy()
+                if selected.empty:
+                    continue
+                selected["volume_ha"] = selected["MCuM"].astype(float) * selected["TPH"].astype(
+                    float
+                )
+                total = float(selected["volume_ha"].sum())
+                sawlog = float(selected.loc[selected["DBH"] >= 20.0, "volume_ha"].sum())
+                pulp = max(0.0, total - sawlog)
+                if total <= 0.0:
+                    continue
+                track = track_id
+                tracks_json.append(
+                    {
+                        "track_id": track,
+                        "name": f"AU{au} age{bin_age} clearcut entry{offset}",
+                    }
+                )
+                strata_json.append({"track_id": track, "offset": 0, "next_age": 0, "cycle": 0})
+                treatments_json.append(
+                    {
+                        "track_id": untreated,
+                        "begin": 0,
+                        "end": 999,
+                        "treatment": f"CLEARCUT_E{offset}",
+                        "new_track": track,
+                        "offset": entry_age,
+                        "retain": 0,
+                    }
+                )
+                zero_rows = [
+                    {"curve_id": curve_id, "x": float(entry_age + year), "y": 0.0}
+                    for year in range(101)
+                ]
+                zero_curve = curve_id
+                curves_json.extend(zero_rows)
+                curve_id += 1
+                area_rows, curve_id = _constant(
+                    curve_id,
+                    [float(row["x"]) for row in zero_rows],
+                    1.0,
+                )
+                area_curve = int(area_rows[0]["curve_id"])
+                curves_json.extend(area_rows)
+                features_json.extend(
+                    [
+                        {
+                            "track_id": track,
+                            "label": "feature.area.managed.total",
+                            "curve_id": area_curve,
+                        },
+                        {
+                            "track_id": track,
+                            "label": "feature.yield.managed.total",
+                            "curve_id": zero_curve,
+                        },
+                    ]
+                )
+                for label, value in (
+                    ("product.harvest.total", total),
+                    ("product.harvest.sawlog", sawlog),
+                    ("product.harvest.pulp", pulp),
+                ):
+                    product_curve = curve_id
+                    curves_json.append(
+                        {
+                            "curve_id": product_curve,
+                            "x": float(entry_age),
+                            "y": float(value),
+                        }
+                    )
+                    curve_id += 1
+                    products_json.append(
+                        {
+                            "track_id": untreated,
+                            "treatment": f"CLEARCUT_E{offset}",
+                            "label": label,
+                            "curve_id": product_curve,
+                        }
+                    )
+                track_id += 1
+
         for row in group.itertuples(index=False):
             fragment_json.append(
                 {
@@ -353,6 +450,11 @@ def main() -> None:
     parser.add_argument(
         "--tracks", type=Path, default=Path("ws4/runtime/legacy_matrix/tracks.parquet")
     )
+    parser.add_argument(
+        "--tree-trajectories",
+        type=Path,
+        default=Path("data/fvsbc/gl_all/tree_trajectories.parquet"),
+    )
     parser.add_argument("--out", type=Path, default=Path("ws4/runtime/fvsbc_cohort_graph"))
     parser.add_argument("--offsets", default="0,20,40,60,80")
     parser.add_argument("--bin-width", type=int, default=10)
@@ -365,6 +467,7 @@ def main() -> None:
         fragments_path=args.fragments,
         blocks_path=args.blocks,
         tracks_path=args.tracks,
+        tree_trajectories_path=args.tree_trajectories,
         out_dir=args.out,
         offsets=offsets,
         bin_width=args.bin_width,

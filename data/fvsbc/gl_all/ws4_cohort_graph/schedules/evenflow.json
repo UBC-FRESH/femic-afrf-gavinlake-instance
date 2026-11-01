@@ -13,5 +13,6 @@
     "80": 46618.5,
     "90": 46617.8
   },
-  "caveat": "Greedy assignment of one CT60 entry per block; estimated from cut curves, not an optimizer solution."
+  "target_m3": null,
+  "caveat": "Greedy assignment of one CT60_E entry per block; estimated from cut curves, not an optimizer solution."
 }

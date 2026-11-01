@@ -230,3 +230,14 @@ status and the GitHub issue comments.
   schedule produces 46,618 m3 in each ten-year period, essentially flat, and a
   final standing volume of 1,815,758 m3. This is a thinning flow, not a
   final-harvest AAC; the legacy LTSY target is 185,000 m3 per period.
+
+- Added clearcut final-harvest cohorts to the entry-age cohort graph. The graph
+  now has 22,997 tracks, 22,620 treatment edges, 1,266,474 curves, and 67,860
+  products. Three schedules were built:
+  - thinning only: 46,618 m3 per decade, flat;
+  - all-block final harvest: 214,789 m3 per decade, final inventory zero;
+  - LTSY-target final harvest: 184,796 m3 per decade on 618 blocks, final
+    standing inventory 438,394 m3.
+  The LTSY schedule is within 0.1% of 185,000 m3 and flat to 11 m3 per decade,
+  but it is a 100-year liquidation, not a perpetual AAC. Clearcut yield is the
+  standing volume at entry; no regeneration is modelled.

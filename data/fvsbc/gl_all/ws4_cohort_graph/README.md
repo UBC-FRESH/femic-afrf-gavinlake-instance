@@ -1,62 +1,73 @@
 # Gavin Lake FVS-BC entry-age cohort graph
 
-A spatial cohort graph for ten-year even-flow scheduling. Every AU/10-year age
-bin has one untreated track and one track for every treatment and entry offset
-(0, 10, 20, ..., 90 years).
+A spatial cohort graph for ten-year scheduling. Every AU/10-year age bin has an
+untreated track, five treatment tracks at every entry offset, and a clearcut
+final-harvest track at every entry offset.
 
 ## Contents
 
 - **1,505 productive fragments**, 4,663.0 ha.
-- **19,227 tracks**.
-- **18,850 treatment edges**.
-- **493,624 curves**.
-- **56,550 product rows**.
+- **22,997 tracks**.
+- **22,620 treatment edges**.
+- **1,266,474 curves**.
+- **67,860 product rows**.
+- entry offsets **0, 10, 20, ..., 90 years**.
 - `ws4 validate` accepts the dataset.
 
-## Even-flow thinning schedule
+## Even-flow schedules
 
-`schedules/evenflow.csv` assigns one `CT60` entry per block to the least-loaded
-decade. 1,478 blocks are treated; the remaining blocks have no positive CT60
-cut in their bin.
+### Thinning only
 
-Estimated and simulated ten-year harvest:
+`schedules/evenflow.csv` assigns one `CT60` thinning per block. It produces
+**46,618 m3 per decade**, flat to about 1 m3.
 
-| Period (years) | Harvest (m3) |
+This is not an AAC: it has no final harvest.
+
+### Final harvest, all blocks
+
+`schedules/evenflow_aac.csv` assigns one clearcut per block across the ten
+periods. It produces **214,789 m3 per decade**, flat.
+
+All 1,505 blocks are harvested; final standing volume is zero.
+
+### Final harvest near the LTSY target
+
+`schedules/evenflow_ltsy.csv` selects 618 blocks and leaves 887 standing. It
+produces:
+
+| Period | Harvest (m3) |
 | ---: | ---: |
-| 0 | 46,618 |
-| 10 | 46,618 |
-| 20 | 46,618 |
-| 30 | 46,618 |
-| 40 | 46,619 |
-| 50 | 46,618 |
-| 60 | 46,619 |
-| 70 | 46,618 |
-| 80 | 46,619 |
-| 90 | 46,618 |
+| 0 | 184,800 |
+| 10 | 184,798 |
+| 20 | 184,798 |
+| 30 | 184,799 |
+| 40 | 184,797 |
+| 50 | 184,795 |
+| 60 | 184,797 |
+| 70 | 184,793 |
+| 80 | 184,795 |
+| 90 | 184,789 |
 
-The simulated period totals match the greedy estimates to the cubic metre. The
-schedule is a thinning flow, not a complete AAC: every block receives one
-commercial thinning and no final harvest or regeneration. The 100-year final
-standing volume is 1,815,758 m3.
+Total: **1,847,961 m3**. Final standing volume: **438,394 m3**.
 
-## Why this is not the AAC yet
+This is within 0.1% of the 185,000 m3 first-guess LTSY target and is flat to
+11 m3 per decade.
 
-The legacy LTSY target is 185,000 m3 per ten-year period. This graph sustains
-about **46,600 m3** per period from one thinning per block. It does not include
-a final clearcut or shelterwood removal, so it cannot be compared directly with
-the legacy 80-year clearcut AAC.
+## What the clearcut cohort is
+
+A clearcut entry is a final harvest at the entry age:
+
+- harvest volume is the standing merchantable volume at that age;
+- sawlog is DBH >= 20 cm; the rest is pulp;
+- post-harvest feature yield is zero;
+- there is no regeneration, ingress, or planting.
 
 ## Limits
 
-- One entry per block; no repeated selection sequence.
+- The 184,796 m3 schedule is a **100-year liquidation**, not a perpetual AAC.
+  The final 438,394 m3 is the unharvested inventory.
 - 10-year age bins and shifted FVS curves.
-- CT60 only in the even-flow schedule; the other treatment cohorts exist but are
-  not used in this schedule.
 - No regeneration, fire, or climate extension.
 - No grade, mill, or delivered-wood routing.
-
-## Files
-
-- `schedules/evenflow.csv`
-- `schedules/evenflow.json`
-- `summary.json`
+- The clearcut yield is the standing volume at entry, not an FVS post-harvest
+  regeneration projection.

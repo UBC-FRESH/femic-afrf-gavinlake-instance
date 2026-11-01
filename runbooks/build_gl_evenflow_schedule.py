@@ -34,10 +34,12 @@ def block_volumes(
     fragments: pd.DataFrame,
     products: pd.DataFrame,
     curves: pd.DataFrame,
+    *,
+    prefix: str = "CT60_E",
 ) -> pd.DataFrame:
     """Return one block x offset harvest-volume table."""
     cut_products = products[products["label"] == "product.harvest.total"].copy()
-    cut_products = cut_products[cut_products["treatment"].str.startswith("CT60_E")]
+    cut_products = cut_products[cut_products["treatment"].str.startswith(prefix)]
     curve_lookup = {
         int(row.curve_id): curves[curves["curve_id"] == int(row.curve_id)]
         for row in cut_products.drop_duplicates("curve_id").itertuples(index=False)
@@ -47,7 +49,7 @@ def block_volumes(
         for row in cut_products.itertuples(index=False)
     }
     offsets = sorted(
-        int(str(label).removeprefix("CT60_E")) for label in cut_products["treatment"].unique()
+        int(str(label).removeprefix(prefix)) for label in cut_products["treatment"].unique()
     )
     rows: list[dict[str, float | int]] = []
     for fragment in fragments.itertuples(index=False):
@@ -55,7 +57,7 @@ def block_volumes(
         age = int(fragment.age)
         area = float(fragment.area_ha)
         for offset in offsets:
-            curve_id = by_track.get((track, f"CT60_E{offset}"))
+            curve_id = by_track.get((track, f"{prefix}{offset}"))
             if curve_id is None:
                 continue
             value = _curve_value(
@@ -73,7 +75,12 @@ def block_volumes(
     return table.groupby(["block_id", "offset"], as_index=False)["volume_m3"].sum()
 
 
-def greedy_schedule(volumes: pd.DataFrame) -> pd.DataFrame:
+def greedy_schedule(
+    volumes: pd.DataFrame,
+    *,
+    prefix: str = "CT60_E",
+    target: float | None = None,
+) -> pd.DataFrame:
     """Assign each block to the least-loaded period."""
     offsets = sorted(int(value) for value in volumes["offset"].unique())
     pivot = volumes.pivot(index="block_id", columns="offset", values="volume_m3").fillna(0.0)
@@ -86,11 +93,13 @@ def greedy_schedule(volumes: pd.DataFrame) -> pd.DataFrame:
             key=lambda offset: totals[offset] + float(row.get(offset, 0.0)),
         )
         volume = float(row.get(best, 0.0))
+        if target is not None and totals[best] + volume > target * 1.05:
+            continue
         totals[best] += volume
         rows.append(
             {
                 "block_id": int(block_id),
-                "treatment": f"CT60_E{best}",
+                "treatment": f"{prefix}{best}",
                 "offset": best,
                 "estimated_volume_m3": volume,
             }
@@ -111,12 +120,14 @@ def main() -> None:
         type=Path,
         default=Path("data/fvsbc/gl_all/ws4_cohort_graph/schedules/evenflow.csv"),
     )
+    parser.add_argument("--prefix", default="CT60_E")
+    parser.add_argument("--target", type=float, default=None)
     args = parser.parse_args()
     fragments = pd.read_parquet(args.dataset / "fragments.parquet")
     products = pd.read_parquet(args.dataset / "products.parquet")
     curves = pd.read_parquet(args.dataset / "curves.parquet")
-    volumes = block_volumes(fragments, products, curves)
-    schedule = greedy_schedule(volumes)
+    volumes = block_volumes(fragments, products, curves, prefix=args.prefix)
+    schedule = greedy_schedule(volumes, prefix=args.prefix, target=args.target)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     schedule.to_csv(args.out, index=False)
     totals = schedule.groupby("offset")["estimated_volume_m3"].sum().reset_index()
@@ -127,9 +138,10 @@ def main() -> None:
             str(int(row.offset)): round(float(row.estimated_volume_m3), 1)
             for row in totals.itertuples(index=False)
         },
+        "target_m3": args.target,
         "caveat": (
-            "Greedy assignment of one CT60 entry per block; estimated from cut "
-            "curves, not an optimizer solution."
+            f"Greedy assignment of one {args.prefix} entry per block; estimated "
+            "from cut curves, not an optimizer solution."
         ),
     }
     args.out.with_suffix(".json").write_text(json.dumps(payload, indent=2) + "\n")
