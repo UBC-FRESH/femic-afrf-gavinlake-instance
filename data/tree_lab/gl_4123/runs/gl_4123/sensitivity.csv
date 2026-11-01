@@ -1,0 +1,4 @@
+configuration,makespan_h,processed_m3,feller_util,skidder_util,processor_util,loader_util,truck_loads
+1 processor + 2 trucks,52.4,1384.4,0.091,0.14,0.808,0.386,46
+2 processors + 2 trucks,30.77,1384.4,0.155,0.239,0.69,0.658,46
+2 processors + 3 trucks,26.96,1384.4,0.177,0.273,0.788,0.75,46

@@ -149,4 +149,9 @@ status and the GitHub issue comments.
   `tree scene` and assembled a local playback bundle at
   `runs/gl_4123/view/`. The case manifest follows
   `fhops.tree_lab.case.v1`; it still needs to be copied into the Tree Lab
-  `sandbox/cases/` host or validated by the Tree Lab runner.
+  `sandbox/cases/` host or validated by the Tree Lab runner. Added the
+  tree-scale chain: `tree stems` produced 3,061 logs (3,007 sawlog, 54 pulp)
+  with -0.79% volume difference; `tree simulate` processed all 400 trees in
+  4.78 h; `tree replay` completed with zero discrepancies. The single processor
+  is the system bottleneck at 80.8% utilisation; a second processor cuts the
+  makespan from 52.4 to 30.8 h, and a third truck cuts it to 27.0 h.

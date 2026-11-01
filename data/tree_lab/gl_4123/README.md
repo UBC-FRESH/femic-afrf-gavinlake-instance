@@ -46,6 +46,30 @@ Result:
 - Landing peak 41.1 m3; final 4.4 m3
 - No warnings
 
+The single processor is the bottleneck at 80.8% utilisation. Adding a second
+processor cuts the makespan to 30.8 h; adding a third truck cuts it to 27.0 h.
+The feller-buncher remains below 18% utilisation, so the constraint is
+processing and trucking, not felling.
+
+| Configuration | Makespan (h) | Feller util. | Skidder util. | Processor util. | Loader util. |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 1 processor, 2 trucks | 52.4 | 9.1% | 14.0% | 80.8% | 38.6% |
+| 2 processors, 2 trucks | 30.8 | 15.5% | 23.9% | 69.0% | 65.8% |
+| 2 processors, 3 trucks | 27.0 | 17.7% | 27.3% | 78.8% | 75.0% |
+
+## Tree-scale chain
+
+`fhops tree stems` reconciled the 400-tree inventory to 1,384.4 m3
+merchantable volume with 3,061 logs: 3,007 sawlogs and 54 pulp logs. The
+volume difference is -0.79% against `work_required`; no warnings.
+
+`fhops tree simulate` on the feller-buncher processed all 400 trees in 17,207 s
+(4.78 h) with zero unreachable trees.
+
+`fhops tree replay` against `assignments.csv` processed all 400 trees and
+1,384.4 m3 with zero discrepancies. The replay is an execution check, not a
+reschedule.
+
 Outputs:
 
 - `runs/gl_4123/system/system_summary.json`
