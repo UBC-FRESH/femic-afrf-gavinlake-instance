@@ -8,6 +8,9 @@ from typing import Protocol, cast
 
 import numpy as np
 import pandas as pd
+import pytest
+
+pytest.importorskip("geopandas")
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "runbooks" / "build_gl_fvsbc_pilot.py"
 
