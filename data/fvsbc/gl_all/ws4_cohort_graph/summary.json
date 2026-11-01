@@ -1,11 +1,11 @@
 {
-  "schema": "fvsbc-entry-age-cohort-graph.v3",
+  "schema": "fvsbc-entry-age-cohort-graph.v4",
   "dataset": "data/fvsbc/gl_all/ws4_cohort_graph",
   "fragments": 1505,
-  "tracks": 22997,
-  "curves": 587874,
-  "treatments": 22620,
-  "products": 67860,
+  "tracks": 23374,
+  "curves": 597299,
+  "treatments": 22997,
+  "products": 68991,
   "area_ha": 4663.009967304239,
   "entry_offsets": [
     0,
@@ -17,13 +17,22 @@
     60,
     70,
     80,
-    90
+    90,
+    100,
+    110,
+    120,
+    130,
+    140,
+    150,
+    160,
+    170,
+    180
   ],
   "validated": true,
-  "thinning_evenflow_m3_per_decade": 46618,
-  "aac_all_blocks_m3_per_decade": 214789,
-  "aac_ltsy_target_m3_per_decade": 184796,
-  "aac_blocks_harvested": 618,
-  "final_standing_volume_after_regen_m3": 1156523,
-  "caveat": "Final harvest enters a planted bare-ground FVS regeneration curve. The AAC schedule is a 100-year liquidation of 618 blocks; regeneration is established but not harvested again within the horizon."
+  "two_hundred_year_mean_m3_per_decade": 172609,
+  "two_hundred_year_min_m3_per_decade": 0,
+  "two_hundred_year_max_m3_per_decade": 241519,
+  "target_150k_blocks": 308,
+  "target_150k_mean_m3_per_decade": 112709,
+  "caveat": "200-year mean is not an even flow. First cuts are available through 180; second cuts beyond 200 are outside the horizon. Target-150k greedy leaves late periods underfilled."
 }

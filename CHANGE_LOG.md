@@ -266,3 +266,11 @@ status and the GitHub issue comments.
   and periods 80-90, then declining to zero by 180-190. The 185,000 m3 target is
   not sustained on this land base with a planted second rotation and entry
   offsets through 90 years.
+
+- Extended the untreated FVS-BC curves to 200 years and added clearcut entry
+  offsets through 180 years. The cohort graph now has 23,374 tracks, 22,997
+  treatment edges, 597,299 curves, and 68,991 products. The 200-year all-block
+  schedule has a mean of 172,609 m3/decade but ranges from 0 to 241,519; a
+  target-150,000 greedy schedule selects 308 blocks and still averages only
+  112,709 m3/decade. The 200-year even-flow problem needs a joint first/second
+  cut optimizer, not another greedy pass.

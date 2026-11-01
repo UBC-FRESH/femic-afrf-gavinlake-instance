@@ -115,6 +115,7 @@ def build_dataset(
     tracks_path: Path,
     tree_trajectories_path: Path,
     regen_curves_path: Path,
+    extended_curves_path: Path,
     out_dir: Path,
     offsets: tuple[int, ...],
     bin_width: int = 10,
@@ -204,6 +205,8 @@ def build_dataset(
             if source.empty:
                 continue
             for offset in offsets:
+                if offset > 90:
+                    continue
                 entry_age = bin_age + offset
                 track = track_id
                 tracks_json.append(
@@ -470,6 +473,11 @@ def main() -> None:
         type=Path,
         default=Path("data/fvsbc/gl_regen/regen_curves.csv"),
     )
+    parser.add_argument(
+        "--extended-curves",
+        type=Path,
+        default=Path("data/fvsbc/gl_untreated_200y/curves.csv"),
+    )
     parser.add_argument("--out", type=Path, default=Path("ws4/runtime/fvsbc_cohort_graph"))
     parser.add_argument("--offsets", default="0,20,40,60,80")
     parser.add_argument("--bin-width", type=int, default=10)
@@ -484,6 +492,7 @@ def main() -> None:
         tracks_path=args.tracks,
         tree_trajectories_path=args.tree_trajectories,
         regen_curves_path=args.regen_curves,
+        extended_curves_path=args.extended_curves,
         out_dir=args.out,
         offsets=offsets,
         bin_width=args.bin_width,

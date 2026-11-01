@@ -101,6 +101,8 @@ def second_rotation_volumes(
 def greedy_200_year(
     first: pd.DataFrame,
     second: pd.Series,
+    *,
+    target: float | None = None,
 ) -> pd.DataFrame:
     """Assign one first and one second cut per block across twenty periods."""
     pivot = first.pivot(index="block_id", columns="offset", values="volume_m3").fillna(0.0)
@@ -118,6 +120,11 @@ def greedy_200_year(
                 continue
             first_period = offset // PERIOD_YEARS
             second_period = first_period + SECOND_AGE // PERIOD_YEARS
+            if target is not None and (
+                totals[first_period] + first_volume > target * 1.05
+                or totals[second_period] + second_volume > target * 1.05
+            ):
+                continue
             score = max(
                 totals[first_period] + first_volume,
                 totals[second_period] + second_volume,
@@ -125,6 +132,8 @@ def greedy_200_year(
             if score < best_score:
                 best_score = score
                 best_offset = offset
+        if best_score == float("inf"):
+            continue
         first_volume = float(row.get(best_offset, 0.0))
         first_period = best_offset // PERIOD_YEARS
         second_period = first_period + SECOND_AGE // PERIOD_YEARS
@@ -156,6 +165,7 @@ def main() -> None:
     )
     parser.add_argument("--regen", type=Path, default=Path("data/fvsbc/gl_regen/regen_curves.csv"))
     parser.add_argument("--out-dir", type=Path, default=Path("data/fvsbc/gl_second_rotation"))
+    parser.add_argument("--target", type=float, default=None)
     args = parser.parse_args()
     fragments = pd.read_parquet(args.dataset / "fragments.parquet")
     products = pd.read_parquet(args.dataset / "products.parquet")
@@ -170,7 +180,7 @@ def main() -> None:
         tracks=tracks,
         regen=regen,
     )
-    table = greedy_200_year(first, second)
+    table = greedy_200_year(first, second, target=args.target)
     args.out_dir.mkdir(parents=True, exist_ok=True)
     table.to_csv(args.out_dir / "schedule_200_year.csv", index=False)
     periods = []
@@ -192,6 +202,7 @@ def main() -> None:
         "blocks": len(table),
         "periods": 20,
         "mean_m3_per_decade": float(totals.mean()),
+        "target_m3_per_decade": args.target,
         "min_m3_per_decade": float(totals.min()),
         "max_m3_per_decade": float(totals.max()),
         "first_rotation_total_m3": float(table["first_volume_m3"].sum()),

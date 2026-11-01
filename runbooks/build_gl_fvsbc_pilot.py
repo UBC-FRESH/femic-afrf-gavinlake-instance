@@ -390,6 +390,7 @@ def _keywords(
     initial_ba: float,
     site_species: str,
     site_index: float,
+    cycles: int = 10,
 ) -> tuple[Keyword, ...]:
     """Return the complete keyword set for one AU and treatment."""
     keyword_cls, _, _ = _require_fvsbc()
@@ -406,7 +407,7 @@ def _keywords(
         keyword_cls("SITECODE", (site_species, f"{site_index:.0f}")),
         keyword_cls("INVYEAR", ("0",)),
         keyword_cls("DESIGN", ("0", "1", "999", "1", "0", "1", "1")),
-        keyword_cls("NUMCYCLE", ("10",)),
+        keyword_cls("NUMCYCLE", (str(cycles),)),
         keyword_cls("RANNSEED", ("1",)),
         keyword_cls("TREELIST", ("0",)),
         keyword_cls("CUTLIST", ("0",)),
@@ -443,6 +444,7 @@ def _run_one(
     site_species: str,
     site_index: float,
     run_dir: Path,
+    cycles: int = 10,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict[str, object]]:
     """Run one FVS-BC case and return summary, tree list, cut list, and metadata."""
     _, _, run_case = _require_fvsbc()
@@ -456,6 +458,7 @@ def _run_one(
         initial_ba=initial_ba,
         site_species=site_species,
         site_index=site_index,
+        cycles=cycles,
     )
     result: RunResult = run_case(records, keywords, directory=run_dir)
     summary = _read_table(result.database, "FVS_Summary_Metric")
@@ -543,6 +546,7 @@ def main() -> None:
         default=",".join(TREATMENTS),
     )
     parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument("--cycles", type=int, default=10)
     args = parser.parse_args()
     treatments = tuple(value.strip() for value in args.treatments.split(",") if value.strip())
 
@@ -627,6 +631,7 @@ def main() -> None:
                     site_species=site_species,
                     site_index=float(parameters["site_index"]),
                     run_dir=args.runs_dir / f"au_{au:04d}" / treatment,
+                    cycles=args.cycles,
                 ): treatment
                 for treatment in treatments
             }
