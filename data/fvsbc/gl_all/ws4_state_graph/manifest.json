@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "tables": {
+    "fragments": "fragments.parquet",
+    "blocks": "blocks.parquet",
+    "tracks": "tracks.parquet",
+    "strata": "strata.parquet",
+    "treatments": "treatments.parquet",
+    "curves": "curves.parquet",
+    "features": "features.parquet",
+    "products": "products.parquet",
+    "protoaccounts": "protoaccounts.parquet",
+    "accounts": "accounts.parquet",
+    "groups": "groups.parquet",
+    "messages": "messages.parquet"
+  },
+  "sources": [
+    {
+      "path": "curves.csv",
+      "sha256": "6c172ebc87b14a3a9fec66c7bae0aabb29228e4602977f463fc28205532ad2ec"
+    },
+    {
+      "path": "runs.csv",
+      "sha256": "dee7a15adc1a5cb1686fb3fa9a263f39ab60c6680c7cdb6cc9dfd80d40afbdbe"
+    }
+  ],
+  "options": {
+    "period_length": 1,
+    "ingest": "fvsbc-au-state-graph",
+    "entry": "single",
+    "treatment_time": "entry age"
+  },
+  "metadata": {
+    "scope": "Gavin Lake productive AUs",
+    "caveats": [
+      "Single-entry v0 graph; repeated entries need age-specific tracks.",
+      "AU fragments are aggregated at the AU scale.",
+      "FVS treatment curves are shifted from cycle 2 to the entry age."
+    ]
+  }
+}

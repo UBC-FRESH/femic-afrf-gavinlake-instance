@@ -179,3 +179,13 @@ status and the GitHub issue comments.
   80-year clearcut rotation, so it is a screening comparison, not parity. The
   next step is ingesting these curves and transitions into the ws4 matrix
   contract; this folder is the source evidence, not the matrix.
+
+- Compiled the full FVS-BC library into a ws4-compatible single-entry state graph
+  at `data/fvsbc/gl_all/ws4_state_graph/` with
+  `runbooks/build_gl_ws4_state_graph.py`: 79 AU fragments, 474 tracks, 395
+  treatment edges, 9,638 curves, and `ws4 validate` accepted. A 100-year
+  baseline run ends at 3,100,745 m3; a CT60 treatment on every AU ends at
+  2,151,172 m3 over the same 4,663.0 ha. The graph is a v0: AU-scale fragments,
+  one entry offset per AU, and the post-treatment FVS cycle shifted to the entry
+  age. Repeated entries and harvested products still need age-specific tracks
+  and a cut-volume compile.

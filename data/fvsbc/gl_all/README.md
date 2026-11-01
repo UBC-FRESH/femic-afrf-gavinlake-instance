@@ -75,6 +75,27 @@ python runbooks/build_gl_fvsbc_legacy_comparison.py \
 The PSP extract is expected at `../../inv01-data/psp` relative to this
 repository, or pass `--psp-dir`.
 
+## ws4 state graph v0
+
+`ws4_state_graph/` is a validated single-entry ws4 dataset:
+
+- 79 AU fragments, 4,663.0 ha;
+- 474 tracks and 395 treatment edges;
+- 9,638 curves;
+- `ws4 validate` accepted;
+- baseline and CT60 schedules included.
+
+100-year ws4 runs:
+
+| Run | Final feature volume at 2099 |
+| --- | ---: |
+| baseline | 3,100,745 m3 |
+| CT60 on all AUs | 2,151,172 m3 |
+
+This is a single-entry v0: AU-scale fragments, one treatment offset per AU, and
+the FVS post-treatment cycle shifted back to the entry age. It is a valid
+state graph and a runnable baseline, not a multi-entry selection matrix.
+
 ## Limits
 
 - The PSP analog is a regional BA/density correction, not a measured Gavin tree
