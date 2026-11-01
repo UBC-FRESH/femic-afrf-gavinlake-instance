@@ -27,8 +27,8 @@
   "options": {
     "period_length": 1,
     "ingest": "fvsbc-au-state-graph",
-    "entry": "single",
-    "treatment_time": "entry age"
+    "entry": "two",
+    "treatment_time": "entry age plus 10 years for the second entry"
   },
   "metadata": {
     "scope": "Gavin Lake productive AUs",

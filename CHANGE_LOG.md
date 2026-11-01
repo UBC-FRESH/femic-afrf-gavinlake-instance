@@ -195,3 +195,14 @@ status and the GitHub issue comments.
   threshold. The validated graph now has 11,939 curves, 1,659 product rows, and
   395 treatment edges. A CT60 treatment on all 79 AUs yields 466,183 m3 of
   harvest (443,393 sawlog, 22,789 pulp) in the 100-year ws4 run.
+
+- Added a second-entry FVS-BC chain (`runbooks/build_gl_fvsbc_multientry.py`,
+  `data/fvsbc/gl_multientry/`). For 79 AUs and two first-entry treatments, the
+  year-10 post-treatment tree list is filtered by the first cut list and re-run
+  for a second 100-year entry: 158 runs, 1,738 summary rows, median initial
+  difference -0.9%, median second-entry growth +71.5 m3/ha.
+- Extended the ws4 state graph to two entries
+  (`data/fvsbc/gl_all/ws4_state_graph/`): 632 tracks, 553 edges, 15,415 curves,
+  and a valid two-entry schedule. The 100-year final feature volume is 3,100,745
+  m3 baseline, 2,151,172 m3 with CT60 once, and 1,257,706 m3 with CT60 twice.
+  Second-entry harvest products are not yet compiled.

@@ -1,26 +1,18 @@
-# Gavin Lake FVS-BC ws4 state graph v0
+# Gavin Lake FVS-BC ws4 state graph v1
 
-A ws4-compatible, single-entry state graph compiled from the full FVS-BC AU
-library.
+A ws4-compatible **two-entry** state graph compiled from the full FVS-BC AU
+library and the second-entry FVS chain.
 
 ## Contents
 
 - 79 AU fragments, one per productive AU, area 4,663.0 ha.
-- 474 tracks: untreated plus five treatments per AU.
-- 395 treatment edges: untreated track to each treatment track at the AU age.
-- 11,939 curve rows.
-- 1,659 product rows, including total, sawlog, and pulp harvest.
+- 632 tracks: untreated, five first-entry treatments, and the first two-entry
+  continuation tracks.
+- 553 treatment edges.
+- 15,415 curves.
+- 1,659 product rows.
 - `ws4 validate` accepts the dataset.
-- Baseline and CT60 schedules are in `schedules/`.
-
-## Build
-
-```bash
-python runbooks/build_gl_ws4_state_graph.py
-ws4 validate --dataset ws4/runtime/fvsbc_state_graph
-```
-
-The committed dataset is the same table set copied from the runtime build.
+- Baseline, one-entry, and two-entry schedules are in `schedules/`.
 
 ## Simulation evidence
 
@@ -29,38 +21,34 @@ The committed dataset is the same table set copied from the runtime build.
 | Run | Final feature volume at 2099 |
 | --- | ---: |
 | baseline, no entry | 3,100,745 m3 |
-| CT60 on all AUs at year 1 | 2,151,172 m3 |
+| CT60 once | 2,151,172 m3 |
+| CT60 twice | 1,257,706 m3 |
 
-CT60 also produces:
-
-- harvest total: **466,183 m3**
-- sawlog: **443,393 m3**
-- pulp: **22,789 m3**
-
-The area remains 4,663.0 ha in both runs. The difference is the treatment track,
-not an area change.
+The first CT60 entry produces 466,183 m3 of harvest (443,393 sawlog, 22,789
+pulp). The second-entry harvest products are not yet compiled.
 
 ## What is exact
 
 - The FVS curves, AU areas, ages, and treatment definitions are from
   `data/fvsbc/gl_all/`.
+- The second-entry tracks are chained from the FVS year-10 post-treatment tree
+  list in `data/fvsbc/gl_multientry/`.
 - The ws4 table contract is validated.
-- The state transitions move a fragment from the untreated track to the
-  treatment track.
-- Harvest volume is `MCuM x TPH` from the FVS cut list; sawlog is DBH >= 20 cm.
 
-## What is a v0 approximation
+## What is still approximate
 
-- **Single entry only.** A treatment edge carries one offset, the AU's entry
-  age. Repeated selection entries need age-specific tracks.
 - **AU-scale fragments.** The graph aggregates each AU into one fragment; it
   does not carry the 2,907 original spatial fragments.
-- **Treatment curve shift.** The FVS post-treatment state is first observed in
-  cycle 2 (year 10). The graph shifts that state back to the entry age.
+- **Two entries only.** The graph carries one follow-up entry ten years after
+  the first treatment.
+- **Second-entry products are not compiled.** The second-entry cut list is not
+  yet in the product curves.
+- **Treatment curve shift.** The first-entry post-treatment state is first
+  observed in cycle 2; the graph shifts it back to the entry age.
 - **Simple product split.** Sawlog/pulp uses a 20 cm DBH threshold; grade, mill,
   and delivered-wood routing are not compiled.
-- **No regeneration.** The FVS runs have no regeneration, ingress, planting,
-  fire, or climate extension.
+- **No regeneration.** No regeneration, ingress, planting, fire, or climate
+  extension.
 
-This is a valid ws4 state graph and a runnable baseline. It is not yet the
-full multi-entry creative-silviculture matrix.
+This is a valid two-entry ws4 graph, but still not the final multi-entry
+spatial matrix.

@@ -134,6 +134,7 @@ def build_dataset(
     curves_path: Path,
     runs_path: Path,
     cuts_path: Path,
+    second_entry_path: Path | None,
     out_dir: Path,
     aus: tuple[int, ...] | None = None,
 ) -> Path:
@@ -147,6 +148,8 @@ def build_dataset(
         The FVS `runs.csv`.
     cuts_path : Path
         The FVS `cut_list.parquet`.
+    second_entry_path : Path or None
+        Optional second-entry `second_entry_curves.csv`.
     out_dir : Path
         Output dataset directory.
     aus : tuple of int, optional
@@ -160,6 +163,11 @@ def build_dataset(
     curves = pd.read_csv(curves_path)
     runs = pd.read_csv(runs_path).drop_duplicates("au")
     cuts = pd.read_parquet(cuts_path)
+    second = (
+        pd.read_csv(second_entry_path)
+        if second_entry_path is not None and second_entry_path.exists()
+        else pd.DataFrame()
+    )
     if aus is not None:
         curves = curves[curves["au"].isin(aus)]
         runs = runs[runs["au"].isin(aus)]
@@ -176,6 +184,8 @@ def build_dataset(
 
     track_id = 1
     curve_id = 1
+    first_track: dict[tuple[int, str], int] = {}
+    ages: dict[tuple[int, str], int] = {}
     for run in runs.sort_values("au").itertuples(index=False):
         au = int(run.au)
         age = round(float(run.tree_age))
@@ -278,6 +288,61 @@ def build_dataset(
                     )
                 if cut_ids:
                     curve_id += len(cut_ids)
+            first_track[(au, treatment)] = this_track
+            ages[(au, treatment)] = age
+
+    if not second.empty:
+        if aus is not None:
+            second = second[second["au"].isin(aus)]
+        for (au, treatment), group in second.groupby(["au", "treatment"], observed=True):
+            key = (int(au), str(treatment))
+            if key not in first_track:
+                continue
+            source_track = first_track[key]
+            age = ages[key] + 10
+            track_rows.append({"track_id": track_id, "name": f"AU{int(au)} {treatment} second"})
+            strata_rows.append({"track_id": track_id, "offset": 0, "next_age": 0, "cycle": 0})
+            treatment_rows.append(
+                {
+                    "track_id": source_track,
+                    "begin": 0,
+                    "end": 999,
+                    "treatment": TREATMENT_LABELS[str(treatment)],
+                    "new_track": track_id,
+                    "offset": age,
+                    "retain": 0,
+                }
+            )
+            ordered = group.sort_values("Year")
+            yield_rows = [
+                {"curve_id": curve_id, "x": float(age + row.Year), "y": float(row.MCuM)}
+                for row in ordered.itertuples(index=False)
+            ]
+            yield_curve = curve_id
+            curve_rows.extend(yield_rows)
+            curve_id += 1
+            area_rows, curve_id = _constant_curve(
+                curve_id=curve_id,
+                x_values=[float(row["x"]) for row in yield_rows],
+                value=1.0,
+            )
+            area_curve = int(area_rows[0]["curve_id"])
+            curve_rows.extend(area_rows)
+            feature_rows.extend(
+                [
+                    {
+                        "track_id": track_id,
+                        "label": "feature.area.managed.total",
+                        "curve_id": area_curve,
+                    },
+                    {
+                        "track_id": track_id,
+                        "label": "feature.yield.managed.total",
+                        "curve_id": yield_curve,
+                    },
+                ]
+            )
+            track_id += 1
 
     frames = {
         "fragments": pd.DataFrame(fragment_rows),
@@ -309,8 +374,8 @@ def build_dataset(
         options={
             "period_length": 1,
             "ingest": "fvsbc-au-state-graph",
-            "entry": "single",
-            "treatment_time": "entry age",
+            "entry": "two",
+            "treatment_time": "entry age plus 10 years for the second entry",
         },
         metadata={
             "scope": "Gavin Lake productive AUs",
@@ -344,6 +409,11 @@ def main() -> None:
         default=Path("data/fvsbc/gl_all/cut_list.parquet"),
     )
     parser.add_argument(
+        "--second-entry",
+        type=Path,
+        default=Path("data/fvsbc/gl_multientry/second_entry_curves.csv"),
+    )
+    parser.add_argument(
         "--out",
         type=Path,
         default=Path("ws4/runtime/fvsbc_state_graph"),
@@ -355,6 +425,7 @@ def main() -> None:
         curves_path=args.curves,
         runs_path=args.runs,
         cuts_path=args.cuts,
+        second_entry_path=args.second_entry,
         out_dir=args.out,
         aus=aus,
     )
