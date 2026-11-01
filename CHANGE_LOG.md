@@ -280,3 +280,9 @@ status and the GitHub issue comments.
   through 180 years. The 200-year all-block mean is 172,609 m3/decade with a
   0-241,519 range; it is not an even flow. The failed joint-optimizer prototype
   was removed rather than committed.
+
+- Added the authoritative Gavin Lake scenario ledger
+  (`notes/reference/gavin-scenario-ledger.md`). It records the inputs, 13
+  scenario families, exact run counts, accepted and rejected results, the
+  do-not-repeat list, open questions, reproduction commands, and artifact index.
+  It supersedes stale per-folder numbers where they disagree.

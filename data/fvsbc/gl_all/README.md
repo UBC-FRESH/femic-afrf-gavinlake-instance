@@ -1,3 +1,7 @@
+> **Current scenario record:** `notes/reference/gavin-scenario-ledger.md`.
+> Some sections below describe earlier graph versions; use the ledger for the
+> authoritative current numbers and decisions.
+
 # Gavin Lake FVS-BC creative-silviculture state library
 
 Full productive-AU run: **79 AUs, 474 FVS-BC cases, six treatments**.
