@@ -1,9 +1,9 @@
 {
-  "schema": "fvsbc-entry-age-cohort-graph.v2",
+  "schema": "fvsbc-entry-age-cohort-graph.v3",
   "dataset": "data/fvsbc/gl_all/ws4_cohort_graph",
   "fragments": 1505,
   "tracks": 22997,
-  "curves": 1266474,
+  "curves": 587874,
   "treatments": 22620,
   "products": 67860,
   "area_ha": 4663.009967304239,
@@ -24,6 +24,6 @@
   "aac_all_blocks_m3_per_decade": 214789,
   "aac_ltsy_target_m3_per_decade": 184796,
   "aac_blocks_harvested": 618,
-  "final_standing_volume_m3": 438394,
-  "caveat": "Clearcut entry is a final harvest at the entry age, with zero post-harvest yield and no regeneration. The 184,796 m3/decade schedule is a 100-year liquidation, not a perpetual AAC."
+  "final_standing_volume_after_regen_m3": 1156523,
+  "caveat": "Final harvest enters a planted bare-ground FVS regeneration curve. The AAC schedule is a 100-year liquidation of 618 blocks; regeneration is established but not harvested again within the horizon."
 }

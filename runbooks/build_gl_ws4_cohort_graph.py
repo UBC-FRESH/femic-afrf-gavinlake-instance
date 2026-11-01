@@ -114,6 +114,7 @@ def build_dataset(
     blocks_path: Path,
     tracks_path: Path,
     tree_trajectories_path: Path,
+    regen_curves_path: Path,
     out_dir: Path,
     offsets: tuple[int, ...],
     bin_width: int = 10,
@@ -133,6 +134,7 @@ def build_dataset(
         if tree_trajectories_path.exists()
         else pd.DataFrame()
     )
+    regen = pd.read_csv(regen_curves_path) if regen_curves_path.exists() else pd.DataFrame()
     parsed = tracks.copy()
     parsed["au"] = parsed["name"].str.extract(r"au\((\d+)\)")[0].astype(float)
     block_au = (
@@ -309,16 +311,23 @@ def build_dataset(
                         "retain": 0,
                     }
                 )
-                zero_rows = [
-                    {"curve_id": curve_id, "x": float(entry_age + year), "y": 0.0}
-                    for year in range(101)
+                regen_source = regen[regen["au"] == au].sort_values("Year")
+                if regen_source.empty:
+                    continue
+                regen_rows = [
+                    {
+                        "curve_id": curve_id,
+                        "x": float(entry_age + row.Year),
+                        "y": float(row.MCuM),
+                    }
+                    for row in regen_source.itertuples(index=False)
                 ]
-                zero_curve = curve_id
-                curves_json.extend(zero_rows)
+                regen_curve = curve_id
+                curves_json.extend(regen_rows)
                 curve_id += 1
                 area_rows, curve_id = _constant(
                     curve_id,
-                    [float(row["x"]) for row in zero_rows],
+                    [float(row["x"]) for row in regen_rows],
                     1.0,
                 )
                 area_curve = int(area_rows[0]["curve_id"])
@@ -333,7 +342,7 @@ def build_dataset(
                         {
                             "track_id": track,
                             "label": "feature.yield.managed.total",
-                            "curve_id": zero_curve,
+                            "curve_id": regen_curve,
                         },
                     ]
                 )
@@ -425,7 +434,8 @@ def build_dataset(
             "caveats": [
                 "One treatment entry per fragment, at a chosen 20-year offset.",
                 "FVS curves shifted from the AU entry age to the bin age and offset.",
-                "No regeneration, fire, or climate extension.",
+                "Clearcut enters a planted bare-ground regeneration curve; "
+                "no natural ingress or fire.",
             ],
         },
     )
@@ -455,6 +465,11 @@ def main() -> None:
         type=Path,
         default=Path("data/fvsbc/gl_all/tree_trajectories.parquet"),
     )
+    parser.add_argument(
+        "--regen-curves",
+        type=Path,
+        default=Path("data/fvsbc/gl_regen/regen_curves.csv"),
+    )
     parser.add_argument("--out", type=Path, default=Path("ws4/runtime/fvsbc_cohort_graph"))
     parser.add_argument("--offsets", default="0,20,40,60,80")
     parser.add_argument("--bin-width", type=int, default=10)
@@ -468,6 +483,7 @@ def main() -> None:
         blocks_path=args.blocks,
         tracks_path=args.tracks,
         tree_trajectories_path=args.tree_trajectories,
+        regen_curves_path=args.regen_curves,
         out_dir=args.out,
         offsets=offsets,
         bin_width=args.bin_width,

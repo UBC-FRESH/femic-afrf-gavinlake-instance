@@ -112,10 +112,10 @@ state graph and a runnable baseline, not a multi-entry selection matrix.
 
 `ws4_cohort_graph/` adds ten-year entry cohorts:
 
-- 22,997 tracks, 22,620 treatment edges, 1,266,474 curves;
+- 22,997 tracks, 22,620 treatment edges, 587,874 curves;
 - a greedy one-thinning even-flow schedule;
 - thinning even-flow of 46,618 m3 per decade;
-- final-harvest even-flow of 184,796 m3 per decade on 618 blocks, final standing 438,394 m3;
+- final-harvest even-flow of 184,796 m3 per decade on 618 blocks, final standing 1,156,523 m3 after planted regeneration;
 - full liquidation of 214,789 m3 per decade.
 
 The 184,796 m3 schedule is a 100-year liquidation, not a perpetual AAC.

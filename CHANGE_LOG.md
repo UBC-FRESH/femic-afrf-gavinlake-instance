@@ -241,3 +241,12 @@ status and the GitHub issue comments.
   The LTSY schedule is within 0.1% of 185,000 m3 and flat to 11 m3 per decade,
   but it is a 100-year liquidation, not a perpetual AAC. Clearcut yield is the
   standing volume at entry; no regeneration is modelled.
+
+- Added the planted bare-ground regeneration library
+  (`runbooks/build_gl_fvsbc_regeneration.py`, `data/fvsbc/gl_regen/`): 79 AUs,
+  869 rows, mean 100-year volume 480.4 m3/ha, BA 46.7 m2/ha, top height 34.4 m.
+  The cohort graph now routes clearcut entries into those planted curves. The
+  LTSY-target schedule remains 184,796 m3 per decade, while final standing
+  volume rises from zero to 1,156,523 m3 because harvested blocks regrow. This
+  is planted second-rotation growth, not natural regeneration or a second
+  harvest.

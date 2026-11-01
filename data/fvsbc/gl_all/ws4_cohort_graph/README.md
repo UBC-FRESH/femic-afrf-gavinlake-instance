@@ -2,14 +2,15 @@
 
 A spatial cohort graph for ten-year scheduling. Every AU/10-year age bin has an
 untreated track, five treatment tracks at every entry offset, and a clearcut
-final-harvest track at every entry offset.
+final-harvest track at every entry offset. The clearcut track enters a planted
+bare-ground FVS regeneration curve.
 
 ## Contents
 
 - **1,505 productive fragments**, 4,663.0 ha.
 - **22,997 tracks**.
 - **22,620 treatment edges**.
-- **1,266,474 curves**.
+- **587,874 curves**.
 - **67,860 product rows**.
 - entry offsets **0, 10, 20, ..., 90 years**.
 - `ws4 validate` accepts the dataset.
@@ -21,14 +22,11 @@ final-harvest track at every entry offset.
 `schedules/evenflow.csv` assigns one `CT60` thinning per block. It produces
 **46,618 m3 per decade**, flat to about 1 m3.
 
-This is not an AAC: it has no final harvest.
-
 ### Final harvest, all blocks
 
 `schedules/evenflow_aac.csv` assigns one clearcut per block across the ten
-periods. It produces **214,789 m3 per decade**, flat.
-
-All 1,505 blocks are harvested; final standing volume is zero.
+periods. It produces **214,789 m3 per decade**, flat. Every clearcut enters a
+planted regeneration track.
 
 ### Final harvest near the LTSY target
 
@@ -48,26 +46,26 @@ produces:
 | 80 | 184,795 |
 | 90 | 184,789 |
 
-Total: **1,847,961 m3**. Final standing volume: **438,394 m3**.
+Total: **1,847,961 m3**. Final standing volume after planted regeneration:
+**1,156,523 m3**.
 
-This is within 0.1% of the 185,000 m3 first-guess LTSY target and is flat to
+This is within 0.1% of the 185,000 m3 first-guess LTSY target and flat to
 11 m3 per decade.
 
-## What the clearcut cohort is
+## Clearcut and regeneration
 
-A clearcut entry is a final harvest at the entry age:
-
-- harvest volume is the standing merchantable volume at that age;
+- harvest volume is the standing merchantable volume at entry;
 - sawlog is DBH >= 20 cm; the rest is pulp;
-- post-harvest feature yield is zero;
-- there is no regeneration, ingress, or planting.
+- the post-harvest track is a planted bare-ground FVS regeneration curve;
+- there is no natural ingress, brushing, or competition control.
 
 ## Limits
 
 - The 184,796 m3 schedule is a **100-year liquidation**, not a perpetual AAC.
-  The final 438,394 m3 is the unharvested inventory.
+  The final 1,156,523 m3 includes planted second-rotation growth on harvested
+  blocks; it is not a second harvest.
 - 10-year age bins and shifted FVS curves.
-- No regeneration, fire, or climate extension.
+- No fire or climate extension.
 - No grade, mill, or delivered-wood routing.
-- The clearcut yield is the standing volume at entry, not an FVS post-harvest
-  regeneration projection.
+- Clearcut yield is the standing volume at entry; regeneration is a separate
+  bare-ground FVS case, not a continuous projection.

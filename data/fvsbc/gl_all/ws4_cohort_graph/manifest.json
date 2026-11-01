@@ -47,7 +47,7 @@
     "caveats": [
       "One treatment entry per fragment, at a chosen 20-year offset.",
       "FVS curves shifted from the AU entry age to the bin age and offset.",
-      "No regeneration, fire, or climate extension."
+      "Clearcut enters a planted bare-ground regeneration curve; no natural ingress or fire."
     ]
   }
 }
