@@ -1,56 +1,35 @@
 # Gavin Lake FVS-BC entry-age cohort graph
 
-A spatial cohort graph for ten-year scheduling. Every AU/10-year age bin has an
-untreated track, treatment tracks at entry offsets through 90 years, and
-clearcut tracks at entry offsets through 180 years. Clearcut entries enter a
-planted bare-ground FVS regeneration curve.
+Spatial cohort graph with first-cut entries through 180 years and planted
+second-rotation tracks.
 
-## Contents
+- **1,505 productive fragments**, 4,663.0 ha
+- **26,390 tracks**
+- **26,013 treatment edges**
+- **672,699 curves**
+- **78,039 product rows**
+- entry offsets **0, 10, ..., 180 years**
+- `ws4 validate` passes
 
-- **1,505 productive fragments**, 4,663.0 ha.
-- **23,374 tracks**.
-- **22,997 treatment edges**.
-- **597,299 curves**.
-- **68,991 product rows**.
-- entry offsets **0, 10, ..., 180 years**.
-- `ws4 validate` accepts the dataset.
+## 200-year result
 
-## One-rotation schedules
+The all-block first-plus-second rotation schedule has a mean of **172,609
+m3/decade**, but ranges from **0 to 241,519 m3/decade**. It is not an even flow.
+A target-150,000 greedy schedule selects 308 blocks and still averages only
+112,709 m3/decade.
 
-| Schedule | Harvest per decade |
-| --- | ---: |
-| thinning only, `evenflow.csv` | 46,618 m3 |
-| all-block final harvest, `evenflow_aac.csv` | 214,789 m3 |
-| LTSY-target final harvest, `evenflow_ltsy.csv` | 184,796 m3 |
+**185,000 m3/decade is not sustained on this land base.**
 
-The LTSY schedule harvests 618 blocks, leaves 887 standing, and is flat to
-11 m3 per decade. It is a 100-year liquidation, not a perpetual AAC.
+## Files
 
-## 200-year test
-
-`data/fvsbc/gl_second_rotation/schedule_200_year.csv` adds the planted second
-rotation at age 80.
-
-- all-block mean: **172,609 m3/decade**
-- minimum: **0 m3/decade**
-- maximum: **241,519 m3/decade**
-- target-150,000 greedy: 308 blocks, mean **112,709 m3/decade**, late periods
-  underfilled
-
-The 200-year mean is not an even flow. The first cuts are now available through
-180 years, but the second cuts beyond 200 fall outside the horizon and the
-greedy schedule does not hold a flat target.
-
-## Conclusion
-
-185,000 m3/decade is not sustained on this land base with the current planted
-regeneration and cohort structure. A defensible AAC requires either a lower
-target, more land, more intensive regeneration, or a formal multi-period
-optimizer that treats first and second cuts jointly.
+- `schedules/evenflow.csv` — thinning-only flow
+- `schedules/evenflow_aac.csv` — all-block final harvest
+- `schedules/evenflow_ltsy.csv` — 176,000-target greedy final harvest
+- `summary.json`
 
 ## Limits
 
-- 10-year age bins and shifted FVS curves.
-- Second rotation is a planted bare-ground FVS curve at age 80.
-- No natural ingress, brushing, competition control, fire, or climate extension.
-- No grade, mill, or delivered-wood routing.
+- 10-year age bins and shifted FVS curves
+- planted bare-ground second rotation, not natural ingress
+- no fire, climate, grade, mill, or delivered-wood routing
+- greedy schedules, not a joint first/second optimizer

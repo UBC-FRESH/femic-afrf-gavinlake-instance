@@ -136,6 +136,9 @@ def build_dataset(
         else pd.DataFrame()
     )
     regen = pd.read_csv(regen_curves_path) if regen_curves_path.exists() else pd.DataFrame()
+    extended = (
+        pd.read_csv(extended_curves_path) if extended_curves_path.exists() else pd.DataFrame()
+    )
     parsed = tracks.copy()
     parsed["au"] = parsed["name"].str.extract(r"au\((\d+)\)")[0].astype(float)
     block_au = (
@@ -286,13 +289,19 @@ def build_dataset(
                 entry_age = bin_age + offset
                 selected = untreated_trees[untreated_trees["Year"] == offset].copy()
                 if selected.empty:
-                    continue
-                selected["volume_ha"] = selected["MCuM"].astype(float) * selected["TPH"].astype(
-                    float
-                )
-                total = float(selected["volume_ha"].sum())
-                sawlog = float(selected.loc[selected["DBH"] >= 20.0, "volume_ha"].sum())
-                pulp = max(0.0, total - sawlog)
+                    extended_row = extended[(extended["au"] == au) & (extended["Year"] == offset)]
+                    if extended_row.empty:
+                        continue
+                    total = float(extended_row["MCuM"].iloc[0])
+                    sawlog = total * 0.8
+                    pulp = total - sawlog
+                else:
+                    selected["volume_ha"] = selected["MCuM"].astype(float) * selected["TPH"].astype(
+                        float
+                    )
+                    total = float(selected["volume_ha"].sum())
+                    sawlog = float(selected.loc[selected["DBH"] >= 20.0, "volume_ha"].sum())
+                    pulp = max(0.0, total - sawlog)
                 if total <= 0.0:
                     continue
                 track = track_id

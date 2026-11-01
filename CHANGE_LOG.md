@@ -274,3 +274,9 @@ status and the GitHub issue comments.
   target-150,000 greedy schedule selects 308 blocks and still averages only
   112,709 m3/decade. The 200-year even-flow problem needs a joint first/second
   cut optimizer, not another greedy pass.
+
+- Synced the committed cohort graph to the 200-year version: 23,374 tracks,
+  22,997 treatment edges, 597,299 curves, 68,991 products, and entry offsets
+  through 180 years. The 200-year all-block mean is 172,609 m3/decade with a
+  0-241,519 range; it is not an even flow. The failed joint-optimizer prototype
+  was removed rather than committed.

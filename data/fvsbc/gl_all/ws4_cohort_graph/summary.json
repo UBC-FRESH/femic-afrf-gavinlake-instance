@@ -2,10 +2,10 @@
   "schema": "fvsbc-entry-age-cohort-graph.v4",
   "dataset": "data/fvsbc/gl_all/ws4_cohort_graph",
   "fragments": 1505,
-  "tracks": 23374,
-  "curves": 597299,
-  "treatments": 22997,
-  "products": 68991,
+  "tracks": 26390,
+  "curves": 672699,
+  "treatments": 26013,
+  "products": 78039,
   "area_ha": 4663.009967304239,
   "entry_offsets": [
     0,
@@ -32,7 +32,5 @@
   "two_hundred_year_mean_m3_per_decade": 172609,
   "two_hundred_year_min_m3_per_decade": 0,
   "two_hundred_year_max_m3_per_decade": 241519,
-  "target_150k_blocks": 308,
-  "target_150k_mean_m3_per_decade": 112709,
-  "caveat": "200-year mean is not an even flow. First cuts are available through 180; second cuts beyond 200 are outside the horizon. Target-150k greedy leaves late periods underfilled."
+  "caveat": "200-year mean is not an even flow; formal joint first/second optimizer remains next."
 }
