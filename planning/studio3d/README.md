@@ -3,10 +3,10 @@
 `gavin_scene.json` is the WS4 studio-3D scene pack for the Gavin Lake instance.
 
 - 2,907 block polygons
-- SRTM 1 arc-second terrain
+- LidarBC 2024 5 m DEM/CHM terrain and canopy
 - synthetic stems at 700 TPH (about 3.96M nominal stems)
-- no Gavin CHM; canopy is labelled synthetic
-- source: public legacy block polygons and SRTM terrain
+- stems are synthetic positions; canopy and terrain are measured LiDAR products
+- source: LidarBC 2024 DSM/DEM pairs, public legacy block polygons
 
 The scene is a visual screening product, not a measured tree inventory.
 
