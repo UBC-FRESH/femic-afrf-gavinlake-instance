@@ -1,0 +1,42 @@
+{
+  "source_pdf": "beavervly_lto.pdf",
+  "source_sha256": "1889b3c668f66435e56d9778bb8c10b586a996f0244799e5c2d402ade1c7d2e3",
+  "source_url": "https://www.env.gov.bc.ca/cariboo/env_stewardship/ecosystems/mdwr_strat/maps/beavervly_lto.pdf",
+  "map_title": "Long-Term Habitat Objectives: Beaver Valley North (Prouton Lakes)",
+  "map_date": "2001-12-06",
+  "map_appendix": "Appendix 11",
+  "georeference": {
+    "pdf_points": [
+      210.71875,
+      1931.261719,
+      270.378906,
+      1908.121094
+    ],
+    "utm_zone": "10N",
+    "utm_extent": [
+      560000.0,
+      592000.0,
+      5808000.0,
+      5836000.0
+    ],
+    "target_crs": "EPSG:3005",
+    "method": "printed 4 km grid frame; separate x/y affine scaling"
+  },
+  "coverage_floor": 0.5,
+  "bec_proxy": {
+    "ICHmk3": "High",
+    "ICHmk3/SBSdw": "Moderate",
+    "SBSdw1": "Low"
+  },
+  "caveat": "The 2007 MWP #3 Appendix 9 map is a compartment-level adjusted representation. This table uses the public BC long-term objective polygons, not the adjusted compartment boundaries; it is a screening input, not a legal determination.",
+  "class_area_in_mdwr_ha": {
+    "High": 587.021,
+    "Moderate": 1000.247,
+    "Low": 780.488
+  },
+  "block_counts": {
+    "Low": 622,
+    "Moderate": 582,
+    "High": 239
+  }
+}
