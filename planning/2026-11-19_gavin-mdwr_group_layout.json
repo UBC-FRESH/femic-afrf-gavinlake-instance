@@ -10,6 +10,9 @@
   "groups": 9674,
   "max_group_area_ha": 0.7,
   "assigned_area_ha": 1430.287,
-  "unassigned_groups": 6409,
+  "unassigned_groups": 10465,
+  "all_groups": 20139,
+  "all_area_ha": 2586.774,
+  "all_blocks": 1443,
   "caveat": "Schematic 10 m cell layout; no cohort growth, minimum group size, windthrow or matrix response."
 }

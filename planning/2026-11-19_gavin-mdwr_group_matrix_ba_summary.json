@@ -1,15 +1,17 @@
 {
-  "groups": 9674,
-  "blocks": 1045,
-  "cuts": 18527,
+  "groups": 20139,
+  "assigned_groups": 9674,
+  "blocks": 1443,
+  "cuts": 18684,
   "scheduled_area_ha": 1430.287,
-  "volume_m3": 1010954.263,
-  "mean_10y_volume_m3": 33698.475,
-  "min_10y_volume_m3": 4324.38,
-  "max_10y_volume_m3": 107731.085,
-  "initial_ba_m2": 57337.216,
-  "final_ba_m2": 54404.396,
-  "final_yield_m3": 190347.886,
+  "total_group_area_ha": 2586.774,
+  "volume_m3": 1012909.001,
+  "mean_10y_volume_m3": 33763.633,
+  "min_10y_volume_m3": 4529.732,
+  "max_10y_volume_m3": 106874.692,
+  "initial_ba_m2": 96637.104,
+  "final_ba_m2": 116445.59,
+  "final_yield_m3": 634361.748,
   "ba_account": "feature.ba.managed.total",
-  "ba_fit": "VRI 2025 per-BEC BA= b*V+c*(1-exp(-age/tau))"
+  "ba_fit": "VRI 2025 per-BEC BA-volume-age fit"
 }
