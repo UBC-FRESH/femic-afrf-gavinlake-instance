@@ -1,0 +1,18 @@
+{
+  "source": "VRI 2025 Gavin Lake inventory (vri_gavin_2025.gpkg)",
+  "source_sha256": "b730a1d3afca6a23b674fc229f64bc94e2065af4e3aff292f16b8397432d2bb9",
+  "field": "BASAL_AREA, area-weighted intersection with legacy MDWR blocks",
+  "coverage_floor": 0.5,
+  "gate_m2_ha": 40.0,
+  "status_counts": {
+    "hold": 789,
+    "pass": 625,
+    "unknown": 29
+  },
+  "status_area_ha": {
+    "hold": 1429.891,
+    "pass": 1296.795,
+    "unknown": 72.624
+  },
+  "caveat": "Current 2025 basal area only; future growth and post-pass BA recovery are not modelled."
+}
