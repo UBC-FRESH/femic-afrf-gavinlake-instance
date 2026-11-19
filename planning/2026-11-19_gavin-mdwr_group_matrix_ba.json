@@ -1,10 +1,10 @@
 {
   "source_matrix": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/ws4/runtime/legacy_matrix",
-  "groups": 9491,
-  "blocks": 9491,
-  "source_blocks": 977,
-  "scheduled_area_ha": 1382.667,
-  "cuts": 18165,
+  "groups": 9674,
+  "blocks": 9674,
+  "source_blocks": 1045,
+  "scheduled_area_ha": 1430.287,
+  "cuts": 18527,
   "cohorts": {
     "High": 3,
     "Moderate": 4,
