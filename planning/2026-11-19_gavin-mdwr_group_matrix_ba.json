@@ -1,0 +1,20 @@
+{
+  "source_matrix": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/ws4/runtime/legacy_matrix",
+  "groups": 9491,
+  "blocks": 9491,
+  "source_blocks": 977,
+  "scheduled_area_ha": 1382.667,
+  "cuts": 18165,
+  "cohorts": {
+    "High": 3,
+    "Moderate": 4,
+    "Low": 5
+  },
+  "cycle_years": {
+    "High": 120,
+    "Moderate": 160,
+    "Low": 200
+  },
+  "ba_account": "feature.ba.managed.total",
+  "caveat": "Group-specific BA is a proportional volume-ratio curve; not a calibrated BA growth model."
+}
