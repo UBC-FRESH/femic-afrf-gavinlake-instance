@@ -1,0 +1,18 @@
+{
+  "block_mdwr_only": {
+    "volume_m3": 593646.9,
+    "mean_10y": 19788.2,
+    "min_10y": 5603.7,
+    "max_10y": 116734.0
+  },
+  "group_state": {
+    "volume_m3": 1012909.0,
+    "mean_10y": 33763.6,
+    "min_10y": 4529.7,
+    "max_10y": 106874.7
+  },
+  "ratio_group_to_block": 1.706,
+  "group_area_ha": 2586.8,
+  "mdwr_area_ha": 2799.31,
+  "note": "Group openings harvest full group volumes; the block screen applies Table 30 pass fractions to full blocks. The two are not directly comparable."
+}
