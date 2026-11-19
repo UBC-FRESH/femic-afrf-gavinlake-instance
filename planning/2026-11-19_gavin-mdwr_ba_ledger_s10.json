@@ -1,0 +1,21 @@
+{
+  "matrix": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/ws4/runtime/mdwr_group_selection_official_reentry",
+  "schedule": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/ws4/runtime/gavin-mdwr-40-schedule-official.csv",
+  "ba_table": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/planning/2026-11-19_gavin-mdwr_basal_area.csv",
+  "habitat_table": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/planning/2026-11-18_gavin_mdwr_official_habitat.csv",
+  "gate_m2_ha": 40.0,
+  "pass_fraction": {
+    "High": 0.33,
+    "Moderate": 0.25,
+    "Low": 0.2
+  },
+  "horizon_years": 300,
+  "stagger_years": 10,
+  "mdwr_blocks": 1443,
+  "mdwr_blocks_with_accepted_entry": 1045,
+  "mdwr_blocks_held": 398,
+  "accepted_entries": 2897,
+  "accepted_area_ha": 2238.461,
+  "deferred_attempts": 287544,
+  "caveat": "BA growth is a WS4 volume-ratio proxy, not a validated basal-area model; entries are screened annually from the first scheduled year."
+}
