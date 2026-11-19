@@ -1,0 +1,18 @@
+{
+  "dem": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/data/lidar/gavin_2024/dem_5m.tif",
+  "spatial": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/data/legacy_gavinlake/spatial/fragments.shp",
+  "schedule": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/ws4/runtime/gavin-mdwr-40-schedule-official-ba-temporal-s10.csv",
+  "warm_aspect": "slope > 10% and aspect 135-270 degrees (LMH 59)",
+  "warm_group_cap_ha": 0.4,
+  "other_group_cap_ha": 0.7,
+  "entries": 2897,
+  "blocks": 1045,
+  "total_cut_area_ha": 1494.0,
+  "mean_min_groups": 2.39,
+  "max_min_groups": 18,
+  "warm_area_ha": 1121.8,
+  "other_area_ha": 1432.0,
+  "blocks_with_no_warm_area": 276,
+  "blocks_with_terrain_gap": 131,
+  "caveat": "Capacity check only: no spatial group polygons, no cohort growth, and no minimum group size."
+}
