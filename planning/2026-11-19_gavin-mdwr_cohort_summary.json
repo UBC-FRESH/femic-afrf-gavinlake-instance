@@ -1,0 +1,20 @@
+{
+  "groups": 18165,
+  "blocks": 977,
+  "cut_events": 18165,
+  "total_volume_m3": 1093282.107,
+  "mean_10y_volume_m3": 36442.737,
+  "min_10y_volume_m3": 3800.003,
+  "max_10y_volume_m3": 109562.023,
+  "cohorts": {
+    "High": 3,
+    "Moderate": 4,
+    "Low": 5
+  },
+  "cycle_years": {
+    "High": 120,
+    "Moderate": 160,
+    "Low": 200
+  },
+  "caveat": "Schematic group-level cohort screen; same volume curve after regeneration, proportional BA, no windthrow or minimum group size."
+}
