@@ -6,13 +6,15 @@
     "max_10y": 116734.0
   },
   "group_state": {
-    "volume_m3": 1012909.0,
-    "mean_10y": 33763.6,
-    "min_10y": 4529.7,
-    "max_10y": 106874.7
+    "volume_m3": 532827.1,
+    "mean_10y": 21313.1,
+    "min_10y": 49.2,
+    "max_10y": 150741.2
   },
-  "ratio_group_to_block": 1.706,
+  "ratio_group_to_block": 0.898,
   "group_area_ha": 2586.8,
   "mdwr_area_ha": 2799.31,
-  "note": "Group openings harvest full group volumes; the block screen applies Table 30 pass fractions to full blocks. The two are not directly comparable."
+  "per_ha_group": 206.0,
+  "per_ha_block": 212.1,
+  "note": "Group openings now use one accepted entry per assigned group; this aligns with the temporal block schedule. Remaining difference is area coverage and full-group vs block fraction accounting."
 }

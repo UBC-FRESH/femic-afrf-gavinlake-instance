@@ -6,7 +6,8 @@
   "assigned_groups": 9674,
   "scheduled_area_ha": 1430.287,
   "total_group_area_ha": 2586.774,
-  "cuts": 18684,
+  "cuts": 9674,
+  "cut_mode": "one accepted group entry per assigned group",
   "cohorts": {
     "High": 3,
     "Moderate": 4,
