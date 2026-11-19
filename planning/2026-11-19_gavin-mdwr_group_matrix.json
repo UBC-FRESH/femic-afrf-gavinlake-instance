@@ -1,0 +1,20 @@
+{
+  "source_matrix": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/ws4/runtime/legacy_matrix",
+  "clone_matrix": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/ws4/runtime/mdwr_group_selection_official_reentry",
+  "groups": 9491,
+  "blocks": 9491,
+  "source_blocks": 977,
+  "scheduled_area_ha": 1382.667,
+  "cuts": 18165,
+  "cohorts": {
+    "High": 3,
+    "Moderate": 4,
+    "Low": 5
+  },
+  "cycle_years": {
+    "High": 120,
+    "Moderate": 160,
+    "Low": 200
+  },
+  "caveat": "Group-level WS4 volume run; no group-specific BA account, plantation calibration, windthrow, or minimum group size."
+}
