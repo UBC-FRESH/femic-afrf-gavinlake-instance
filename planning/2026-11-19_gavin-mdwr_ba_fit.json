@@ -1,0 +1,33 @@
+{
+  "source": "/srv/shared-data/gep/ws4/tmp/afrf-repos/femic-afrf-gavinlake-instance/data/inventory/vri_gavin_2025.gpkg",
+  "model": "BA = b * live_volume_125 + c * (1 - exp(-age / tau))",
+  "units": {
+    "BA": "m2/ha",
+    "volume": "m3/ha",
+    "age": "years"
+  },
+  "fits": {
+    "ICHmk3": {
+      "n": 237,
+      "b": 0.08099623,
+      "c": 15.01265895,
+      "tau": 9.46311247,
+      "r2": 0.744896
+    },
+    "SBSdw1": {
+      "n": 448,
+      "b": 0.08670026,
+      "c": 9.61057202,
+      "tau": 11.38252914,
+      "r2": 0.887579
+    },
+    "SBSmh": {
+      "n": 24,
+      "b": 0.08308445,
+      "c": 11.41944868,
+      "tau": 7.8042309,
+      "r2": 0.86276
+    }
+  },
+  "caveat": "Cross-sectional VRI fit; screening calibration, not a validated growth model."
+}

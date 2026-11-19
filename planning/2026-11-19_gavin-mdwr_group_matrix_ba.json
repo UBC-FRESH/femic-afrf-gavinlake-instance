@@ -16,5 +16,6 @@
     "Low": 200
   },
   "ba_account": "feature.ba.managed.total",
+  "ba_fit": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/planning/2026-11-19_gavin-mdwr_ba_fit.json",
   "caveat": "Group-specific BA is a proportional volume-ratio curve; not a calibrated BA growth model."
 }

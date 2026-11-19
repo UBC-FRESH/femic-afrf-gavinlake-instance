@@ -7,8 +7,9 @@
   "mean_10y_volume_m3": 33698.475,
   "min_10y_volume_m3": 4324.38,
   "max_10y_volume_m3": 107731.085,
-  "initial_ba_m2": 54174.065,
-  "final_ba_m2": 26447.994,
+  "initial_ba_m2": 57337.216,
+  "final_ba_m2": 54404.396,
   "final_yield_m3": 190347.886,
-  "ba_account": "feature.ba.managed.total"
+  "ba_account": "feature.ba.managed.total",
+  "ba_fit": "VRI 2025 per-BEC BA= b*V+c*(1-exp(-age/tau))"
 }
