@@ -1,0 +1,15 @@
+{
+  "dem": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/data/lidar/gavin_2024/dem_5m.tif",
+  "schedule": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/ws4/runtime/gavin-mdwr-40-schedule-official-ba-temporal-s10.csv",
+  "cell_m": 10.0,
+  "warm_group_cap_ha": 0.4,
+  "other_group_cap_ha": 0.7,
+  "warm_aspect": "slope > 10% and aspect 135-270 degrees (LMH 59)",
+  "entries": 9491,
+  "blocks_with_groups": 977,
+  "groups": 9491,
+  "max_group_area_ha": 0.7,
+  "assigned_area_ha": 1382.667,
+  "unassigned_groups": 6245,
+  "caveat": "Schematic 10 m cell layout; no cohort growth, minimum group size, windthrow or matrix response."
+}
