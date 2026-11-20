@@ -1,0 +1,11 @@
+{
+  "events": 11910,
+  "blocks": 1034,
+  "total_volume_m3": 679174.272,
+  "mean_10y_volume_m3": 22639.142,
+  "min_10y_volume_m3": 10204.201,
+  "max_10y_volume_m3": 30936.673,
+  "periods_in_band": 26,
+  "objective": 48652.223,
+  "caveat": "First cut regrown at shifted age; later cuts keep interval volumes."
+}
