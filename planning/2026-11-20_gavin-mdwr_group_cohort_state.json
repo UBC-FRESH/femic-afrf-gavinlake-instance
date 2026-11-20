@@ -1,0 +1,12 @@
+{
+  "groups": 34512,
+  "blocks": 1443,
+  "cuts": 19587,
+  "harvested_volume_m3": 233254.43,
+  "mean_10y_state_volume_m3": 987943.372,
+  "max_state_volume_m3": 1077231.061,
+  "final_state_volume_m3": 1008608.928,
+  "final_ba_m2": 171679.217,
+  "ba_fail_cuts": 8541,
+  "caveat": "Cohort state uses accepted block entries only; BA below 40 m\u00b2/ha is rejected and the cohort entry is not applied."
+}
