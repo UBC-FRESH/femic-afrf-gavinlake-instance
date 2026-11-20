@@ -1,0 +1,14 @@
+{
+  "block_mdwr_only_m3": 593646.866,
+  "group_one_cut_m3": 532827.067,
+  "group_cohort_m3": 651400.517,
+  "group_cohort_final_state_m3": 1167610.664,
+  "group_cohort_final_ba_m2": 190708.029,
+  "group_area_ha": 2797.5,
+  "per_ha_cohort": 232.9,
+  "per_ha_block": 212.1,
+  "ratio_cohort_to_block": 1.097,
+  "entries": 19587,
+  "ba_fail_cuts": 0,
+  "note": "Block accepted entries inherit the stand-level BA gate; group BA is reported but not used as a per-group gate."
+}
