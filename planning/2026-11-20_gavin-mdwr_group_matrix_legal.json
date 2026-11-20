@@ -1,0 +1,24 @@
+{
+  "source_matrix": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/ws4/runtime/legacy_matrix",
+  "groups": 25222,
+  "blocks": 25222,
+  "source_blocks": 1443,
+  "assigned_groups": 4390,
+  "scheduled_area_ha": 1451.766,
+  "total_group_area_ha": 2797.498,
+  "cuts": 4390,
+  "cut_mode": "one accepted group entry per assigned group",
+  "cohorts": {
+    "High": 3,
+    "Moderate": 4,
+    "Low": 5
+  },
+  "cycle_years": {
+    "High": 120,
+    "Moderate": 160,
+    "Low": 200
+  },
+  "ba_account": "feature.ba.managed.total",
+  "ba_fit": "/srv/shared-data/gep/ws4/femic/external/femic-afrf-gavinlake-instance/planning/2026-11-19_gavin-mdwr_ba_fit.json",
+  "caveat": "Group-specific BA uses a VRI 2025 per-BEC BA-volume-age fit; all groups are included in state, only assigned groups are cut."
+}
