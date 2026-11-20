@@ -1,8 +1,8 @@
 {
   "mdwr_area_ha": 2799.31,
-  "group_area_ha": 2797.04,
-  "missing_ha": 2.27,
+  "group_area_ha": 2797.5,
+  "missing_ha": 1.81,
   "blocks": 1443,
-  "blocks_missing": 23,
-  "max_missing_ha": 0.46
+  "blocks_missing": 22,
+  "max_missing_ha": 0.02
 }
