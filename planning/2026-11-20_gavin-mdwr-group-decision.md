@@ -29,8 +29,8 @@ The group/block MDWR ratio is **0.90**: **190 m³/ha** for the group state versu
 - final standing yield **1,274,641 m³**
 - initial BA **102,863 m²**; final BA **255,737 m²**
 
-The public `gavin-mdwr-group` scenario currently exposes the **2,586.8 ha**
-cut/standing subset. The full 34,512-group state is in the instance matrix.
+The public `gavin-mdwr-group` scenario now exposes the full **2,797.5 ha**
+group-cohort state.
 
 ## Why the block screen stays public
 
@@ -43,6 +43,23 @@ cut/standing subset. The full 34,512-group state is in the instance matrix.
    screen’s 13/37/11 status.
 6. The group state is 1.8 ha short of the MDWR and uses a VRI cross-sectional
    BA fit, not a plantation BA model.
+
+## Compliance status matrix
+
+| Requirement | Current state |
+| --- | --- |
+| No clearcut in MDWR | retained as a stricter policy choice; FSP Table 7 allows clearcut on fresh/wetter sites |
+| Table 30 pass intensity | implemented in the block and group schedules |
+| 40 m²/ha stand-level BA | inherited from accepted block entries; group BA is reported, not a per-group gate |
+| 0.4 ha warm / 0.7 ha other maximum group size | enforced in the consolidated group geometry |
+| 3–5 cohorts | represented in the cohort state |
+| Minimum group size | not implemented |
+| Preparatory thinning | not implemented |
+| Adjusted Appendix 9 compartment map | not reconciled |
+| 2007 GAR order / current UWR boundary | not independently reviewed |
+| Group target framework | not implemented |
+| Full group area | 2,797.5 ha of 2,799.3 ha |
+| Public group scenario | full 34,512-group cohort state, diagnostic only |
 
 ## Replacement gate
 
