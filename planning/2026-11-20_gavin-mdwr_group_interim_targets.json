@@ -1,0 +1,17 @@
+{
+  "reference": "block legal MDWR",
+  "block_mean": 20633.779,
+  "block_min": 1956.937,
+  "block_max": 119152.849,
+  "group_mean": 24876.63,
+  "group_min": 114.436,
+  "group_max": 155889.553,
+  "group_final_stock": 1288482.861,
+  "group_final_ba": 256351.558,
+  "interim_targets": {
+    "period_volume_floor": 10316.89,
+    "period_volume_ceiling": 30950.669,
+    "final_stock_floor": 1000000,
+    "final_ba_floor": 150000
+  }
+}
