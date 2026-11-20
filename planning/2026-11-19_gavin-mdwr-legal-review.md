@@ -434,3 +434,10 @@ Optimising phases with first-cut regrowth gives **0.679M m³**, mean 22,639 m³,
 min **10,204 m³**, max **30,937 m³**, with **26/30** periods inside the interim
 band. The minimum is 113 m³ below the floor; the maximum is inside the ceiling.
 The public group scenario uses this result.
+
+## Regrown optimized phase
+
+Optimising phases with first-cut regrowth gives **0.679M m³**, mean 22,639 m³,
+min **10,204 m³**, max **30,937 m³**, with **26/30** periods inside the interim
+band. The minimum is 113 m³ below the floor; the maximum is inside the ceiling.
+The public group scenario uses this result.
