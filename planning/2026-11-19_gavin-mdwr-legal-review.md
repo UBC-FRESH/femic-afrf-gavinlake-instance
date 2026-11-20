@@ -419,3 +419,11 @@ mean 22,660 m³, min **10,075 m³**, max **34,661 m³**, with **22/30** periods
 inside the interim band. The fixed-volume 30/30 result was invalid. The public
 group scenario now uses the regrown phase result; the legal block screen remains
 the policy result.
+
+## Regrown horizon phase
+
+Regrowing the horizon-aware phase cuts at their shifted ages gives **0.680M m³**,
+mean 22,660 m³, min **10,075 m³**, max **34,661 m³**, with **22/30** periods
+inside the interim band. The fixed-volume 30/30 result was invalid. The public
+group scenario now uses the regrown phase result; the legal block screen remains
+the policy result.
