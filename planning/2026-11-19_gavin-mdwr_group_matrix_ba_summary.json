@@ -1,17 +1,17 @@
 {
-  "groups": 20139,
+  "groups": 49550,
   "assigned_groups": 9674,
   "blocks": 1443,
   "cuts": 9674,
   "scheduled_area_ha": 1430.287,
-  "total_group_area_ha": 2586.774,
+  "total_group_area_ha": 2797.037,
   "volume_m3": 532827.067,
   "mean_10y_volume_m3": 21313.083,
   "min_10y_volume_m3": 49.21,
   "max_10y_volume_m3": 150741.194,
-  "initial_ba_m2": 96637.104,
-  "final_ba_m2": 205094.829,
-  "final_yield_m3": 1185395.221,
+  "initial_ba_m2": 102858.787,
+  "final_ba_m2": 255731.747,
+  "final_yield_m3": 1274599.904,
   "ba_account": "feature.ba.managed.total",
   "mode": "one cut per assigned group at accepted entry"
 }

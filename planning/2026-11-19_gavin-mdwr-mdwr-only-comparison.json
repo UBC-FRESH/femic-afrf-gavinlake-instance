@@ -12,9 +12,9 @@
     "max_10y": 150741.2
   },
   "ratio_group_to_block": 0.898,
-  "group_area_ha": 2586.8,
-  "mdwr_area_ha": 2799.31,
-  "per_ha_group": 206.0,
+  "group_area_ha": 2797.0,
+  "mdwr_area_ha": 2799.3,
+  "per_ha_group": 190.5,
   "per_ha_block": 212.1,
-  "note": "Group openings now use one accepted entry per assigned group; this aligns with the temporal block schedule. Remaining difference is area coverage and full-group vs block fraction accounting."
+  "note": "Group state now covers the full MDWR area; harvested volume uses one accepted entry per assigned group."
 }
