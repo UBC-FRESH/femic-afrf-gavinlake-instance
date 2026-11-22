@@ -1,0 +1,12 @@
+{
+  "groups": 27083,
+  "blocks": 1427,
+  "cuts": 12534,
+  "harvested_volume_m3": 629808.932,
+  "mean_10y_state_volume_m3": 838951.283,
+  "max_state_volume_m3": 1111921.716,
+  "final_state_volume_m3": 1111921.716,
+  "final_ba_m2": 180248.512,
+  "ba_fail_cuts": 0,
+  "caveat": "Cohort state inherits the accepted block-level BA gate; group BA is reported but not used as a per-group gate."
+}

@@ -121,3 +121,9 @@ status and the GitHub issue comments.
   dropped small pieces).
 - The repair is not a cohort result; the public group result remains the old
   layout's 0.679M m³ / 26-of-30 diagnostic.
+- Ran the legal s40 cohort state on the repair: 27,083 groups, 1,427 blocks,
+  12,534 cuts, 1,684.1 ha cut, 629,809 m³ harvested, final stock 1,111,922 m³,
+  final BA 180,249 m².
+- The cohort is 4.3% below the old legal s40 cohort (658,199 m³), mainly an
+  area effect. It cuts all groups, not only the 4,671 assigned openings
+  (1,386.4 ha); no regrown phase result yet.
