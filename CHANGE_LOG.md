@@ -141,3 +141,6 @@ status and the GitHub issue comments.
   6,603 / 3,944 / 3,841 / 3,474 m³; no ceiling violations.
 - The 119-year phase cap and early assigned-entry concentration leave too small
   a late-entry pool to fill the tail. No further phase restart recommended.
+- Adopted option 1: accepted the 26/30 tail limit and kept the block public.
+  The group screens remain diagnostics; reopening requires a wider band, a
+  longer horizon, or a legal later-entry/re-entry model.
