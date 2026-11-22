@@ -106,3 +106,5 @@ status and the GitHub issue comments.
   unresolved spatial layer.
 - The group estate remains 2,797.5 ha versus the 2,726.42 ha UWR clip; the
   ~71 ha difference is unresolved. No model result changed.
+- Clarified GWM 10 opening sizes: transition other 0.1–0.7 ha / frost
+  0.1–0.3 ha; deep other 0.1–1.0 ha / frost 0.1–0.4 ha.
