@@ -127,3 +127,8 @@ status and the GitHub issue comments.
 - The cohort is 4.3% below the old legal s40 cohort (658,199 m³), mainly an
   area effect. It cuts all groups, not only the 4,671 assigned openings
   (1,386.4 ha); no regrown phase result yet.
+- Ran the assigned-openings-only cohort: 3,743 groups cut at least once
+  (1,106.79 ha unique), 928 assigned groups (279.64 ha) remain uncut because
+  the cohort script ignores layout entry offsets. Harvested 499,597 m³; final
+  state 554,774 m³; final BA 96,950 m². The final state covers only the
+  assigned area, not the full estate.
