@@ -132,3 +132,7 @@ status and the GitHub issue comments.
   the cohort script ignores layout entry offsets. Harvested 499,597 m³; final
   state 554,774 m³; final BA 96,950 m². The final state covers only the
   assigned area, not the full estate.
+- Built the assigned entry-offset ledger: all 4,671 openings cut once,
+  1,386.43 ha, 504,601 m³, no uncut openings. Mean cut BA 82.2 m²/ha; 612
+  openings (174.9 ha) are below 40 m²/ha at entry, but GWM 6 is applied at the
+  stand/block level. First-decade volume 148,505 m³; no phase result.

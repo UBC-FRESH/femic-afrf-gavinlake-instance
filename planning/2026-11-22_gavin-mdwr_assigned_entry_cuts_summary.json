@@ -1,0 +1,14 @@
+{
+  "groups": 4671,
+  "blocks": 875,
+  "cut_area_ha": 1386.43,
+  "harvested_volume_m3": 504601.361,
+  "min_cut_volume_m3": 7.509,
+  "max_cut_volume_m3": 394.867,
+  "mean_cut_ba_m2_ha": 82.198,
+  "min_10y_volume_m3": 0.0,
+  "max_10y_volume_m3": 148505.075,
+  "mean_10y_volume_m3": 16820.045,
+  "missing_matrix_groups": 0,
+  "caveat": "One cut per assigned opening at its layout entry offset; no cohort re-entry or phase shift."
+}
