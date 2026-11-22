@@ -1,0 +1,6 @@
+scenario,tpi_window_cells,z_level,z_lower,z_upper,z_crest,assigned_frost_prone_groups,assigned_frost_prone_area_ha,assigned_frost_violation_groups,assigned_frost_violation_area_ha,assigned_cap_violation_groups,assigned_cap_violation_area_ha
+base,201,-1.0,-0.4,0.4,1.0,540,186.38,291,142.15,327,161.29
+window250,101,-1.0,-0.4,0.4,1.0,520,180.28,267,135.11,299,151.97
+window750,301,-1.0,-0.4,0.4,1.0,540,192.55,314,151.86,348,169.91
+frost_loose,201,-0.8,-0.2,0.6,1.2,947,318.75,526,243.57,556,259.34
+frost_tight,201,-1.2,-0.6,0.2,0.8,318,119.61,172,93.47,208,112.61

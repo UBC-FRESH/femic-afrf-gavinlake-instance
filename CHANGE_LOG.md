@@ -108,3 +108,10 @@ status and the GitHub issue comments.
   ~71 ha difference is unresolved. No model result changed.
 - Clarified GWM 10 opening sizes: transition other 0.1–0.7 ha / frost
   0.1–0.3 ha; deep other 0.1–1.0 ha / frost 0.1–0.4 ha.
+- Added a preliminary frost screen from FRDA Report 157 Table 3, the 5 m DEM
+  and a 500 m TPI. It is a screening diagnostic, not a legal determination.
+- 540 assigned openings (186.4 ha) are frost-prone; 291 assigned openings
+  (142.2 ha) exceed the frost cap. 181 assigned openings have 42.6 ha outside
+  the approved UWR.
+- 499 assigned openings (221.6 ha) fail an opening-size or UWR test. The group
+  layout must be rebuilt; no public model result changed.
