@@ -115,3 +115,9 @@ status and the GitHub issue comments.
   the approved UWR.
 - 499 assigned openings (221.6 ha) fail an opening-size or UWR test. The group
   layout must be rebuilt; no public model result changed.
+- Added a clipped-and-capped layout repair: 27,110 groups / 2,722.37 ha, 4,671
+  assigned openings / 1,386.43 ha, zero cap violations, zero outside-UWR
+  groups. Assigned area falls by 46.36 ha (42.58 ha outside UWR plus 3.78 ha
+  dropped small pieces).
+- The repair is not a cohort result; the public group result remains the old
+  layout's 0.679M m³ / 26-of-30 diagnostic.

@@ -1,0 +1,20 @@
+{
+  "source_groups": 25777,
+  "source_area_ha": 2799.26,
+  "source_assigned_area_ha": 1432.8,
+  "output_groups": 27110,
+  "output_area_ha": 2722.37,
+  "assigned_groups": 4671,
+  "assigned_area_ha": 1386.43,
+  "assigned_frost_prone_groups": 933,
+  "assigned_frost_prone_area_ha": 177.94,
+  "max_area_ha": 0.7,
+  "max_assigned_area_ha": 0.7,
+  "cap_violation_groups": 0,
+  "min_opening_violation_groups": 0,
+  "groups_fully_outside_uwr_dropped": 614,
+  "source_groups_split": 1097,
+  "small_assigned_pieces_dropped": 121,
+  "uwr_area_ha": 2726.42,
+  "assigned_area_lost_vs_source_ha": 46.36
+}
