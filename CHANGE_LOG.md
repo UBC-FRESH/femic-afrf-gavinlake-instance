@@ -90,3 +90,19 @@ status and the GitHub issue comments.
 - Confirmed that MWP #3 Figure 11 is Knife Creek-specific and that Klinka's
   quantitative content is in its tables, not its photo figures. No figrecover
   pass was needed for Gavin.
+
+## 2026-11-22
+
+- Downloaded and clipped the approved UWR boundary and stand-structure habitat
+  classes from the BC Geographic Warehouse; derived layers are in
+  `data/derived/gavin_mdwr/`.
+- Gavin UWR clip: U-5-002 / dwl_9 Beaver Valley North, 2,726.42 ha.
+- Stand-structure classes: High 697.92 ha, Moderate 1,013.18 ha, Low 1,015.33 ha.
+- Confirmed GWM 10 defines frost-prone as medium, high or very high summer
+  frost hazard; FRDA Report 157 Table 3 and the 5 m DEM make a screening
+  classification possible.
+- Corrected earlier notes that treated UWR and stand-structure data as
+  unavailable. Adjusted Appendix 9 compartment boundaries remain the only
+  unresolved spatial layer.
+- The group estate remains 2,797.5 ha versus the 2,726.42 ha UWR clip; the
+  ~71 ha difference is unresolved. No model result changed.
