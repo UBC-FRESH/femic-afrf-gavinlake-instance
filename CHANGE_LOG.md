@@ -144,3 +144,8 @@ status and the GitHub issue comments.
 - Adopted option 1: accepted the 26/30 tail limit and kept the block public.
   The group screens remain diagnostics; reopening requires a wider band, a
   longer horizon, or a legal later-entry/re-entry model.
+- Completed the legal/map closeout: UWR 2,726.42 ha; Appendix 9 gross
+  2,846.3 ha; Appendix 9 net 2,484.0 ha; model MDWR estate 2,799.3 ha;
+  repaired layout 2,722.37 ha. The MDWR-only block baseline uses the model
+  estate, not the UWR. Appendix 9 adjusted compartments remain a scanned plan
+  without a coordinate grid; no compliance claim.
