@@ -136,3 +136,8 @@ status and the GitHub issue comments.
   1,386.43 ha, 504,601 m³, no uncut openings. Mean cut BA 82.2 m²/ha; 612
   openings (174.9 ha) are below 40 m²/ha at entry, but GWM 6 is applied at the
   stand/block level. First-decade volume 148,505 m³; no phase result.
+- Ran the regrown phase optimizer on the entry ledger: 579,763 m³, mean
+  19,325 m³, max 30,950 m³, 26/30 periods in band. Late periods 260–290 are
+  6,603 / 3,944 / 3,841 / 3,474 m³; no ceiling violations.
+- The 119-year phase cap and early assigned-entry concentration leave too small
+  a late-entry pool to fill the tail. No further phase restart recommended.

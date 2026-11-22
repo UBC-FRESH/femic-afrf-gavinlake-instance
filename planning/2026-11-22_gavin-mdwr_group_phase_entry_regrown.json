@@ -1,0 +1,10 @@
+{
+  "events": 4671,
+  "total_volume_m3": 579763.197,
+  "mean_10y_volume_m3": 19325.44,
+  "min_10y_volume_m3": 3473.704,
+  "max_10y_volume_m3": 30949.93,
+  "periods": 30,
+  "regrown_events": 4671,
+  "caveat": "First cut delayed by phase and regrown on the group curve; later cuts keep interval ages."
+}
